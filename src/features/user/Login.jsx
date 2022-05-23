@@ -41,57 +41,55 @@ export default function Login() {
   };
 
   return (
-    <div>
-      <div className="flex justify-center items-center h-[92vh] bg-gray-200">
-        <form
-          className="flex flex-col justify-center items-center gap-4 shadow-md bg-slate-50 p-9 w-96 rounded-md"
-          onSubmit={loginHandler}
+    <div className="flex justify-center items-center h-[92vh] bg-gray-200">
+      <form
+        className="flex flex-col justify-center items-center gap-4 shadow-md bg-slate-50 p-9 w-96 rounded-md"
+        onSubmit={loginHandler}
+      >
+        <h1 className="text-xl font-semibold">Login</h1>
+        <input
+          type="text"
+          name="name"
+          className="w-full p-2 h-9 bg-gray-100"
+          placeholder="Enter name"
+          required
+          onChange={changeHandler}
+        />
+        <input
+          type="text"
+          name="profilePic"
+          className="w-full p-2 h-9 bg-gray-100"
+          placeholder="Enter profile pic URL here (optional)"
+          onChange={changeHandler}
+        />
+        <input
+          type="email"
+          name="email"
+          className="w-full p-2 h-9 bg-gray-100"
+          placeholder="Enter email here"
+          required
+          onChange={changeHandler}
+        />
+        <input
+          type="password"
+          name="password"
+          className="w-full p-2 h-9 bg-gray-100"
+          placeholder="Enter password here"
+          required
+          onChange={changeHandler}
+        />
+        <button
+          type="submit"
+          className="border-2 bg-gray-200 py-1 px-4 rounded-md w-1/2"
         >
-          <h1 className="text-xl font-semibold">Login</h1>
-          <input
-            type="text"
-            name="name"
-            className="w-full p-2 h-9 bg-gray-100"
-            placeholder="Enter name"
-            required
-            onChange={changeHandler}
-          />
-          <input
-            type="text"
-            name="profilePic"
-            className="w-full p-2 h-9 bg-gray-100"
-            placeholder="Enter profile pic URL here (optional)"
-            onChange={changeHandler}
-          />
-          <input
-            type="email"
-            name="email"
-            className="w-full p-2 h-9 bg-gray-100"
-            placeholder="Enter email here"
-            required
-            onChange={changeHandler}
-          />
-          <input
-            type="password"
-            name="password"
-            className="w-full p-2 h-9 bg-gray-100"
-            placeholder="Enter password here"
-            required
-            onChange={changeHandler}
-          />
-          <button
-            type="submit"
-            className="border-2 bg-gray-200 py-1 px-4 rounded-md w-1/2"
-          >
-            Login
-          </button>
-          <p>
-            <Link to="/signup" className="text-gray-500 font-semibold">
-              Create Account
-            </Link>
-          </p>
-        </form>
-      </div>
+          Login
+        </button>
+        <p>
+          <Link to="/signup" className="text-gray-500 font-semibold">
+            Create Account
+          </Link>
+        </p>
+      </form>
     </div>
   );
 }
