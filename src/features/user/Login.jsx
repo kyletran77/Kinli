@@ -1,30 +1,34 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
-import React, { useState } from "react";
+import { signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../firebase/firebase";
 import { login } from "./userSlice";
 
 export default function Login() {
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [loginDetails, setLoginDetails] = useState({
     email: "",
     password: "",
+    profilePic: "",
   });
+  const { email, password, profilePic } = loginDetails;
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
     setLoginDetails((prev) => ({ ...prev, [name]: value }));
   };
 
-  const { email, password } = loginDetails;
-  const dispatch = useDispatch();
-
   const loginHandler = async (e) => {
     e.preventDefault();
-
     try {
       const userAuth = await signInWithEmailAndPassword(auth, email, password);
+      await updateProfile(userAuth.user, {
+        photoURL: profilePic === "" ? userAuth.user.photoURL : profilePic,
+      });
       dispatch(
         login({
           email: userAuth.user.email,
@@ -36,7 +40,7 @@ export default function Login() {
       localStorage.setItem("authToken", userAuth.user.accessToken);
       navigate("/");
     } catch (error) {
-      alert(error);
+      console.log(error);
     }
   };
 
@@ -49,35 +53,36 @@ export default function Login() {
         <h1 className="text-xl font-semibold">Login</h1>
         <input
           type="text"
-          name="name"
-          className="w-full p-2 h-9 bg-gray-100"
-          placeholder="Enter name"
-          required
-          onChange={changeHandler}
-        />
-        <input
-          type="text"
           name="profilePic"
           className="w-full p-2 h-9 bg-gray-100"
-          placeholder="Enter profile pic URL here (optional)"
+          placeholder="Enter profile pic URL (optional)"
           onChange={changeHandler}
         />
         <input
           type="email"
           name="email"
           className="w-full p-2 h-9 bg-gray-100"
-          placeholder="Enter email here"
+          placeholder="Enter email"
           required
           onChange={changeHandler}
         />
-        <input
-          type="password"
-          name="password"
-          className="w-full p-2 h-9 bg-gray-100"
-          placeholder="Enter password here"
-          required
-          onChange={changeHandler}
-        />
+        <div className="relative w-full">
+          <input
+            type={showPassword ? "text" : "password"}
+            name="password"
+            className="w-full p-2 h-9 bg-gray-100"
+            placeholder="Enter password"
+            required
+            onChange={changeHandler}
+          />
+          <div role="button" onClick={() => setShowPassword((prev) => !prev)}>
+            {showPassword ? (
+              <AiFillEyeInvisible className="absolute right-2 bottom-1/2 translate-y-1/2 text-gray-500 text-lg" />
+            ) : (
+              <AiFillEye className="absolute right-2 bottom-1/2 translate-y-1/2 text-gray-500 text-lg" />
+            )}
+          </div>
+        </div>
         <button
           type="submit"
           className="border-2 bg-gray-200 py-1 px-4 rounded-md w-1/2"
