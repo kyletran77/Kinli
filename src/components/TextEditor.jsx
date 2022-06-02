@@ -8,7 +8,7 @@ import {
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setAllPosts } from "../features/allPosts/allPostsSlice";
+import { setAllPosts } from "features/allPosts/allPostsSlice";
 import { auth, db } from "../firebase/firebase";
 import Post from "./Post";
 

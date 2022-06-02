@@ -5,7 +5,7 @@ import { BsFillBookmarkFill } from "react-icons/bs";
 
 export default function Sidebar() {
   return (
-    <div className="flex-none flex flex-col gap-7 text-xl bg-gray-50 h-[80vh] py-4 px-5  my-4 mx-3 shadow-md rounded-md lg:pr-12">
+    <div className="flex-none flex flex-col gap-7 text-xl text-gray-700 bg-gray-50 h-[80vh] py-4 px-5  my-4 mx-3 shadow-md rounded-md lg:pr-12">
       <NavLink to="/" className="flex gap-3 items-center">
         <AiFillHome />
         <p className="text-base hidden xl:block">Home</p>
