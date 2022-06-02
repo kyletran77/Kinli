@@ -1,11 +1,11 @@
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import "./App.css";
-import Header from "./components/Header";
-import { login, logout } from "./features/user/userSlice";
+import "App.css";
+import Header from "components/Header";
+import { login, logout } from "features/user/userSlice";
 import { auth } from "./firebase/firebase";
-import Router from "./Router/Router";
+import Router from "Router/Router";
 
 function App() {
   const dispatch = useDispatch();

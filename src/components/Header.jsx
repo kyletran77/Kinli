@@ -2,7 +2,7 @@ import { signOut } from "firebase/auth";
 import { MdOutlineLogout, MdLogin } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { logout } from "../features/user/userSlice";
+import { logout } from "features/user/userSlice";
 import { auth } from "../firebase/firebase";
 
 export default function Header() {

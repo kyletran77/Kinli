@@ -1,6 +1,6 @@
-import RightSideBar from "../../components/RightSideBar";
-import Sidebar from "../../components/Sidebar";
-import TextEditor from "../../components/TextEditor";
+import RightSideBar from "components/RightSideBar";
+import Sidebar from "components/Sidebar";
+import TextEditor from "components/TextEditor";
 
 export default function UserFeed() {
   return (
