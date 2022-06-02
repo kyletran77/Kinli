@@ -1,15 +1,15 @@
 import { signOut } from "firebase/auth";
-import React from "react";
-import { MdOutlineLogout } from "react-icons/md";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import dp from "../assets/dp.jpg";
+import { MdOutlineLogout, MdLogin } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../features/user/userSlice";
 import { auth } from "../firebase/firebase";
 
 export default function Header() {
+  const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const logoutHandler = async () => {
     dispatch(logout());
     await signOut(auth);
@@ -17,17 +17,28 @@ export default function Header() {
     localStorage.removeItem("authToken");
   };
 
-  // Please ignore the below comment, will be using it later
-  // const user = useSelector((state) => state.user.user);
-
   return (
     <div className="p-3 bg-slate-100 font-semibold flex justify-between items-center">
       <h1 className="text-gray-600 text-xl">SocialMedia</h1>
       <div className="flex gap-4">
-        <img className="rounded-full h-9" src={dp} alt="user-avatar" />
-        <button onClick={logoutHandler}>
-          <MdOutlineLogout className="text-2xl" />
-        </button>
+        <img
+          className="rounded-full max-h-9 aspect-square"
+          src={
+            auth.currentUser?.photoURL
+              ? auth.currentUser?.photoURL
+              : "http://cdn.onlinewebfonts.com/svg/img_264570.png"
+          }
+          alt="user-avatar"
+        />
+        {user ? (
+          <button onClick={logoutHandler}>
+            <MdOutlineLogout className="text-2xl" />
+          </button>
+        ) : (
+          <Link to="/login" className="self-center">
+            <MdLogin className="text-2xl" />
+          </Link>
+        )}
       </div>
     </div>
   );
