@@ -19,17 +19,21 @@ export default function Header() {
 
   return (
     <div className="p-3 bg-slate-100 font-semibold flex justify-between items-center">
-      <h1 className="text-gray-600 text-xl">SocialMedia</h1>
+      <Link to="/">
+        <h1 className="text-gray-600 text-xl">SocialMedia</h1>
+      </Link>
       <div className="flex gap-4">
-        <img
-          className="rounded-full max-h-9 aspect-square"
-          src={
-            auth.currentUser?.photoURL
-              ? auth.currentUser?.photoURL
-              : "http://cdn.onlinewebfonts.com/svg/img_264570.png"
-          }
-          alt="user-avatar"
-        />
+        <Link to="/profile">
+          <img
+            className="rounded-full max-h-9 aspect-square"
+            src={
+              auth.currentUser?.photoURL
+                ? auth.currentUser?.photoURL
+                : "http://cdn.onlinewebfonts.com/svg/img_264570.png"
+            }
+            alt="user-avatar"
+          />
+        </Link>
         {user ? (
           <button onClick={logoutHandler}>
             <MdOutlineLogout className="text-2xl" />

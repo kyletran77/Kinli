@@ -54,7 +54,7 @@ export default function Signup() {
             email: userAuth.user.email,
             userID: userAuth.user.uid,
             displayName: name,
-            avatar: profilePic,
+            avatar: userAuth.user.photoURL,
             bio: "",
             posts: [],
             followers: [],
