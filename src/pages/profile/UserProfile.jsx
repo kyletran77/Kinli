@@ -40,7 +40,6 @@ export default function UserProfile() {
     [auth.currentUser]
   );
 
-  console.log(user);
   return (
     <div className="w-full pt-4 ml-3">
       <section className={`w-full ${randomGradient} h-72 relative`}>
