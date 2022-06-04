@@ -2,7 +2,7 @@ import React from "react";
 
 export default function RightSideBar() {
   return (
-    <div className="w-80 bg-slate-100 p-4 mx-2">
+    <div className="bg-slate-100 p-4 mx-2 w-[30rem]">
       <div className="flex flex-col gap-2 bg-gray-50 p-4 max-w-xs mx-auto rounded-md shadow-md">
         <h1>Suggestions</h1>
         <ul className="flex flex-col gap-3">

@@ -1,13 +1,9 @@
-import RightSideBar from "components/RightSideBar";
-import Sidebar from "components/Sidebar";
 import TextEditor from "components/TextEditor";
 
-export default function UserFeed() {
+export default function Explore() {
   return (
-    <div className="flex bg-slate-100">
-      <Sidebar />
+    <div className="flex bg-red-200 w-full">
       <TextEditor />
-      <RightSideBar />
     </div>
   );
 }
