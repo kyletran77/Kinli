@@ -3,8 +3,9 @@ import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { auth } from "../../firebase/firebase";
+import { auth, db } from "../../firebase/firebase";
 import { login } from "./userSlice";
+import { collection, doc, setDoc } from "firebase/firestore";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -29,12 +30,20 @@ export default function Login() {
       await updateProfile(userAuth.user, {
         photoURL: profilePic === "" ? userAuth.user.photoURL : profilePic,
       });
+      const userRef = collection(db, "users");
+      await setDoc(
+        doc(userRef, userAuth.user.uid),
+        {
+          avatar: profilePic === "" ? userAuth.user.photoURL : profilePic,
+        },
+        { merge: true }
+      );
       dispatch(
         login({
           email: userAuth.user.email,
           uid: userAuth.user.uid,
           displayName: userAuth.user.displayName,
-          photoUrl: userAuth.user.photoURL,
+          photoURL: userAuth.user.photoURL,
         })
       );
       localStorage.setItem("authToken", userAuth.user.accessToken);

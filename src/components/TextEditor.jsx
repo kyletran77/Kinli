@@ -4,7 +4,6 @@ import {
   doc,
   setDoc,
   onSnapshot,
-  updateDoc,
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -59,30 +58,32 @@ export default function TextEditor() {
     setNewPost(initialPostState);
   };
 
-  // to-do: use in user profile
-  const filteredPosts = allPosts.filter(
-    (post) => post.uid === currentUser?.uid
-  );
+  // Please ignore the below commented code for now.
 
-  // to-do: use in user profile
-  const updateUserPosts = async () => {
-    const userPostsRef = doc(db, "users", currentUser.uid);
-    await updateDoc(userPostsRef, { posts: filteredPosts });
-  };
+  // const updateUserPosts = async (filteredPosts) => {
+  //   const userPostsRef = doc(db, "users", currentUser.uid);
+  //   await updateDoc(userPostsRef, { posts: filteredPosts });
+  // };
 
   useEffect(
     () =>
       onSnapshot(allPostsRef, (snapshot) => {
         const allPostsList = snapshot.docs.map((doc) => doc.data());
         dispatch(setAllPosts(allPostsList));
-        if (currentUser) updateUserPosts();
+
+        // Please ignore the below commented code for now.
+
+        // const filteredPosts = allPosts.filter(
+        //   (post) => post.uid === currentUser?.uid
+        // );
+        // if (currentUser) updateUserPosts(filteredPosts);
       }),
     // eslint-disable-next-line
     [currentUser]
   );
 
   return (
-    <div className="grow flex flex-col gap-4 bg-gray-100 text-l min-h-screen p-4 mx-auto">
+    <div className="grow flex flex-col gap-4 bg-gray-100 text-l min-h-screen p-4 mx-auto w-full">
       <form
         className="mx-auto w-full max-w-3xl relative"
         onSubmit={(e) => submitHandler(e)}
