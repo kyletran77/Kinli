@@ -1,7 +1,21 @@
-import { addDoc, collection, deleteDoc, doc, setDoc } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDoc,
+  setDoc,
+} from "firebase/firestore";
 import { db } from "./firebase";
 
 const allPostsCollection = collection(db, "allPosts");
+const usersCollection = collection(db, "users");
+
+export const getUser = async (user, setUserData) => {
+  const userDoc = doc(usersCollection, user.uid);
+  const docSnap = await getDoc(userDoc);
+  setUserData(docSnap.data());
+};
 
 export const createPost = async (user, post) => {
   const postDoc = await addDoc(allPostsCollection, {
