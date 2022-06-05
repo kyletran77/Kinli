@@ -52,11 +52,13 @@ export default function Post({ post }) {
                 }))
               }
             />
-            <img
-              src={updatePost.imageURL}
-              alt="post-one"
-              className="mx-auto aspect-auto max-h-96 mt-2"
-            />
+            {updatePost.imageURL && (
+              <img
+                src={updatePost.imageURL}
+                alt="post-one"
+                className="mx-auto aspect-auto max-h-96 mt-2"
+              />
+            )}
           </div>
         ) : (
           <div>
