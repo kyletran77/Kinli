@@ -1,9 +1,7 @@
-import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { login, logout } from "features/user/userSlice";
-import { auth } from "./firebase/firebase";
+import { firebaseListeners } from "./firebase/firebase-listeners";
 import Router from "Router/Router";
 import Header from "components/Header";
 import Sidebar from "components/Sidebar";
@@ -14,23 +12,13 @@ function App() {
   const location = useLocation();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (userAuth) => {
-      if (userAuth) {
-        dispatch(
-          login({
-            email: userAuth.email,
-            uid: userAuth.uid,
-            displayName: userAuth.displayName,
-            photoURL: userAuth.photoURL,
-          })
-        );
-      } else {
-        dispatch(logout());
-      }
-    });
+  useEffect(
+    () => {
+      firebaseListeners(dispatch);
+    },
     // eslint-disable-next-line
-  }, []);
+    []
+  );
 
   return (
     <div className="App">
