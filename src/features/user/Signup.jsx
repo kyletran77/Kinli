@@ -15,7 +15,7 @@ export default function Signup() {
     name: "",
     email: "",
     password: "",
-    profilePic: "",
+    profilePic: "http://cdn.onlinewebfonts.com/svg/img_264570.png",
     confirmPassword: "",
   });
   const { email, password, confirmPassword, name, profilePic } = signupDetails;
