@@ -7,6 +7,7 @@ import { auth } from "../firebase/firebase";
 
 export default function Header() {
   const { user } = useSelector((state) => state.user);
+  const currentUser = auth.currentUser;
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -27,8 +28,8 @@ export default function Header() {
           <img
             className="rounded-full max-h-9 aspect-square"
             src={
-              auth.currentUser?.photoURL
-                ? auth.currentUser?.photoURL
+              currentUser?.photoURL
+                ? currentUser?.photoURL
                 : "http://cdn.onlinewebfonts.com/svg/img_264570.png"
             }
             alt="user-avatar"

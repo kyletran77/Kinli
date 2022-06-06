@@ -1,5 +1,7 @@
 import {
   addDoc,
+  arrayRemove,
+  arrayUnion,
   collection,
   deleteDoc,
   doc,
@@ -10,11 +12,23 @@ import { db } from "./firebase";
 
 const allPostsCollection = collection(db, "allPosts");
 const usersCollection = collection(db, "users");
+const date = new Date().toLocaleDateString("en-IN", {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+  hour: "2-digit",
+  minute: "2-digit",
+  second: "2-digit",
+});
 
 export const getUser = async (user, setUserData) => {
-  const userDoc = doc(usersCollection, user.uid);
+  const userDoc = doc(usersCollection, user?.uid);
   const docSnap = await getDoc(userDoc);
-  setUserData(docSnap.data());
+  if (docSnap.exists()) {
+    setUserData(docSnap.data());
+  } else {
+    console.log("Could not retrieve user data");
+  }
 };
 
 export const createPost = async (user, post) => {
@@ -25,6 +39,8 @@ export const createPost = async (user, post) => {
     caption: post.caption,
     createdAt: new Date().toLocaleString(),
     imageURL: post.imageURL,
+    likes: [],
+    comments: [],
   });
 
   await setDoc(
@@ -49,4 +65,58 @@ export const editPost = async (post, updatePost) => {
 
 export const deletePost = async (post) => {
   await deleteDoc(doc(allPostsCollection, post.postID));
+};
+
+export const likePost = async (postID, user) => {
+  await setDoc(
+    doc(allPostsCollection, postID),
+    {
+      likes: arrayUnion({
+        avatar: user.photoURL,
+        displayName: user.displayName,
+        userID: user.uid,
+      }),
+    },
+    { merge: true }
+  );
+};
+
+export const dislikePost = async (postID, user) => {
+  await setDoc(
+    doc(allPostsCollection, postID),
+    {
+      likes: arrayRemove({
+        avatar: user.photoURL,
+        displayName: user.displayName,
+        userID: user.uid,
+      }),
+    },
+    { merge: true }
+  );
+};
+
+export const postComment = async ({ postID }, comment, user) => {
+  await setDoc(
+    doc(allPostsCollection, postID),
+    {
+      comments: arrayUnion({
+        avatar: user.photoURL,
+        displayName: user.displayName,
+        userID: user.uid,
+        comment: comment,
+        date: date,
+      }),
+    },
+    { merge: true }
+  );
+};
+
+export const deleteComment = async (post, comment) => {
+  await setDoc(
+    doc(allPostsCollection, post.postID),
+    {
+      comments: arrayRemove(comment),
+    },
+    { merge: true }
+  );
 };

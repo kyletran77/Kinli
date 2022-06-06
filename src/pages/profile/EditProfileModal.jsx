@@ -12,6 +12,7 @@ export default function EditProfileModal({
   setUserData,
 }) {
   const { user } = useSelector((state) => state.user);
+  const currentUser = auth.currentUser;
 
   const dispatch = useDispatch();
   const [userInfo, setUserInfo] = useState({
@@ -41,24 +42,20 @@ export default function EditProfileModal({
   useEffect(() => {
     const profileUpdate = async () => {
       await setDoc(
-        doc(db, "users", auth.currentUser?.uid),
+        doc(db, "users", currentUser?.uid),
         {
           coverPic: userInfo?.coverPic
             ? userInfo.coverPic
-            : userData.coverPic
-            ? userData.coverPic
-            : "",
-          avatar: userInfo.avatar ? userInfo.avatar : userData.avatar,
-          bio: userInfo.bio ? userInfo.bio : userData.bio,
+            : userData.coverPic ?? "",
+          avatar: userInfo?.avatar ? userInfo.avatar : userData.avatar,
+          bio: userInfo?.bio ? userInfo.bio : userData.bio ?? "",
           website: userInfo?.website
             ? userInfo.website
-            : userData.website
-            ? userData.website
-            : "",
+            : userData.website ?? "",
         },
         { merge: true }
       );
-      await updateProfile(auth.currentUser, {
+      await updateProfile(currentUser, {
         photoURL: userData.avatar,
       });
       dispatch(updateDP(userData.avatar));

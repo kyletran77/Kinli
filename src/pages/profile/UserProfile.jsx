@@ -11,9 +11,10 @@ export default function UserProfile() {
   const { allPosts } = useSelector((state) => state.allPosts);
   const [showModal, setShowModal] = useState(false);
   const [userData, setUserData] = useState([]);
+  const currentUser = auth.currentUser;
 
   const filteredPosts = allPosts.filter(
-    (post) => post.uid === auth.currentUser?.uid
+    (post) => post.uid === currentUser?.uid
   );
 
   const gradients = [
@@ -28,9 +29,13 @@ export default function UserProfile() {
   const randomGradient =
     gradients[Math.floor(Math.random() * gradients.length)];
 
-  useEffect(() => {
-    getUser(auth.currentUser, setUserData);
-  }, []);
+  useEffect(
+    () => {
+      if (currentUser) getUser(currentUser, setUserData);
+    },
+    // eslint-disable-next-line
+    [currentUser]
+  );
 
   return (
     <div className="w-full pt-4 ml-3">
@@ -55,9 +60,7 @@ export default function UserProfile() {
             alt="user-dp"
             className="h-24 md:h-32 w-fit object-cover aspect-square rounded-full"
           />
-          <p className="text-lg font-semibold">
-            {auth.currentUser?.displayName}
-          </p>
+          <p className="text-lg font-semibold">{currentUser?.displayName}</p>
           <p className="text-center">{userData.bio}</p>
           <p>{userData.website}</p>
           <div className="flex flex-wrap gap-1 justify-center md:w-full md:gap-1  md:justify-center text-slate-50 lg:scale-100 px-2 md:px-0 lg:gap-5">
