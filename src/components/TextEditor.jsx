@@ -1,20 +1,8 @@
-import {
-  addDoc,
-  collection,
-  doc,
-  setDoc,
-  onSnapshot,
-} from "firebase/firestore";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setAllPosts } from "features/allPosts/allPostsSlice";
-import { auth, db } from "../firebase/firebase";
-import Post from "./Post";
+import { useState } from "react";
+import { auth } from "../firebase/firebase";
+import { createPost } from "../firebase/firebase-calls";
 
 export default function TextEditor() {
-  const { allPosts } = useSelector((state) => state.allPosts);
-  const dispatch = useDispatch();
-
   const initialPostState = {
     author: "",
     uid: "",
@@ -35,55 +23,14 @@ export default function TextEditor() {
     setNewPost((prev) => ({ ...prev, [name]: value }));
   };
 
-  const allPostsRef = collection(db, "allPosts");
-
-  const submitHandler = async (e) => {
+  const submitHandler = (e) => {
     e.preventDefault();
-    const document = await addDoc(allPostsRef, {
-      author: currentUser.displayName,
-      uid: currentUser.uid,
-      photoURL: currentUser.photoURL,
-      caption: newPost.caption,
-      createdAt: new Date().toLocaleString(),
-      imageURL: newPost.imageURL,
-    });
-
-    await setDoc(
-      doc(allPostsRef, document.id),
-      {
-        postID: document.id,
-      },
-      { merge: true }
-    );
+    createPost(currentUser, newPost);
     setNewPost(initialPostState);
   };
 
-  // Please ignore the below commented code for now.
-
-  // const updateUserPosts = async (filteredPosts) => {
-  //   const userPostsRef = doc(db, "users", currentUser.uid);
-  //   await updateDoc(userPostsRef, { posts: filteredPosts });
-  // };
-
-  useEffect(
-    () =>
-      onSnapshot(allPostsRef, (snapshot) => {
-        const allPostsList = snapshot.docs.map((doc) => doc.data());
-        dispatch(setAllPosts(allPostsList));
-
-        // Please ignore the below commented code for now.
-
-        // const filteredPosts = allPosts.filter(
-        //   (post) => post.uid === currentUser?.uid
-        // );
-        // if (currentUser) updateUserPosts(filteredPosts);
-      }),
-    // eslint-disable-next-line
-    [currentUser]
-  );
-
   return (
-    <div className="grow flex flex-col gap-4 bg-gray-100 text-l min-h-screen p-4 mx-auto w-full">
+    <div className="grow flex flex-col gap-4 bg-gray-100 text-l  p-4 mx-auto w-full">
       <form
         className="mx-auto w-full max-w-3xl relative"
         onSubmit={(e) => submitHandler(e)}
@@ -108,11 +55,6 @@ export default function TextEditor() {
           Post
         </button>
       </form>
-      <div>
-        {allPosts?.map((post, index) => (
-          <Post post={post} key={index} />
-        ))}
-      </div>
     </div>
   );
 }

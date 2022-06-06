@@ -1,16 +1,17 @@
-import { auth, db } from "../../firebase/firebase";
 import { useEffect, useState } from "react";
-import Post from "components/Post";
-import { doc, getDoc } from "firebase/firestore";
-import { AiOutlineEdit } from "react-icons/ai";
-import EditProfileModal from "./EditProfileModal";
 import { useSelector } from "react-redux";
+import { FiEdit3 } from "react-icons/fi";
+import { auth } from "../../firebase/firebase";
+import { getUser } from "../../firebase/firebase-calls";
+import EditProfileModal from "./EditProfileModal";
+import Post from "components/Post";
 
 export default function UserProfile() {
   const { user } = useSelector((state) => state.user);
   const { allPosts } = useSelector((state) => state.allPosts);
   const [showModal, setShowModal] = useState(false);
   const [userData, setUserData] = useState([]);
+
   const filteredPosts = allPosts.filter(
     (post) => post.uid === auth.currentUser?.uid
   );
@@ -27,18 +28,9 @@ export default function UserProfile() {
   const randomGradient =
     gradients[Math.floor(Math.random() * gradients.length)];
 
-  useEffect(
-    () => {
-      const userDetails = async () => {
-        const docRef = doc(db, "users", auth.currentUser?.uid);
-        const docSnap = await getDoc(docRef);
-        setUserData(docSnap.data());
-      };
-      if (auth.currentUser) userDetails();
-    },
-    //eslint-disable-next-line
-    [auth.currentUser]
-  );
+  useEffect(() => {
+    getUser(auth.currentUser, setUserData);
+  }, []);
 
   return (
     <div className="w-full pt-4 ml-3">
@@ -55,7 +47,7 @@ export default function UserProfile() {
             className="text-2xl absolute right-4 text-gray-600"
             onClick={() => setShowModal((prev) => !prev)}
           >
-            <AiOutlineEdit />
+            <FiEdit3 />
           </button>
 
           <img

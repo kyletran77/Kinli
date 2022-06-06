@@ -43,10 +43,18 @@ export default function EditProfileModal({
       await setDoc(
         doc(db, "users", auth.currentUser?.uid),
         {
-          coverPic: userInfo.coverPic ? userInfo.coverPic : userData.coverPic,
+          coverPic: userInfo?.coverPic
+            ? userInfo.coverPic
+            : userData.coverPic
+            ? userData.coverPic
+            : "",
           avatar: userInfo.avatar ? userInfo.avatar : userData.avatar,
           bio: userInfo.bio ? userInfo.bio : userData.bio,
-          website: userInfo.website ? userInfo.website : userData.website,
+          website: userInfo?.website
+            ? userInfo.website
+            : userData.website
+            ? userData.website
+            : "",
         },
         { merge: true }
       );
