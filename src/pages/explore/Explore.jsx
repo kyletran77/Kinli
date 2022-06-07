@@ -26,7 +26,7 @@ export default function Explore() {
   return (
     <div className="flex flex-col w-full mt-2">
       <select
-        className="py-1 px-3 w-fit self-end mr-10 rounded-md focus:outline focus:outline-2  focus:outline-blue-400"
+        className="py-1 px-3 w-fit self-center mr-10 rounded-md focus:outline focus:outline-2 focus:outline-blue-400"
         onChange={(e) => setSortBy(e.target.value)}
         value={sortBy}
       >

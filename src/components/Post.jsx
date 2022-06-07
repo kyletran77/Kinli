@@ -87,7 +87,7 @@ export default function Post({ post }) {
         </div>
       )}
 
-      {post.uid === currentUser.uid && (
+      {post.uid === currentUser?.uid && (
         <div className="flex absolute top-5 right-5 gap-4 text-gray-600">
           {enableEdit ? (
             <button onClick={() => editPostHandler(post, updatePost)}>

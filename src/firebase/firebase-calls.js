@@ -124,7 +124,7 @@ export const deleteComment = async (post, comment) => {
 export const followUser = async (currentUser, userToFollow) => {
   try {
     await setDoc(
-      doc(collection(db, "users"), currentUser.uid),
+      doc(collection(db, "users"), currentUser?.uid),
       {
         following: arrayUnion(userToFollow.userID),
       },
@@ -133,7 +133,7 @@ export const followUser = async (currentUser, userToFollow) => {
     await setDoc(
       doc(collection(db, "users"), userToFollow.userID),
       {
-        followers: arrayUnion(currentUser.uid),
+        followers: arrayUnion(currentUser?.uid),
       },
       { merge: true }
     );
