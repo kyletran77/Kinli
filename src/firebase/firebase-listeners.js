@@ -1,8 +1,14 @@
 import { setAllPosts } from "features/allPosts/allPostsSlice";
 import { usersList } from "features/allUsers/usersSlice";
-import { login, logout } from "features/user/userSlice";
+import { login, logout, setFollowing } from "features/user/userSlice";
 import { onAuthStateChanged } from "firebase/auth";
-import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  onSnapshot,
+  orderBy,
+  query,
+} from "firebase/firestore";
 import { auth, db } from "./firebase";
 
 export const firebaseListeners = (dispatch) => {
@@ -40,5 +46,12 @@ const postsListener = (dispatch) => {
   onSnapshot(q, (snapshot) => {
     const allPostsList = snapshot.docs.map((doc) => doc.data());
     dispatch(setAllPosts(allPostsList));
+  });
+};
+
+export const followingListener = (dispatch, userID) => {
+  onSnapshot(doc(db, "users", userID), (doc) => {
+    const following = doc.data().following;
+    dispatch(setFollowing(following));
   });
 };

@@ -45,6 +45,10 @@ export default function Signup() {
             uid: userAuth.user.uid,
             displayName: name,
             photoURL: profilePic,
+            bio: "",
+            posts: [],
+            followers: [],
+            following: [],
           })
         );
         const userRef = collection(db, "users");

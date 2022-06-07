@@ -24,8 +24,15 @@ const userSlice = createSlice({
     updateDP: (state, action) => {
       state.user = { ...state.user, photoURL: action.payload };
     },
+    setFollowers: (state, action) => {
+      state.user = { ...state.user, followers: action.payload };
+    },
+    setFollowing: (state, action) => {
+      state.user = { ...state.user, following: action.payload };
+    },
   },
 });
 
-export const { login, signup, logout, updateDP } = userSlice.actions;
+export const { login, signup, logout, updateDP, setFollowers, setFollowing } =
+  userSlice.actions;
 export default userSlice.reducer;

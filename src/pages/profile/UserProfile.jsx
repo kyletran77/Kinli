@@ -11,7 +11,7 @@ export default function UserProfile() {
   const { allPosts } = useSelector((state) => state.allPosts);
   const [showModal, setShowModal] = useState(false);
   const [userData, setUserData] = useState([]);
-  const currentUser = auth.currentUser;
+  const currentUser = auth?.currentUser;
 
   const filteredPosts = allPosts.filter(
     (post) => post.uid === currentUser?.uid
@@ -68,7 +68,7 @@ export default function UserProfile() {
               {userData?.followers?.length} Followers
             </div>
             <div className={`${randomGradient} rounded-full px-3 py-1`}>
-              {userData?.following?.length} Following
+              {user?.following?.length} Following
             </div>
             <div className={`${randomGradient} rounded-full px-3 py-1`}>
               {filteredPosts?.length} Posts
