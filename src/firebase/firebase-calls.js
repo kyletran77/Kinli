@@ -120,3 +120,46 @@ export const deleteComment = async (post, comment) => {
     { merge: true }
   );
 };
+
+export const followUser = async (currentUser, userToFollow) => {
+  try {
+    await setDoc(
+      doc(collection(db, "users"), currentUser?.uid),
+      {
+        following: arrayUnion(userToFollow.userID),
+      },
+      { merge: true }
+    );
+    await setDoc(
+      doc(collection(db, "users"), userToFollow.userID),
+      {
+        followers: arrayUnion(currentUser?.uid),
+      },
+      { merge: true }
+    );
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const unfollowUser = async (currentUser, userToUnfollow) => {
+  try {
+    await setDoc(
+      doc(collection(db, "users"), currentUser?.uid),
+      {
+        following: arrayRemove(userToUnfollow.userID),
+      },
+      { merge: true }
+    );
+
+    await setDoc(
+      doc(collection(db, "users"), userToUnfollow.userID),
+      {
+        followers: arrayRemove(currentUser?.uid),
+      },
+      { merge: true }
+    );
+  } catch (error) {
+    console.log(error.message);
+  }
+};

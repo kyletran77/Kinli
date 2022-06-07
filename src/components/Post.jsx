@@ -6,9 +6,8 @@ import {
   postComment,
 } from "../firebase/firebase-calls";
 import { useState } from "react";
-import { AiOutlineComment } from "react-icons/ai";
 import { FiEdit3, FiTrash, FiCheck, FiHeart } from "react-icons/fi";
-import { FaHeart } from "react-icons/fa";
+import { FaHeart, FaRegCommentAlt } from "react-icons/fa";
 import { auth } from "../firebase/firebase";
 import Comment from "./Comment";
 import { useSelector } from "react-redux";
@@ -88,7 +87,7 @@ export default function Post({ post }) {
         </div>
       )}
 
-      {post.uid === currentUser.uid && (
+      {post.uid === currentUser?.uid && (
         <div className="flex absolute top-5 right-5 gap-4 text-gray-600">
           {enableEdit ? (
             <button onClick={() => editPostHandler(post, updatePost)}>
@@ -107,7 +106,7 @@ export default function Post({ post }) {
       )}
 
       <div className="flex items-center gap-3 text-gray-500 justify-start mt-5 pl-11">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 text-lg">
           {post?.likes?.find((user) => user.userID === currentUser.uid) ? (
             <button onClick={() => toggleLike(post)}>
               <FaHeart className="text-red-700" />
@@ -121,7 +120,7 @@ export default function Post({ post }) {
         </div>
         <div className="flex items-center gap-2">
           <button onClick={() => setEnableComments((prev) => !prev)}>
-            <AiOutlineComment />
+            <FaRegCommentAlt />
           </button>
           {post?.comments?.length > 0 && post.comments.length}
         </div>
