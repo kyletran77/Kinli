@@ -13,21 +13,9 @@ export default function UserProfile() {
   const [userData, setUserData] = useState([]);
   const currentUser = auth?.currentUser;
 
-  const filteredPosts = allPosts.filter(
+  const filteredPosts = allPosts?.filter(
     (post) => post.uid === currentUser?.uid
   );
-
-  const gradients = [
-    "bg-gradient-to-r from-cyan-500 to-blue-500",
-    "bg-gradient-to-r from-sky-500 to-indigo-500",
-    "bg-gradient-to-r from-violet-500 to-fuchsia-500",
-    "bg-gradient-to-r from-yellow-500 to-red-500",
-    "bg-gradient-to-r from-green-500 to-green-800",
-    "bg-gradient-to-r from-blue-500 to-blue-800",
-  ];
-
-  const randomGradient =
-    gradients[Math.floor(Math.random() * gradients.length)];
 
   useEffect(
     () => {
@@ -39,7 +27,7 @@ export default function UserProfile() {
 
   return (
     <div className="w-full pt-4 ml-3">
-      <section className={`w-full ${randomGradient} h-72 relative`}>
+      <section className="w-full h-72 relative">
         {userData.coverPic && (
           <img
             src={userData.coverPic}
@@ -58,19 +46,19 @@ export default function UserProfile() {
           <img
             src={user?.photoURL}
             alt="user-dp"
-            className="h-24 md:h-32 w-fit object-cover aspect-square rounded-full"
+            className="h-24 w-fit object-cover md:h-32 aspect-square rounded-full"
           />
           <p className="text-lg font-semibold">{currentUser?.displayName}</p>
-          <p className="text-center">{userData.bio}</p>
-          <p>{userData.website}</p>
+          <p className="text-center">{userData?.bio}</p>
+          <p>{userData?.website}</p>
           <div className="flex flex-wrap gap-1 justify-center md:w-full md:gap-1  md:justify-center text-slate-50 lg:scale-100 px-2 md:px-0 lg:gap-5">
-            <div className={`${randomGradient} rounded-full px-3 py-1`}>
+            <div className="bg-gradient-to-r from-sky-500 to-indigo-500 rounded-full px-3 py-1">
               {userData?.followers?.length} Followers
             </div>
-            <div className={`${randomGradient} rounded-full px-3 py-1`}>
+            <div className="bg-gradient-to-r from-sky-500 to-indigo-500 rounded-full px-3 py-1">
               {user?.following?.length} Following
             </div>
-            <div className={`${randomGradient} rounded-full px-3 py-1`}>
+            <div className="bg-gradient-to-r from-sky-500 to-indigo-500 rounded-full px-3 py-1">
               {filteredPosts?.length} Posts
             </div>
           </div>
@@ -83,13 +71,13 @@ export default function UserProfile() {
             setShowModal={setShowModal}
             userData={userData}
             setUserData={setUserData}
-            key={userData.userID}
+            key={userData?.userID}
           />
         </div>
       )}
       <ul className="mt-44">
         {filteredPosts?.map((post) => (
-          <Post post={post} key={post.postID} />
+          <Post post={post} key={post?.postID} />
         ))}
       </ul>
     </div>
