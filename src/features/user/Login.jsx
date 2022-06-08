@@ -2,12 +2,13 @@ import { signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { auth, db } from "../../firebase/firebase";
 import { login } from "./userSlice";
 import { collection, doc, setDoc } from "firebase/firestore";
 
 export default function Login() {
+  const location = useLocation();
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ export default function Login() {
     profilePic: "",
   });
   const { email, password, profilePic } = loginDetails;
-
+  let lastLocation = location.state?.from?.pathname || "/";
   const changeHandler = (e) => {
     const { name, value } = e.target;
     setLoginDetails((prev) => ({ ...prev, [name]: value }));
@@ -47,7 +48,7 @@ export default function Login() {
         })
       );
       localStorage.setItem("authToken", userAuth.user.accessToken);
-      navigate("/");
+      navigate(lastLocation);
     } catch (error) {
       console.log(error);
     }

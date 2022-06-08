@@ -56,7 +56,8 @@ export default function UserProfile() {
               {userData?.followers?.length} Followers
             </div>
             <div className="bg-gradient-to-r from-sky-500 to-indigo-500 rounded-full px-3 py-1">
-              {user?.following?.length} Following
+              {user?.following?.length > 0 ? user?.following?.length : "0"}{" "}
+              Following
             </div>
             <div className="bg-gradient-to-r from-sky-500 to-indigo-500 rounded-full px-3 py-1">
               {filteredPosts?.length} Posts
