@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import {
   firebaseListeners,
-  followingListener,
+  userDataListeners,
 } from "./firebase/firebase-listeners";
 import Router from "Router/Router";
 import Header from "components/Header";
@@ -29,7 +29,7 @@ function App() {
   useEffect(
     () => {
       if (currentUser) {
-        followingListener(dispatch, user?.uid);
+        userDataListeners(dispatch, user?.uid);
       }
     },
     // eslint-disable-next-line

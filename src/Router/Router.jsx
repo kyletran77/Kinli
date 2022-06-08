@@ -5,6 +5,8 @@ import Explore from "pages/explore/Explore";
 import UserProfile from "pages/profile/UserProfile";
 import Home from "pages/home/Home";
 import OtherProfile from "pages/otherProfile/OtherProfile";
+import Bookmarks from "pages/bookmarks/Bookmarks";
+import Archives from "pages/archives/Archives";
 
 export default function Router() {
   return (
@@ -13,6 +15,8 @@ export default function Router() {
       <Route path="/explore" element={<Explore />} />
       <Route path="/profile" element={<UserProfile />} />
       <Route path="/profile/:profileID" element={<OtherProfile />} />
+      <Route path="/bookmarks" element={<Bookmarks />} />
+      <Route path="/archives" element={<Archives />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
     </Routes>

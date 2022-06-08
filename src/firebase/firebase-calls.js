@@ -163,3 +163,45 @@ export const unfollowUser = async (currentUser, userToUnfollow) => {
     console.log(error.message);
   }
 };
+
+export const archivePost = async (post, user) => {
+  await setDoc(
+    doc(collection(db, "users"), user?.uid),
+    {
+      archives: arrayUnion(post),
+    },
+    { merge: true }
+  );
+  deletePost(post);
+};
+
+export const unarchivePost = async (post, user) => {
+  await setDoc(
+    doc(collection(db, "users"), user?.uid),
+    {
+      archives: arrayRemove(post),
+    },
+    { merge: true }
+  );
+  await setDoc(doc(allPostsCollection, post.postID), post, { merge: true });
+};
+
+export const bookmarkPost = async (post, user) => {
+  await setDoc(
+    doc(collection(db, "users"), user?.uid),
+    {
+      bookmarks: arrayUnion(post),
+    },
+    { merge: true }
+  );
+};
+
+export const undoBookmarkPost = async (post, user) => {
+  await setDoc(
+    doc(collection(db, "users"), user?.uid),
+    {
+      bookmarks: arrayRemove(post),
+    },
+    { merge: true }
+  );
+};

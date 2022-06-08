@@ -1,6 +1,12 @@
 import { setAllPosts } from "features/allPosts/allPostsSlice";
 import { usersList } from "features/allUsers/usersSlice";
-import { login, logout, setFollowing } from "features/user/userSlice";
+import {
+  addBookmark,
+  login,
+  logout,
+  setArchive,
+  setFollowing,
+} from "features/user/userSlice";
 import { onAuthStateChanged } from "firebase/auth";
 import {
   collection,
@@ -49,9 +55,29 @@ const postsListener = (dispatch) => {
   });
 };
 
-export const followingListener = (dispatch, userID) => {
+const followingListener = (dispatch, userID) => {
   onSnapshot(doc(db, "users", userID), (doc) => {
     const following = doc.data().following;
     dispatch(setFollowing(following));
   });
+};
+
+const archivesListener = (dispatch, userID) => {
+  onSnapshot(doc(db, "users", userID), (doc) => {
+    const archives = doc.data().archives;
+    dispatch(setArchive(archives));
+  });
+};
+
+const bookmarksListener = (dispatch, userID) => {
+  onSnapshot(doc(db, "users", userID), (doc) => {
+    const bookmarks = doc.data().bookmarks;
+    dispatch(addBookmark(bookmarks));
+  });
+};
+
+export const userDataListeners = (dispatch, userID) => {
+  followingListener(dispatch, userID);
+  archivesListener(dispatch, userID);
+  bookmarksListener(dispatch, userID);
 };
