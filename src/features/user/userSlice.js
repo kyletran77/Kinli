@@ -30,9 +30,23 @@ const userSlice = createSlice({
     setFollowing: (state, action) => {
       state.user = { ...state.user, following: action.payload };
     },
+    setArchive: (state, action) => {
+      state.user = { ...state.user, archives: action.payload };
+    },
+    addBookmark: (state, action) => {
+      state.user = { ...state.user, bookmarks: action.payload };
+    },
   },
 });
 
-export const { login, signup, logout, updateDP, setFollowers, setFollowing } =
-  userSlice.actions;
+export const {
+  login,
+  signup,
+  logout,
+  updateDP,
+  setFollowers,
+  setFollowing,
+  setArchive,
+  addBookmark,
+} = userSlice.actions;
 export default userSlice.reducer;

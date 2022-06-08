@@ -15,7 +15,6 @@ export default function TextEditor() {
   };
 
   const [newPost, setNewPost] = useState(initialPostState);
-
   const currentUser = auth.currentUser;
 
   const inputHandler = (e) => {
@@ -30,7 +29,7 @@ export default function TextEditor() {
   };
 
   return (
-    <div className="grow flex flex-col gap-4 bg-gray-100 text-l  p-4 mx-auto w-full">
+    <div className="flex flex-col gap-4 bg-gray-100 text-l p-4 mx-auto w-full">
       <form
         className="mx-auto w-full max-w-3xl relative"
         onSubmit={(e) => submitHandler(e)}

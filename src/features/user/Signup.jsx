@@ -6,16 +6,18 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, db } from "../../firebase/firebase";
 import { signup } from "./userSlice";
+import { defaultAvatar } from "helpers/Constants";
 
 export default function Signup() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
+
   const [signupDetails, setSignUpDetails] = useState({
     name: "",
     email: "",
     password: "",
-    profilePic: "http://cdn.onlinewebfonts.com/svg/img_264570.png",
+    profilePic: defaultAvatar.avatar,
     confirmPassword: "",
   });
   const { email, password, confirmPassword, name, profilePic } = signupDetails;
@@ -45,10 +47,13 @@ export default function Signup() {
             uid: userAuth.user.uid,
             displayName: name,
             photoURL: profilePic,
+            coverPic: defaultAvatar.cover,
             bio: "",
             posts: [],
             followers: [],
             following: [],
+            archives: [],
+            bookmarks: [],
           })
         );
         const userRef = collection(db, "users");
@@ -59,10 +64,13 @@ export default function Signup() {
             userID: userAuth.user.uid,
             displayName: name,
             avatar: userAuth.user.photoURL,
+            coverPic: defaultAvatar.cover,
             bio: "",
             posts: [],
             followers: [],
             following: [],
+            archives: [],
+            bookmarks: [],
           },
           { merge: true }
         );
