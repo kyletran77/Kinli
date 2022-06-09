@@ -35,7 +35,7 @@ export default function UserProfile() {
             className="w-full h-fit max-h-72 object-cover mx-auto"
           />
         )}
-        <div className="w-80 h-fit mx-auto bg-slate-50  absolute right-1/2 translate-x-1/2 -bottom-1/2 rounded-lg shadow flex flex-col items-center py-3 px-2 gap-2 md:w-1/3 lg:w-1/2">
+        <div className="w-80 h-fit mx-auto bg-slate-50 absolute right-1/2 translate-x-1/2 -bottom-1/2 rounded-lg shadow flex flex-col items-center py-3 px-2 gap-2 md:w-1/3 lg:w-1/2">
           <button
             className="text-2xl absolute right-4 text-gray-600"
             onClick={() => setShowModal((prev) => !prev)}

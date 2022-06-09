@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { auth, db } from "../../firebase/firebase";
 import { signup } from "./userSlice";
 import { defaultAvatar } from "helpers/Constants";
+import toast from "react-hot-toast";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ export default function Signup() {
     e.preventDefault();
     if (password === confirmPassword) {
       try {
+        const loader = toast.loading("Signing you up..");
         const userAuth = await createUserWithEmailAndPassword(
           auth,
           email,
@@ -75,6 +77,7 @@ export default function Signup() {
           { merge: true }
         );
         localStorage.setItem("authToken", userAuth.user.accessToken);
+        toast.success(`Welcome to Jigsaw, ${name}!!`, { id: loader });
         navigate("/");
       } catch (error) {
         console.log(error);

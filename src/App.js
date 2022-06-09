@@ -11,6 +11,7 @@ import Sidebar from "components/Sidebar";
 import RightSideBar from "components/RightSideBar";
 import "App.css";
 import { auth } from "./firebase/firebase";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const location = useLocation();
@@ -48,6 +49,7 @@ function App() {
       ) : (
         <Router />
       )}
+      <Toaster />
     </div>
   );
 }

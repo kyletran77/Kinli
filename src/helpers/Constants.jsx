@@ -1,6 +1,5 @@
 import { AiFillHome, AiFillCompass } from "react-icons/ai";
 import { RiInboxArchiveFill } from "react-icons/ri";
-import { MdOutlineLogout } from "react-icons/md";
 import { BsFillBookmarkFill } from "react-icons/bs";
 
 export const navLinks = [
@@ -8,7 +7,6 @@ export const navLinks = [
   { pathTo: "/explore", icon: <AiFillCompass />, navPath: "Explore" },
   { pathTo: "/bookmarks", icon: <BsFillBookmarkFill />, navPath: "Bookmarks" },
   { pathTo: "/archives", icon: <RiInboxArchiveFill />, navPath: "Archives" },
-  { pathTo: "/logout", icon: <MdOutlineLogout />, navPath: "Logout" },
 ];
 
 const avatars = [

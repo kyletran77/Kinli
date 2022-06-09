@@ -15,6 +15,7 @@ import {
   orderBy,
   query,
 } from "firebase/firestore";
+import toast from "react-hot-toast";
 import { auth, db } from "./firebase";
 
 export const firebaseListeners = (dispatch) => {
@@ -24,56 +25,82 @@ export const firebaseListeners = (dispatch) => {
 };
 
 const authChangeListener = (dispatch) => {
-  onAuthStateChanged(auth, (userAuth) => {
-    if (userAuth) {
-      dispatch(
-        login({
-          email: userAuth.email,
-          uid: userAuth.uid,
-          displayName: userAuth.displayName,
-          photoURL: userAuth.photoURL,
-        })
-      );
-    } else {
-      dispatch(logout());
-    }
-  });
+  try {
+    onAuthStateChanged(auth, (userAuth) => {
+      if (userAuth) {
+        dispatch(
+          login({
+            email: userAuth.email,
+            uid: userAuth.uid,
+            displayName: userAuth.displayName,
+            photoURL: userAuth.photoURL,
+          })
+        );
+      } else {
+        dispatch(logout());
+      }
+    });
+  } catch (error) {
+    console.error(error.message);
+  }
 };
 
 const usersListener = (dispatch) => {
-  onSnapshot(collection(db, "users"), (snapshot) => {
-    const allUsersList = snapshot.docs.map((doc) => doc.data());
-    dispatch(usersList(allUsersList));
-  });
+  try {
+    onSnapshot(collection(db, "users"), (snapshot) => {
+      const allUsersList = snapshot.docs.map((doc) => doc.data());
+      dispatch(usersList(allUsersList));
+    });
+  } catch (error) {
+    console.error(error.message);
+  }
 };
 
 const postsListener = (dispatch) => {
-  const q = query(collection(db, "allPosts"), orderBy("createdAt", "desc"));
-  onSnapshot(q, (snapshot) => {
-    const allPostsList = snapshot.docs.map((doc) => doc.data());
-    dispatch(setAllPosts(allPostsList));
-  });
+  try {
+    const loader = toast.loading("Loading..");
+    const q = query(collection(db, "allPosts"), orderBy("createdAt", "desc"));
+    onSnapshot(q, (snapshot) => {
+      const allPostsList = snapshot.docs.map((doc) => doc.data());
+      dispatch(setAllPosts(allPostsList));
+    });
+    toast.dismiss(loader);
+  } catch (error) {
+    console.error(error.message);
+  }
 };
 
 const followingListener = (dispatch, userID) => {
-  onSnapshot(doc(db, "users", userID), (doc) => {
-    const following = doc.data().following;
-    dispatch(setFollowing(following));
-  });
+  try {
+    onSnapshot(doc(db, "users", userID), (doc) => {
+      const following = doc.data().following;
+      dispatch(setFollowing(following));
+    });
+  } catch (error) {
+    console.error(error.message);
+  }
 };
 
 const archivesListener = (dispatch, userID) => {
-  onSnapshot(doc(db, "users", userID), (doc) => {
-    const archives = doc.data().archives;
-    dispatch(setArchive(archives));
-  });
+  try {
+    onSnapshot(doc(db, "users", userID), (doc) => {
+      const archives = doc.data().archives;
+      dispatch(setArchive(archives));
+    });
+  } catch (error) {
+    console.error(error.message);
+  }
 };
 
 const bookmarksListener = (dispatch, userID) => {
-  onSnapshot(doc(db, "users", userID), (doc) => {
-    const bookmarks = doc.data().bookmarks;
-    dispatch(addBookmark(bookmarks));
-  });
+  try {
+    onSnapshot(doc(db, "users", userID), (doc) => {
+      const bookmarks = doc.data().bookmarks;
+      dispatch(addBookmark(bookmarks));
+    });
+  } catch (error) {
+    console.error(error.message);
+  }
 };
 
 export const userDataListeners = (dispatch, userID) => {
