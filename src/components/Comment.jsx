@@ -3,7 +3,7 @@ import { FiTrash } from "react-icons/fi";
 import { deleteComment } from "../firebase/firebase-calls";
 
 export default function Comment({ comment, post }) {
-  const currentUser = auth.currentUser;
+  const currentUser = auth?.currentUser;
   return (
     <div className="flex flex-col bg-blue-50 my-1 p-2 rounded-md relative">
       <div className="flex gap-2">
