@@ -7,7 +7,7 @@ import { auth } from "../firebase/firebase";
 
 export default function Header() {
   const { user } = useSelector((state) => state.user);
-  const currentUser = auth.currentUser;
+  const currentUser = auth?.currentUser;
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

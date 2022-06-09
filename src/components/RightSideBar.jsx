@@ -1,5 +1,4 @@
 import { auth } from "../firebase/firebase";
-import React from "react";
 import { useSelector } from "react-redux";
 import { followUser, unfollowUser } from "../firebase/firebase-calls";
 import { Link } from "react-router-dom";
@@ -21,8 +20,8 @@ export default function RightSideBar() {
   };
 
   return (
-    <div className="bg-slate-100 p-4 mx-2 w-[30rem]">
-      <div className="flex flex-col gap-2 bg-gray-50 p-4 max-w-xs mx-auto rounded-md shadow-md">
+    <div className="bg-slate-100 p-4 mx-2 w-[30rem] h-[31rem]">
+      <div className="rightsidebar flex flex-col gap-2 bg-gray-50 p-4 max-w-xs mx-auto rounded-md shadow-md h-full overflow-y-auto lg:block">
         <h1>Suggestions</h1>
         <ul className="flex flex-col gap-3">
           {otherUsers.map((otherUser) => (

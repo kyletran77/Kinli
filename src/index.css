@@ -3,5 +3,21 @@
 @tailwind utilities;
 
 .active {
-  color: #2563eb;
+  color: #1d4ed8;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.suggestions::-webkit-scrollbar,
+.rightsidebar::-webkit-scrollbar {
+  width: 7px;
+  background: transparent;
+}
+
+.suggestions::-webkit-scrollbar-thumb,
+.rightsidebar::-webkit-scrollbar-thumb {
+  background-color: #93c5fd;
+  border-radius: 10px;
 }
