@@ -55,24 +55,24 @@ export default function EditProfileModal({
   }, [userData]);
 
   return (
-    <div className="fixed top-1/2 right-1/2 translate-x-1/2 -translate-y-1/2 w-1/2">
+    <div className="fixed top-1/2 right-1/2 w-80 min-w-[20rem] max-w-[90%] translate-x-1/2 -translate-y-1/2 sm:w-3/4 md:bottom-0 md:w-2/3 md:-translate-y-3/4 lg:w-1/2">
       <form
-        className="flex flex-col p-4 bg-slate-200 h-fit rounded-md"
+        className="flex h-fit flex-col rounded-md bg-slate-200 p-4"
         onSubmit={updateUserData}
       >
         <AiFillCloseCircle
-          className="text-3xl absolute right-2 top-2 text-gray-500 hover:cursor-pointer hover:brightness-90  z-20"
+          className="absolute right-2 top-2 z-20 rounded-full bg-slate-100 text-3xl text-gray-500 hover:cursor-pointer  hover:brightness-90"
           onClick={() => setShowModal((prev) => !prev)}
         />
         <div className="relative">
           <img
             src={userInfo?.coverPic ? userInfo?.coverPic : userData?.coverPic}
             alt="updated-dp"
-            className="max-h-48 w-full object-cover aspect-auto mx-auto relative"
+            className="relative mx-auto aspect-auto max-h-48 w-full object-cover"
           />
           <label
             htmlFor="coverPic"
-            className="text-xl text-gray-500 absolute right-8 top-5"
+            className="absolute right-8 top-5 rounded-md bg-slate-100 px-2 py-1 text-sm shadow-lg hover:cursor-pointer hover:brightness-95"
           >
             <input
               type="file"
@@ -82,17 +82,17 @@ export default function EditProfileModal({
               className="hidden"
               onChange={handleUserImage}
             />
-            <FiEdit3 />
+            Edit Cover Pic
           </label>
-          <div className="w-80 h-fit mx-auto bg-slate-50 absolute right-1/2 translate-x-1/2 -bottom-1/2 rounded-lg shadow flex flex-col items-center py-3 px-2 gap-2 md:w-1/3 lg:w-1/2">
+          <div className="absolute top-3/4 right-1/2 mx-auto flex h-fit w-80 max-w-[90%] translate-x-1/2 flex-col items-center gap-2 rounded-lg bg-slate-50 py-3 px-2 shadow sm:top-2/3 md:top-3/4 md:w-2/3 lg:w-80 xl:-bottom-1/2">
             <img
               src={userInfo?.avatar ? userInfo?.avatar : user?.photoURL}
               alt="updated-dp"
-              className="h-24 w-fit object-cover md:h-32 aspect-square rounded-full"
+              className="md:h-18 lg:h-18 aspect-square h-14 w-fit rounded-full object-cover xl:h-24"
             />
             <label
               htmlFor="avatar"
-              className="text-xl text-gray-500 absolute right-5 top-5"
+              className=" lg:text-normal absolute top-2 right-3 rounded-full border-none bg-slate-100 p-1.5 text-gray-500 shadow-md hover:cursor-pointer hover:brightness-95 sm:top-3 sm:right-4 sm:text-xl md:right-5 xl:top-5"
             >
               <input
                 type="file"
@@ -111,19 +111,19 @@ export default function EditProfileModal({
           type="text"
           name="bio"
           placeholder="Update Bio"
-          className="p-2 m-2 mt-28 focus:outline-1 focus:outline focus:outline-slate-400"
+          className="m-2 mt-12 p-2 focus:outline focus:outline-1 focus:outline-slate-400 sm:mt-16 md:mt-20 lg:mt-16 xl:mt-28"
           onChange={updateUserInfo}
         />
         <input
           type="text"
           name="website"
           placeholder="Update Website/Portfolio"
-          className="p-2 m-2 focus:outline-1 focus:outline focus:outline-slate-400"
+          className="m-2 p-2 focus:outline focus:outline-1 focus:outline-slate-400"
           onChange={updateUserInfo}
         />
         <button
           type="submit"
-          className="p-2 mt-2 outline-none w-fit mx-auto rounded-lg bg-slate-100 hover:cursor-pointer hover:bg-slate-300"
+          className="mx-auto mt-2 w-fit rounded-lg bg-slate-100 p-2 outline-none hover:cursor-pointer hover:bg-slate-300"
         >
           Update Profile
         </button>

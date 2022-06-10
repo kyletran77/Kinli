@@ -20,12 +20,12 @@ export default function RightSideBar() {
   };
 
   return (
-    <div className="bg-slate-100 p-4 mx-2 w-[30rem] h-[31rem]">
-      <div className="rightsidebar flex flex-col gap-2 bg-gray-50 p-4 max-w-xs mx-auto rounded-md shadow-md h-full overflow-y-auto lg:block">
+    <div className="mx-2 hidden h-[31rem] w-[30rem] bg-slate-100 p-4 sm:hidden md:hidden lg:block">
+      <div className="rightsidebar mx-auto flex h-full max-w-xs flex-col gap-2 overflow-y-auto rounded-md bg-gray-50 p-4 shadow-md lg:block">
         <h1>Suggestions</h1>
         <ul className="flex flex-col gap-3">
           {otherUsers.map((otherUser) => (
-            <li className="flex gap-1 items-center my-1" key={otherUser.userID}>
+            <li className="my-1 flex items-center gap-1" key={otherUser.userID}>
               <img
                 src={
                   otherUser?.avatar
@@ -33,9 +33,9 @@ export default function RightSideBar() {
                     : "http://cdn.onlinewebfonts.com/svg/img_264570.png"
                 }
                 alt="user-dp"
-                className="h-9 w-fit object-cover aspect-square rounded-full"
+                className="aspect-square h-9 w-fit rounded-full object-cover"
               />
-              <div className="flex items-center justify-between w-full">
+              <div className="flex w-full items-center justify-between">
                 <div>
                   <Link
                     to={`/profile/${otherUser?.userID}`}
@@ -49,14 +49,14 @@ export default function RightSideBar() {
                 </div>
                 {user?.following?.some((id) => id === otherUser?.userID) ? (
                   <button
-                    className="border-2 border-transparent bg-blue-200 hover:brightness-95 rounded-full py-1 px-2 text-sm text-gray-700"
+                    className="rounded-full border-2 border-transparent bg-blue-200 py-1 px-2 text-sm text-gray-700 hover:brightness-95"
                     onClick={() => handleFollow(auth?.currentUser, otherUser)}
                   >
                     Following
                   </button>
                 ) : (
                   <button
-                    className="border-2  border-transparent bg-blue-500 hover:brightness-90 rounded-full py-1 px-2 text-sm text-gray-50"
+                    className="rounded-full  border-2 border-transparent bg-blue-500 py-1 px-2 text-sm text-gray-50 hover:brightness-90"
                     onClick={() => handleFollow(auth?.currentUser, otherUser)}
                   >
                     Follow

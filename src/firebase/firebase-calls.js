@@ -281,7 +281,7 @@ export const archivePost = async (post, user) => {
       },
       { merge: true }
     );
-    deletePost(post);
+    await deleteDoc(doc(allPostsCollection, post.postID));
     toast.success("Post archived");
   } catch (error) {
     toast.error("Couldn't archive post. Try again!");

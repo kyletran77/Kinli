@@ -1,16 +1,14 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { auth } from "./firebase/firebase";
+import { Header, Sidebar, RightSideBar } from "components/components";
 import {
   firebaseListeners,
   userDataListeners,
 } from "./firebase/firebase-listeners";
 import Router from "Router/Router";
-import Header from "components/Header";
-import Sidebar from "components/Sidebar";
-import RightSideBar from "components/RightSideBar";
 import "App.css";
-import { auth } from "./firebase/firebase";
 import { Toaster } from "react-hot-toast";
 
 function App() {
@@ -41,7 +39,7 @@ function App() {
     <div className="App">
       <Header />
       {location.pathname !== "/login" && location.pathname !== "/signup" ? (
-        <div className="flex bg-slate-100 justify-between min-h-screen">
+        <div className="flex min-h-screen justify-between bg-slate-100">
           <Sidebar />
           <Router />
           <RightSideBar />

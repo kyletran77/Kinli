@@ -1,3 +1,11 @@
+import { useState } from "react";
+import { FiEdit3, FiTrash, FiCheck, FiHeart } from "react-icons/fi";
+import { RiInboxArchiveLine, RiInboxUnarchiveLine } from "react-icons/ri";
+import { auth } from "../firebase/firebase";
+import { Comment } from "./components";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 import {
   archivePost,
   bookmarkPost,
@@ -8,20 +16,14 @@ import {
   postComment,
   unarchivePost,
   undoBookmarkPost,
+  uploadImage,
 } from "../firebase/firebase-calls";
-import { useState } from "react";
-import { FiEdit3, FiTrash, FiCheck, FiHeart } from "react-icons/fi";
 import {
   FaHeart,
   FaRegCommentAlt,
   FaRegBookmark,
   FaBookmark,
 } from "react-icons/fa";
-import { RiInboxArchiveLine, RiInboxUnarchiveLine } from "react-icons/ri";
-import { auth } from "../firebase/firebase";
-import Comment from "./Comment";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 
 export default function Post({ post }) {
   const currentUser = auth?.currentUser;
@@ -38,6 +40,18 @@ export default function Post({ post }) {
   const editPostHandler = () => {
     editPost(post, updatePost);
     setEnableEdit(false);
+  };
+
+  const handlePostImage = async (e) => {
+    const file = e.target.files[0];
+    const loader = toast.loading("uploading image");
+    const path = `images/${currentUser.uid}/${file.name}`;
+    const imageURL = await uploadImage(path, file);
+    toast.success("uploaded image", { id: loader });
+    setUpdatePost((prev) => ({
+      ...prev,
+      imageURL: imageURL,
+    }));
   };
 
   const toggleLike = ({ likes, postID }) => {
@@ -66,13 +80,13 @@ export default function Post({ post }) {
   };
 
   return (
-    <div className="mx-auto w-full max-w-3xl h-fit mt-2 mb-8 bg-gray-50 shadow-md p-4 rounded-lg relative flex flex-col">
+    <div className="relative mx-auto mt-2 mb-8 flex h-fit w-full min-w-[20rem] max-w-[90%] flex-col rounded-lg bg-gray-50 p-4 shadow-md sm:w-3/4 md:mx-auto md:w-3/4 lg:w-full">
       <Link to={`/profile/${post.uid}`}>
-        <header className="flex gap-2 items-center">
+        <header className="flex items-center gap-2">
           <img
             src={allUsers?.find((user) => user.userID === post?.uid)?.avatar}
             alt="user-dp"
-            className="h-9 rounded-full w-fit object-cover aspect-square "
+            className="aspect-square h-9 w-fit rounded-full object-cover "
           />
           <p className="font-semibold">{post?.author}</p>
         </header>
@@ -87,102 +101,131 @@ export default function Post({ post }) {
               setUpdatePost((prev) => ({ ...prev, caption: e.target.value }))
             }
           />
-          <input
-            value={updatePost?.imageURL}
-            placeholder="Add image URL here"
-            className="ml-10 pl-1 focus:outline-none"
-            onChange={(e) =>
-              setUpdatePost((prev) => ({
-                ...prev,
-                imageURL: e.target.value,
-              }))
-            }
-          />
+          <label
+            htmlFor="avatar"
+            className="mr-5 mt-3 self-end rounded-md bg-slate-100 px-2 py-1 text-sm shadow-sm hover:cursor-pointer hover:brightness-95"
+          >
+            <input
+              type="file"
+              id="avatar"
+              name="avatar"
+              accept="image/*, .gif"
+              className="hidden"
+              onChange={handlePostImage}
+            />
+            Add/Edit Image
+          </label>
           {updatePost?.imageURL && (
             <img
               src={updatePost?.imageURL}
               alt="post-one"
-              className="mx-auto aspect-auto max-h-96 mt-2"
+              className="mx-auto mt-2 aspect-auto max-h-96"
             />
           )}
         </div>
       ) : (
         <div>
-          <p className="text-base text-gray-600 pl-11">{updatePost?.caption}</p>
+          <p className="pl-11 text-base text-gray-600">{updatePost?.caption}</p>
           {updatePost?.imageURL && (
             <img
               src={updatePost?.imageURL}
               alt="post-one"
-              className="mx-auto aspect-auto max-h-96 mt-2"
+              className="mx-auto mt-2 aspect-auto max-h-96"
             />
           )}
         </div>
       )}
 
       {post.uid === currentUser?.uid && (
-        <div className="flex absolute top-5 right-5 gap-4 text-gray-600">
+        <div className="absolute top-5 right-5 flex gap-4 text-gray-600">
           {enableEdit ? (
-            <button onClick={() => editPostHandler(post, updatePost)}>
+            <button
+              className="rounded-full border-none bg-slate-100 p-1.5 text-gray-500 shadow-md hover:cursor-pointer hover:brightness-95 "
+              onClick={() => editPostHandler(post, updatePost)}
+            >
               <FiCheck />
             </button>
           ) : (
-            <button onClick={() => setEnableEdit((prev) => !prev)}>
+            <button
+              className="rounded-full border-none bg-slate-100 p-1.5 text-gray-500 shadow-md hover:cursor-pointer hover:brightness-95 "
+              onClick={() => setEnableEdit((prev) => !prev)}
+            >
               <FiEdit3 />
             </button>
           )}
 
-          <button onClick={() => deletePost(post)}>
+          <button
+            className="rounded-full border-none bg-slate-100 p-1.5 text-gray-500 shadow-md hover:cursor-pointer hover:brightness-95 "
+            onClick={() => deletePost(post)}
+          >
             <FiTrash />
           </button>
-          <button onClick={() => toggleArchive(post)}>
+          <button
+            className="rounded-full border-none bg-slate-100 p-1.5 text-gray-500 shadow-md hover:cursor-pointer hover:brightness-95 "
+            onClick={() => toggleArchive(post)}
+          >
             {user?.archives?.some(({ postID }) => postID === post?.postID) ? (
               <RiInboxUnarchiveLine className="text-xl" />
             ) : (
               <RiInboxArchiveLine className="text-xl" />
             )}
           </button>
-          <button onClick={() => toggleBookmark(post, currentUser)}>
-            {user?.bookmarks?.some(({ postID }) => postID === post?.postID) ? (
-              <FaBookmark className="text-xl" />
-            ) : (
-              <FaRegBookmark className="text-xl" />
-            )}
-          </button>
         </div>
       )}
 
-      <div className="flex items-center gap-3 text-gray-500 justify-start mt-5 pl-11">
-        <div className="flex items-center gap-2 text-lg">
-          {post?.likes?.find((user) => user.userID === currentUser?.uid) ? (
-            <button onClick={() => toggleLike(post)}>
-              <FaHeart className="text-red-700" />
+      <div className="mt-5 flex items-center justify-between gap-3 text-gray-500">
+        <div className="flex items-center justify-start gap-5 ">
+          <div className="flex items-center gap-2 text-lg">
+            {post?.likes?.find((user) => user.userID === currentUser?.uid) ? (
+              <button
+                className="rounded-full border-none bg-slate-100 p-1.5 text-gray-500 shadow-md hover:cursor-pointer hover:brightness-95 "
+                onClick={() => toggleLike(post)}
+              >
+                <FaHeart className="text-red-700" />
+              </button>
+            ) : (
+              <button
+                className="rounded-full border-none bg-slate-100 p-1.5 text-gray-500 shadow-md hover:cursor-pointer hover:brightness-95 "
+                onClick={() => toggleLike(post)}
+              >
+                <FiHeart />
+              </button>
+            )}
+            {post?.likes?.length > 0 && post.likes.length}
+          </div>
+          <div className="flex items-center gap-2">
+            <button
+              className="rounded-full border-none bg-slate-100 p-1.5 text-gray-500 shadow-md hover:cursor-pointer hover:brightness-95 "
+              onClick={() => setEnableComments((prev) => !prev)}
+            >
+              <FaRegCommentAlt />
             </button>
+            {post?.comments?.length > 0 && post.comments.length}
+          </div>
+        </div>
+        <button
+          className="rounded-full border-none bg-slate-100 p-1.5 text-gray-500 shadow-md hover:cursor-pointer hover:brightness-95 "
+          onClick={() => toggleBookmark(post, currentUser)}
+        >
+          {user?.bookmarks?.some(({ postID }) => postID === post?.postID) ? (
+            <FaBookmark />
           ) : (
-            <button onClick={() => toggleLike(post)}>
-              <FiHeart />
-            </button>
+            <FaRegBookmark />
           )}
-          {post?.likes?.length > 0 && post.likes.length}
-        </div>
-        <div className="flex items-center gap-2">
-          <button onClick={() => setEnableComments((prev) => !prev)}>
-            <FaRegCommentAlt />
-          </button>
-          {post?.comments?.length > 0 && post.comments.length}
-        </div>
+        </button>
       </div>
 
       {enableComments && (
         <footer>
-          <div className="w-full relative px-1">
+          <div className="relative w-full px-1">
             <textarea
               placeholder="Drop a comment.."
-              className="px-2 py-2 mt-2 focus:outline-none bg-gray-100 text-sm resize-none w-full"
+              className="mt-2 w-full resize-none bg-gray-100 px-2 py-2 text-sm focus:outline-none"
               value={comment}
               onChange={(e) => setComment(e.target.value)}
             />
             <button
-              className="border-none bg-blue-500 text-gray-100 rounded-md px-3 py-1 absolute right-4 bottom-1/2 translate-y-1/2 text-sm"
+              className="absolute right-4 bottom-1/2 translate-y-1/2 rounded-md border-none bg-blue-500 px-3 py-1 text-sm text-gray-100"
               onClick={() => {
                 postComment(post, comment, currentUser);
                 setComment("");

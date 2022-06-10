@@ -1,4 +1,5 @@
-import Post from "components/Post";
+import { Post } from "components/components";
+import { Empty } from "pages/pages";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
@@ -9,7 +10,9 @@ export default function Explore() {
   const sortHandler = () => {
     switch (sortBy) {
       case "Latest":
-        return allPosts;
+        return [...allPosts].sort(
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        );
       case "Oldest":
         return [...allPosts].sort(
           (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
@@ -24,9 +27,9 @@ export default function Explore() {
   const posts = sortHandler(allPosts);
 
   return (
-    <div className="flex flex-col w-full mt-2">
+    <div className="mt-2 flex w-full flex-col sm:mx-2 sm:gap-2 md:mx-2 md:gap-2">
       <select
-        className="py-1 px-3 w-fit self-center mr-10 rounded-md focus:outline focus:outline-2 focus:outline-blue-400"
+        className="w-fit self-center rounded-md py-1 px-3 focus:outline focus:outline-2 focus:outline-blue-400"
         onChange={(e) => setSortBy(e.target.value)}
         value={sortBy}
       >
@@ -34,10 +37,12 @@ export default function Explore() {
         <option value="Oldest">Oldest</option>
         <option value="Trending">Trending</option>
       </select>
-      <div>
-        {posts?.map((post) => (
-          <Post post={post} key={post.postID} />
-        ))}
+      <div className="md:mb-16">
+        {posts?.length > 0 ? (
+          posts?.map((post) => <Post post={post} key={post.postID} />)
+        ) : (
+          <Empty />
+        )}
       </div>
     </div>
   );

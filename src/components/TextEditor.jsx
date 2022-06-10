@@ -58,15 +58,15 @@ export default function TextEditor() {
   };
 
   return (
-    <div className="flex flex-col gap-4 bg-gray-100 text-l p-4 mx-auto w-full">
+    <div className="text-l mx-auto flex w-full flex-col gap-4 bg-gray-100 p-4">
       <form
-        className="mx-auto w-full max-w-3xl bg-gray-50 "
+        className="mx-auto w-full max-w-3xl bg-gray-50 shadow-md"
         onSubmit={(e) => submitHandler(e)}
       >
         <textarea
           rows="4"
           placeholder="What's on your mind?"
-          className={`rounded-sm w-full bg-gray-50 resize-none outline-none border-none p-4`}
+          className={`w-full resize-none rounded-sm border-none bg-gray-50 p-4 outline-none`}
           name="caption"
           value={newPost.caption}
           onChange={inputHandler}
@@ -78,7 +78,7 @@ export default function TextEditor() {
             className="mx-auto aspect-auto max-h-96"
           />
         )}
-        <div className="flex justify-between px-3 py-2 items-center">
+        <div className="flex items-center justify-between px-3 py-2">
           <div className="flex gap-4">
             <label htmlFor="post-image" className="text-2xl text-gray-500">
               <input
@@ -92,7 +92,7 @@ export default function TextEditor() {
               <RiImageAddFill />
             </label>
             <div
-              className="text-gray-500 relative"
+              className="relative text-gray-500"
               onClick={(e) => setShowEmojis((prev) => !prev)}
             >
               <RiEmotionLaughLine className="text-2xl" />
@@ -107,7 +107,7 @@ export default function TextEditor() {
             </div>
           </div>
 
-          <button className="border-none bg-blue-500 text-gray-100 rounded-md px-4 py-1 text-base">
+          <button className="rounded-md border-none bg-blue-500 px-4 py-1 text-base text-gray-100 shadow-md">
             Post
           </button>
         </div>
