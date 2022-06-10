@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, db } from "../../firebase/firebase";
 import { signup } from "./userSlice";
-import { defaultAvatar } from "helpers/Constants";
+import { defaultAvatar } from "utils/Constants";
 import toast from "react-hot-toast";
 
 export default function Signup() {
@@ -89,16 +89,16 @@ export default function Signup() {
 
   return (
     <div>
-      <div className="flex justify-center items-center h-[92vh] bg-gray-200">
+      <div className="flex h-[92vh] items-center justify-center bg-gray-200">
         <form
-          className="flex flex-col justify-center items-center gap-4 shadow-md bg-slate-50 p-9 w-96 rounded-md"
+          className="flex w-80 flex-col items-center justify-center gap-4 rounded-md bg-slate-50 p-9 shadow-md sm:w-96"
           onSubmit={submitSignUp}
         >
           <h1 className="text-xl font-semibold">Create Account</h1>
           <input
             type="text"
             name="name"
-            className="w-full p-2 h-9 bg-gray-100"
+            className="h-9 w-full bg-gray-100 p-2"
             placeholder="Enter name"
             required
             onChange={changeHandler}
@@ -106,61 +106,61 @@ export default function Signup() {
           <input
             type="text"
             name="profilePic"
-            className="w-full p-2 h-9 bg-gray-100"
+            className="h-9 w-full bg-gray-100 p-2"
             placeholder="Enter profile pic URL (optional)"
             onChange={changeHandler}
           />
           <input
             type="email"
             name="email"
-            className="w-full p-2 h-9 bg-gray-100"
+            className="h-9 w-full bg-gray-100 p-2"
             placeholder="Enter email"
             required
             onChange={changeHandler}
           />
-          <div className="w-full relative">
+          <div className="relative w-full">
             <input
               type={showPassword ? "text" : "password"}
               name="password"
-              className="w-full p-2 h-9 bg-gray-100"
+              className="h-9 w-full bg-gray-100 p-2"
               placeholder="Enter password"
               required
               onChange={changeHandler}
             />
             <div role="button" onClick={() => setShowPassword((prev) => !prev)}>
               {showPassword ? (
-                <AiFillEyeInvisible className="absolute right-2 bottom-1/2 translate-y-1/2 text-gray-500 text-lg" />
+                <AiFillEyeInvisible className="absolute right-2 bottom-1/2 translate-y-1/2 text-lg text-gray-500" />
               ) : (
-                <AiFillEye className="absolute right-2 bottom-1/2 translate-y-1/2 text-gray-500 text-lg" />
+                <AiFillEye className="absolute right-2 bottom-1/2 translate-y-1/2 text-lg text-gray-500" />
               )}
             </div>
           </div>
-          <div className="w-full relative">
+          <div className="relative w-full">
             <input
               type={showPassword ? "text" : "password"}
               name="confirmPassword"
-              className="w-full p-2 h-9 bg-gray-100"
+              className="h-9 w-full bg-gray-100 p-2"
               placeholder="Confirm password"
               required
               onChange={changeHandler}
             />
             <div role="button" onClick={() => setShowPassword((prev) => !prev)}>
               {showPassword ? (
-                <AiFillEyeInvisible className="absolute right-2 bottom-1/2 translate-y-1/2 text-gray-500 text-lg" />
+                <AiFillEyeInvisible className="absolute right-2 bottom-1/2 translate-y-1/2 text-lg text-gray-500" />
               ) : (
-                <AiFillEye className="absolute right-2 bottom-1/2 translate-y-1/2 text-gray-500 text-lg" />
+                <AiFillEye className="absolute right-2 bottom-1/2 translate-y-1/2 text-lg text-gray-500" />
               )}
             </div>
           </div>
           <button
             type="submit"
-            className="border-2 bg-gray-200 py-1 px-4 rounded-md w-1/2"
+            className="w-1/2 rounded-md border-2 bg-gray-200 py-1 px-4"
           >
             Sign Up
           </button>
           <p>
             Existing User?{" "}
-            <Link to="/login" className="text-gray-500 font-semibold">
+            <Link to="/login" className="font-semibold text-gray-500">
               Login
             </Link>
           </p>
