@@ -30,7 +30,7 @@ export default function Header() {
       <div className="flex gap-4">
         <Link to="/profile">
           <img
-            className="aspect-square max-h-9 w-fit rounded-full object-cover"
+            className="max-w-9 aspect-square h-9 max-h-9 w-fit rounded-full object-cover"
             src={
               currentUser?.photoURL
                 ? currentUser?.photoURL
