@@ -1,0 +1,86 @@
+@import '../../default.scss';
+
+.chat-body,
+.chat-users {
+}
+.chat-users {
+  border: 1px solid $black;
+  border-left: none;
+  border-radius: 0 1.5rem 1.5rem 0;
+  .chat-user {
+    padding: 1.5rem;
+    color: black;
+    text-align: left;
+    @include flex('', start, '');
+    border-bottom: 1px black solid;
+    &:last-child {
+      border: none;
+    }
+    .circle img {
+      @include box(7rem);
+      margin-right: 1.5rem;
+    }
+  }
+  .chat-nav-active {
+    background-color: $lightgrey;
+    border-radius: 0 0 0 1.5rem;
+  }
+}
+
+.chat-body {
+  display: grid;
+  grid-template-rows: 0.2fr 1fr 0.2fr;
+}
+.messages {
+  @include flex(column, start, start);
+}
+.message {
+  padding: 1.5rem;
+  background: $sidebar;
+  border-radius: 1.5rem;
+  margin-bottom: 2rem;
+  min-width: 20rem;
+
+  @include flex(row, center, space-between);
+  .message-content {
+    width: 100%;
+  }
+  .timestamp {
+    font-size: $smallest;
+    margin-left: 1.5rem;
+    float: right;
+    color: $grey;
+  }
+}
+.sender {
+  background-color: $blue;
+  align-self: flex-end;
+  color: white;
+  .timestamp {
+    color: $lightgrey;
+  }
+}
+
+// add message
+
+.add-message {
+  align-self: flex-end;
+  .add-comment-input {
+    border: 1px $blue solid;
+    padding: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .chat-users {
+    .chat-user {
+      padding: 1.5rem;
+      .circle img {
+        @include box(3rem);
+      }
+      .name {
+        font-size: $smallest;
+      }
+    }
+  }
+}

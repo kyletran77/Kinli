@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { userLogin } from "../../firebase/firebase-calls";
+import { signInWithGoogle } from "../../firebase/firebase";
+
 
 export default function Login() {
   const location = useLocation();
@@ -17,6 +19,7 @@ export default function Login() {
   const testLogin = { email: "theHippogriff@gmail.com", password: "buckbeak" };
   const { email, password } = loginDetails;
   const lastLocation = location.state?.from?.pathname || "/";
+  
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
@@ -84,6 +87,9 @@ export default function Login() {
           </div>
         </div>
         <p>
+        <div>
+      <button className="button" onClick={signInWithGoogle}>Sign in with google</button>
+    </div>
           <Link to="/signup" className="font-semibold text-gray-500">
             Create Account
           </Link>
