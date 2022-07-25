@@ -25,7 +25,7 @@ export default function Header() {
     <div className="flex h-12 items-center justify-between bg-slate-100 p-3 font-semibold">
       <Link to="/" className="flex h-full">
         <img src={logo} alt="main-logo" className="aspect-auto" />
-        <h1 className="text-xl text-gray-600">Jigsaw</h1>
+        <h1 className="text-xl text-gray-600">Kinli</h1>
       </Link>
       <div className="flex gap-4">
         <Link to="/profile">
