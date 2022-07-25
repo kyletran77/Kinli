@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { userLogin } from "../../firebase/firebase-calls";
-import { signInWithGoogle } from "../../firebase/firebase";
+// import { signInWithGoogle } from "../../firebase/firebase";
 
 
 export default function Login() {
@@ -78,17 +78,17 @@ export default function Login() {
           >
             Login
           </button>
-          <div
+          {/* <div
             role="button"
             className="w-1/2 rounded-md border-2 bg-gray-200 py-1 px-4 text-center"
             onClick={(e) => testLoginHandler(e, testLogin)}
           >
             Test User
-          </div>
+          </div> */}
         </div>
         <p>
         <div>
-      <button className="button" onClick={signInWithGoogle}>Sign in with google</button>
+      {/* <button className="button" onClick={signInWithGoogle}>Sign in with google</button> */}
     </div>
           <Link to="/signup" className="font-semibold text-gray-500">
             Create Account

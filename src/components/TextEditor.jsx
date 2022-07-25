@@ -4,6 +4,7 @@ import { auth } from "../firebase/firebase";
 import { createPost, uploadImage } from "../firebase/firebase-calls";
 import { RiEmotionLaughLine, RiImageAddFill } from "react-icons/ri";
 import toast from "react-hot-toast";
+import {Button} from '@mui/material';
 
 export default function TextEditor() {
   const currentUser = auth?.currentUser;
@@ -56,20 +57,22 @@ export default function TextEditor() {
     toast.success("uploaded image", { id: loader });
     setNewPost({ ...newPost, imageURL: imageURL });
   };
-
+  //problem with the text area/form only responsive on certain sizes
   return (
     <div className="text-l mx-auto flex w-full flex-col gap-4 bg-gray-100 p-4">
+  
       <form
         className="mx-auto w-full max-w-3xl bg-gray-50 shadow-md"
         onSubmit={(e) => submitHandler(e)}
       >
+
         <textarea
           rows="4"
           placeholder="What's on your mind?"
           className={`w-full resize-none rounded-sm border-none bg-gray-50 p-4 outline-none`}
           name="caption"
           value={newPost.caption}
-          onChange={inputHandler}
+          onInput={inputHandler}
         />
         {newPost?.imageURL !== null && (
           <img
@@ -107,9 +110,9 @@ export default function TextEditor() {
             </div>
           </div>
 
-          <button className="rounded-md border-none bg-blue-500 px-4 py-1 text-base text-gray-100 shadow-md">
+          <Button type='submit' className="rounded-md border-none bg-blue-500 px-4 py-1 text-base text-gray-100 shadow-md">
             Post
-          </button>
+          </Button>
         </div>
       </form>
     </div>
