@@ -19,7 +19,9 @@
     "react-redux": "^8.0.1",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "@lexical/react": "0.3.8",
+    "lexical": "0.3.8"
   },
   "scripts": {
     "start": "react-scripts start",

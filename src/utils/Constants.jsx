@@ -1,6 +1,7 @@
 import { AiFillHome, AiFillCompass } from "react-icons/ai";
 import { RiInboxArchiveFill } from "react-icons/ri";
 import { BsFillBookmarkFill } from "react-icons/bs";
+import { BsFileEarmarkPersonFill } from "react-icons/bs";
 import avatar01 from "assets/avatar_01.webp";
 import avatar02 from "assets/avatar_02.webp";
 import avatar03 from "assets/avatar_03.webp";
@@ -15,6 +16,7 @@ export const navLinks = [
   { pathTo: "/explore", icon: <AiFillCompass />, navPath: "Explore" },
   { pathTo: "/bookmarks", icon: <BsFillBookmarkFill />, navPath: "Bookmarks" },
   { pathTo: "/archives", icon: <RiInboxArchiveFill />, navPath: "Archives" },
+  { pathTo: "/resume", icon: <BsFileEarmarkPersonFill />, navPath: "Resume" }
 ];
 
 const avatars = [

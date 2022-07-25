@@ -9,6 +9,8 @@ import Error from "./error/Error";
 import Empty from "./empty/Empty";
 import Login from "features/user/Login";
 import Signup from "features/user/Signup";
+import Resume from "./resume/Resume";
+
 
 export {
   Home,
@@ -22,4 +24,5 @@ export {
   Empty,
   Login,
   Signup,
+  Resume
 };
