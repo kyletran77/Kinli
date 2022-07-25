@@ -1,5 +1,6 @@
 <h1 align="center">
- <p> <img  src="https://i.ibb.co/306PNr5/Untitled-design-7-removebg-preview.png" alt="Jigsaw" border="0"/> </p>  Jigsaw
+ <p> <img  src="https://i.ibb.co/306PNr5/Untitled-design-7-removebg-preview.png" alt="Jigsaw" border="0"/> </p>  Kinli
+ 
 </h1>
 <div align="center">
   <p>A Social Networking app to share your thoughts and moments.</p>
