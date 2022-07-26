@@ -64,6 +64,40 @@ export default function UserProfile() {
             </div>
           </div>
         </div>
+        
+      </section>
+      <section className="relative h-72 w-full">
+        
+        <div className="absolute right-1/2 -bottom-1/2 mx-auto flex h-fit w-80 translate-x-1/2 flex-col items-center gap-2 rounded-lg bg-slate-50 py-3 px-2 shadow sm:w-96 md:w-96 lg:w-96">
+          <button
+            className="absolute right-4 rounded-full border-none bg-slate-100 p-1.5 text-2xl text-gray-600 shadow-md hover:cursor-pointer hover:brightness-95 "
+            onClick={() => setShowModal((prev) => !prev)}
+          >
+            <FiEdit3 />
+          </button>
+
+          <img
+            src={user?.photoURL}
+            alt="user-dp"
+            className="md:h-18 lg:h-18 aspect-square h-14 w-fit rounded-full object-cover xl:h-24"
+          />
+          <p className="text-lg font-semibold">{currentUser?.displayName}</p>
+          <p className="text-center text-sm sm:text-base">{userData?.bio}</p>
+          <p className="text-sm sm:text-base">{userData?.website}</p>
+          <div className="flex flex-wrap justify-center gap-1 px-2 text-slate-50 sm:gap-2 md:w-full md:justify-center md:gap-3 md:px-0 lg:scale-100 lg:gap-5">
+            <div className="rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 px-3 py-1 shadow-md">
+              {userData?.followers?.length} Followers
+            </div>
+            <div className="rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 px-3 py-1 shadow-md">
+              {user?.following?.length > 0 ? user?.following?.length : "0"}{" "}
+              Following
+            </div>
+            <div className="rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 px-3 py-1 shadow-md">
+              {filteredPosts?.length} Posts
+            </div>
+          </div>
+        </div>
+        
       </section>
       {showModal && (
         <div className="h-full">
@@ -79,7 +113,7 @@ export default function UserProfile() {
       <ul className="mt-44 mb-16 md:mb-24">
         {filteredPosts?.map((post) => (
           <Post post={post} key={post?.postID} />
-        ))}
+          ))}
       </ul>
     </div>
   );

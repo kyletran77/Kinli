@@ -92,6 +92,29 @@ export const profileUpdate = async (
   dispatch(updateDP(userData.avatar));
 };
 
+export const experienceAdd = async (
+  currentUser,
+  userData,
+  jobTitle,
+  company,
+  workDates,
+  description,
+  companyLogo,
+  dispatch
+) => {
+  await setDoc(
+    doc(db, "users", currentUser?.uid),
+    {
+      experience: arrayUnion([jobTitle, company, workDates, description, companyLogo]) 
+    },
+    { merge: true }
+  );
+  await updateProfile(currentUser, {
+    photoURL: userData.avatar,
+  });
+  dispatch(updateDP(userData.avatar));
+};
+
 export const uploadImage = async (user, file) => {
   try {
     const path = `images/${user?.uid}/${file?.name}`;

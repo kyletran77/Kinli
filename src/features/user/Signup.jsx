@@ -56,6 +56,9 @@ export default function Signup() {
             following: [],
             archives: [],
             bookmarks: [],
+            experience: [],
+            interests: [],
+            education: [],
           })
         );
         const userRef = collection(db, "users");
@@ -73,6 +76,9 @@ export default function Signup() {
             following: [],
             archives: [],
             bookmarks: [],
+            experience: [],
+            interests: [],
+            education: [],
           },
           { merge: true }
         );
