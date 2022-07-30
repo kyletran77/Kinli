@@ -2,16 +2,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { auth } from "../../firebase/firebase";
 import { useEffect, useState } from "react";
-import { experienceAdd, uploadImage } from "../../firebase/firebase-calls";
+import { educationAdd, uploadImage } from "../../firebase/firebase-calls";
 import toast from "react-hot-toast";
 import { FiEdit3 } from "react-icons/fi";
 
-export default function EditExperienceProfileModal({
+export default function EditEducationProfileModal({
   setShowModal,
   userData,
   setUserData,
 }) {
-  console.log("Experience")
+    console.log("education")
   const { user } = useSelector((state) => state.user);
   const currentUser = auth?.currentUser;
 
@@ -54,7 +54,7 @@ export default function EditExperienceProfileModal({
   };
 
   useEffect(() => {
-    experienceAdd(
+    educationAdd(
         currentUser,
         userData,
         userInfo,
@@ -90,7 +90,7 @@ export default function EditExperienceProfileModal({
               className="hidden"
               onChange={handleUserImage}
             />
-            Edit Cover Pic
+            Education
           </label>
           <div className="absolute top-3/4 right-1/2 mx-auto flex h-fit w-80 max-w-[90%] translate-x-1/2 flex-col items-center gap-2 rounded-lg bg-slate-50 py-3 px-2 shadow sm:top-2/3 md:top-3/4 md:w-2/3 lg:w-80 xl:-bottom-1/2">
             <img
@@ -147,7 +147,7 @@ export default function EditExperienceProfileModal({
           type="submit"
           className="mx-auto mt-2 w-fit rounded-lg bg-slate-100 p-2 outline-none hover:cursor-pointer hover:bg-slate-300"
         >
-          Update Experience
+          Update Education
         </button>
       </form>
     </div>
