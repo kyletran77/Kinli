@@ -11,12 +11,14 @@ import cover02 from "assets/cover_02.webp";
 import cover03 from "assets/cover_03.webp";
 import cover04 from "assets/cover_04.webp";
 
+
 export const navLinks = [
   { pathTo: "/", icon: <AiFillHome />, navPath: "Home" },
+  { pathTo: "/circles", icon: <BsFileEarmarkPersonFill />, navPath: "Circles" },
   { pathTo: "/explore", icon: <AiFillCompass />, navPath: "Explore" },
   { pathTo: "/bookmarks", icon: <BsFillBookmarkFill />, navPath: "Bookmarks" },
   { pathTo: "/archives", icon: <RiInboxArchiveFill />, navPath: "Archives" },
-  { pathTo: "/resume", icon: <BsFileEarmarkPersonFill />, navPath: "Resume" }
+  { pathTo: "/resume", icon: <BsFileEarmarkPersonFill />, navPath: "Resume" },
 ];
 
 const avatars = [

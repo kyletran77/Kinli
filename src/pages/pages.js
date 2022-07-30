@@ -10,6 +10,7 @@ import Empty from "./empty/Empty";
 import Login from "features/user/Login";
 import Signup from "features/user/Signup";
 import Resume from "./resume/Resume";
+import Circles from "./circles/Circles";
 
 
 export {
@@ -24,5 +25,6 @@ export {
   Empty,
   Login,
   Signup,
-  Resume
+  Resume,
+  Circles
 };
