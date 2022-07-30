@@ -95,17 +95,25 @@ export const profileUpdate = async (
 export const experienceAdd = async (
   currentUser,
   userData,
-  jobTitle,
-  company,
-  workDates,
-  description,
-  companyLogo,
+  userInfo,
   dispatch
 ) => {
   await setDoc(
     doc(db, "users", currentUser?.uid),
     {
-      experience: arrayUnion([jobTitle, company, workDates, description, companyLogo]) 
+      experience: arrayUnion({"jobTitle":userInfo?.jobTitle, 
+      "company":userInfo?.company, "workDates":userInfo?.workDates, 
+      "description":userInfo?.description, "companyLogo": userInfo?.companyLogo})
+    },
+    { merge: true }
+  );
+  await setDoc(
+    doc(db, "users", currentUser?.uid),
+    {
+      allExp: arrayUnion({"jobTitle":userInfo?.jobTitle, 
+      "company":userInfo?.company,
+      "type": "Experience"
+    })
     },
     { merge: true }
   );
@@ -113,8 +121,42 @@ export const experienceAdd = async (
     photoURL: userData.avatar,
   });
   dispatch(updateDP(userData.avatar));
+  console.log("Experience Added!")
+
 };
 
+export const educationAdd = async (
+  currentUser,
+  userData,
+  userInfo,
+  dispatch
+) => {
+  await setDoc(
+    doc(db, "users", currentUser?.uid),
+    {
+      education: arrayUnion({"jobTitle":userInfo?.jobTitle, 
+      "company":userInfo?.company, "workDates":userInfo?.workDates, 
+      "description":userInfo?.description, "companyLogo": userInfo?.companyLogo})
+    },
+    { merge: true }
+  );
+  await setDoc(
+    doc(db, "users", currentUser?.uid),
+    {
+      allExp: arrayUnion({"jobTitle":userInfo?.jobTitle, 
+      "company":userInfo?.company,
+      "type": "Education"
+    })
+    },
+    { merge: true }
+  );
+  await updateProfile(currentUser, {
+    photoURL: userData.avatar,
+  });
+  dispatch(updateDP(userData.avatar));
+  console.log("Education Added!")
+
+};
 export const uploadImage = async (user, file) => {
   try {
     const path = `images/${user?.uid}/${file?.name}`;
@@ -139,6 +181,7 @@ export const createPost = async (user, post) => {
       caption: post.caption,
       createdAt: new Date().toLocaleString(),
       imageURL: post.imageURL,
+      company: post.company,
       likes: [],
       comments: [],
     });
@@ -356,3 +399,72 @@ export const undoBookmarkPost = async (post, user) => {
     toast.error("Couldn't remove from bookmarks. Try again!");
   }
 };
+//         Firebase Calls for Circles Section
+ 
+//getCircle --> Obtains Circle Data
+/* Takes ID and creates entire circle */
+export const getCircle = async (circle, setCircleData) => {
+  try {
+    const circleDoc = doc(collection(db, "allCircles"), circle);
+    const docSnap = await getDoc(circleDoc);
+    if (docSnap.exists()) {
+      console.log(circle);
+      setCircleData(docSnap.data());
+    } else {
+      console.log("Could not retrieve circle data");
+    }
+  } catch (error) {
+    console.log(error);
+  }
+ };
+  
+ //Create Circle
+ export const createCircle = async (currentUser) => {
+  try {
+    //UI
+    const loader = toast.loading("Creating Circle...");
+  
+    //Create Blank Circles
+    const circleDoc = await addDoc(collection(db, "allCircles"), {
+      circleName: "",
+      circleBio: "",
+      circleID: "",
+      circleCreator: currentUser,
+    });
+  
+    await setDoc (
+      doc(collection(db, "allCircles"), circleDoc.id), {
+        circleID: circleDoc.id,
+      },
+      { merge: true }
+    );
+  
+    //UI
+    toast.success("Circle created.", { id: loader }  );
+    } catch (error) {
+      toast.error("Circle not created. Try again!");
+    }
+  };
+  
+ export const editCircle = async (
+  newCircleInfo,
+  oldCircleInfo,
+  currentCircle,
+  dispatch
+ ) => {
+  await setDoc (
+    doc(db, "allCircles", currentCircle),
+    {
+      circleBio: newCircleInfo?.coverPic
+        ? newCircleInfo?.bio: oldCircleInfo?.bio,
+      bioPic: newCircleInfo?.bioPic
+        ? newCircleInfo.bioPic: oldCircleInfo?.bioPic,
+      logo: newCircleInfo?.logo
+        ? newCircleInfo.logo
+        :oldCircleInfo.logo ?? ""
+    },
+  
+    { merge: true }
+  )
+ // dispatch(updateDP(userData.avatar));
+  };
