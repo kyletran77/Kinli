@@ -408,7 +408,6 @@ export const getCircle = async (circle, setCircleData) => {
     const circleDoc = doc(collection(db, "allCircles"), circle);
     const docSnap = await getDoc(circleDoc);
     if (docSnap.exists()) {
-      console.log(circle);
       setCircleData(docSnap.data());
     } else {
       console.log("Could not retrieve circle data");
@@ -441,6 +440,8 @@ export const getCircle = async (circle, setCircleData) => {
   
     //UI
     toast.success("Circle created.", { id: loader }  );
+  return circleDoc.id;
+
     } catch (error) {
       toast.error("Circle not created. Try again!");
     }

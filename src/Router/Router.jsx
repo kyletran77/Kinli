@@ -25,7 +25,9 @@ export default function Router() {
         <Route path="/bookmarks" element={<Bookmarks />} />
         <Route path="/archives" element={<Archives />} />
          <Route path="/resume" element={<Resume />} /> 
-         <Route path="/circles" element={<Circles />} /> 
+         <Route path="/circle" element={<Circles />} /> 
+         <Route path="/circle/:circleID" element={<Circles />} />
+
       </Route>
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />

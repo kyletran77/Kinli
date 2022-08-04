@@ -1,5 +1,6 @@
 import { setAllPosts } from "features/allPosts/allPostsSlice";
 import { usersList } from "features/allUsers/usersSlice";
+import { circlesList } from "features/allCircle/circleSlice";
 import {
   addBookmark,
   login,
@@ -22,6 +23,7 @@ export const firebaseListeners = (dispatch) => {
   authChangeListener(dispatch);
   postsListener(dispatch);
   usersListener(dispatch);
+  circleListener(dispatch);
 };
 
 const authChangeListener = (dispatch) => {
@@ -50,6 +52,16 @@ const usersListener = (dispatch) => {
     onSnapshot(collection(db, "users"), (snapshot) => {
       const allUsersList = snapshot.docs.map((doc) => doc.data());
       dispatch(usersList(allUsersList));
+    });
+  } catch (error) {
+    console.error(error.message);
+  }
+};
+const circleListener = (dispatch) => {
+  try {
+    onSnapshot(collection(db, "allCircles"), (snapshot) => {
+      const allUsersList = snapshot.docs.map((doc) => doc.data());
+      dispatch(circlesList(allUsersList));
     });
   } catch (error) {
     console.error(error.message);

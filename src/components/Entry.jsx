@@ -26,7 +26,7 @@ export default function Entry({ post }) {
           <img
             src={require("assets/cute-rabbit-with-duck-working-laptop-cartoon-illustration_56104-471.webp")}
             alt=""
-            className="aspect-square w-10 w-fit rounded-full object-cover "
+            className="aspect-square w-9 rounded-full object-cover "
           />
 
           <div class=" flex flex-col text-left font-semibold"> 

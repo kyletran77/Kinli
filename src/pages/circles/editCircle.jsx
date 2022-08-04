@@ -20,6 +20,7 @@ export default function EditProfileModal({
     circleCreator: "",
     circleID: "",
     circleName: "",
+    circleChallenge: "",
   });
 
   const updateUserInfo = (e) => {

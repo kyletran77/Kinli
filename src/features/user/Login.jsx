@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { userLogin } from "../../firebase/firebase-calls";
+import { auth, provider} from "../../firebase/firebase"
+import { signInWithPopup } from "firebase/auth";
 // import { signInWithGoogle } from "../../firebase/firebase";
 
 
@@ -15,6 +17,7 @@ export default function Login() {
     email: "",
     password: "",
   });
+  
 
   const testLogin = { email: "theHippogriff@gmail.com", password: "buckbeak" };
   const { email, password } = loginDetails;
@@ -36,9 +39,36 @@ export default function Login() {
     setLoginDetails(testLogin);
     userLogin(email, password, dispatch, lastLocation, navigate);
   };
+  // Sign in with google
+  const signin = () => {
+    signInWithPopup(auth, provider)
+    .catch(alert)
+    .then(
+      function (result) {
+           var token = result.credential.accessToken;
+           var user = result.user;
+           //this is what you need
+           var isNewUser = result.additionalUserInfo.isNewUser;
+           if (isNewUser) {
+              
+           } else {
+                // your sign in flow
+                console.log('user ' + user.email + ' does exist!');
+           }
+      }).catch(function (error) {
+      // Handle Errors here.
+ 
+ });
+ 
+}
+
 
   return (
     <div className="flex h-[92vh] items-center justify-center bg-gray-200">
+      {/* <center>
+                <button style={{"marginTop" : "200px"}} 
+                onClick={signin}>Sign In with Google</button>
+            </center> */}
       <form
         className="flex h-96 w-80 flex-col items-center justify-center gap-4 rounded-md bg-slate-50 p-9 shadow-md sm:w-96"
         onSubmit={loginHandler}

@@ -16,9 +16,9 @@ export const navLinks = [
   { pathTo: "/", icon: <AiFillHome />, navPath: "Home" },
   { pathTo: "/circles", icon: <BsFileEarmarkPersonFill />, navPath: "Circles" },
   { pathTo: "/explore", icon: <AiFillCompass />, navPath: "Explore" },
-  { pathTo: "/bookmarks", icon: <BsFillBookmarkFill />, navPath: "Bookmarks" },
-  { pathTo: "/archives", icon: <RiInboxArchiveFill />, navPath: "Archives" },
-  { pathTo: "/resume", icon: <BsFileEarmarkPersonFill />, navPath: "Resume" },
+  // { pathTo: "/bookmarks", icon: <BsFillBookmarkFill />, navPath: "Bookmarks" },
+  // { pathTo: "/archives", icon: <RiInboxArchiveFill />, navPath: "Archives" },
+  // { pathTo: "/resume", icon: <BsFileEarmarkPersonFill />, navPath: "Resume" },
 ];
 
 const avatars = [
