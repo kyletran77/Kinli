@@ -66,5 +66,5 @@ a#pdf:hover { background: #222; }
 #srt-ttab img.last { margin-top: 20px }
 
 /* --// override to force 1/8th width grids -- */
-.yui-gf .yui-u{width:40%;}
-.yui-gf div.first{width:40%;}
+.yui-gf .yui-u{width:120%;}
+.yui-gf div.first{width:120%;}
