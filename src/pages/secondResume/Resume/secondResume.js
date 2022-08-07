@@ -323,7 +323,7 @@ const Resume = forwardRef((props, ref) => {
 </head>
 <body>
 
-<div class="yui-t7">
+<div id="doc2" class="yui-t7">
 <div id="inner">
 
   <div id="hd">
