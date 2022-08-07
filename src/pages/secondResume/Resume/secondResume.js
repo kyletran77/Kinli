@@ -311,7 +311,7 @@ const Resume = forwardRef((props, ref) => {
       <div ref={containerRef} className={styles.container}>
       <head>
 
-<title>Jonathan Doe | Web Designer, Director | name@yourdomain.com</title>
+<title>John Doe</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
 <meta name="keywords" content="" />
@@ -323,14 +323,14 @@ const Resume = forwardRef((props, ref) => {
 </head>
 <body>
 
-<div id="doc2" class="yui-t7">
+<div id="" class="yui-t7">
 <div id="inner">
 
   <div id="hd">
     <div class="yui-gc">
     
       <div class="yui-u first">
-        <h1></h1>
+        <h1>{info?.basicInfo?.detail?.name}</h1>
         <h2></h2>
       </div>
 
@@ -349,8 +349,8 @@ const Resume = forwardRef((props, ref) => {
 
       <div class="yui-u">
         <div class="contact-info">
-          <h3><a id="pdf" href="#"></a></h3>
-          <h3><a href="mailto:name@yourdomain.com"></a></h3>
+          {/* <h3><a id="pdf" href="#"></a></h3> */}
+          {/* <h3><a href="mailto:name@yourdomain.com"></a></h3> */}
           <h3></h3>
         </div>
       </div>
