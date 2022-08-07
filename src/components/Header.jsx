@@ -24,7 +24,7 @@ export default function Header() {
   return (
     <div className="flex h-12 items-center justify-between bg-slate-100 p-3 font-semibold">
       <Link to="/" className="flex">
-        <img src={logo} alt="main-logo" className="aspect-ratio: 1/1" />
+        <img src={logo} alt="main-logo" className="aspect-square w-5 h-5" />
         <h1 className="text-xl text-gray-600">Kinli</h1>
       </Link>
       <div className="flex gap-4">
