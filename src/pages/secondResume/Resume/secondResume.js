@@ -32,8 +32,7 @@ const Resume = forwardRef((props, ref) => {
     summary: information[sections.summary],
     other: information[sections.other],
   };
-console.log(info.education);
-console.log(info.education.sections[0][2].company);
+
   const getFormattedDate = (value) => {
     if (!value) return "";
     const date = new Date(value);

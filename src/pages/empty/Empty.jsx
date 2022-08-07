@@ -1,4 +1,4 @@
-import error from "assets/jigsaw.png";
+import error from "assets/Kinli.png";
 
 export default function Empty() {
   return (
