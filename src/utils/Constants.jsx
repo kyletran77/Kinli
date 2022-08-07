@@ -14,7 +14,7 @@ import cover04 from "assets/cover_04.webp";
 
 export const navLinks = [
   { pathTo: "/", icon: <AiFillHome />, navPath: "Home" },
-  { pathTo: "/circles", icon: <BsFileEarmarkPersonFill />, navPath: "Circles" },
+ // { pathTo: "/circles", icon: <BsFileEarmarkPersonFill />, navPath: "Circles" },
   { pathTo: "/explore", icon: <AiFillCompass />, navPath: "Explore" },
   // { pathTo: "/bookmarks", icon: <BsFillBookmarkFill />, navPath: "Bookmarks" },
   // { pathTo: "/archives", icon: <RiInboxArchiveFill />, navPath: "Archives" },

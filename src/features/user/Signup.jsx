@@ -83,7 +83,7 @@ export default function Signup() {
           { merge: true }
         );
         localStorage.setItem("authToken", userAuth.user.accessToken);
-        toast.success(`Welcome to Jigsaw, ${name}!!`, { id: loader });
+        toast.success(`Welcome to Kinli, ${name}!!`, { id: loader });
         navigate("/");
       } catch (error) {
         console.log(error);

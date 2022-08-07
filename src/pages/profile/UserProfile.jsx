@@ -7,20 +7,29 @@ import EditProfileModal from "./EditProfileModal";
 import EditExperienceProfileModal from "./EditExperienceModal";
 import EditEducationProfileModal from "./EditEducationModal";
 import { Post, Entry, Exp } from "components/components";
+import { Body } from "pages/pages";
+
+
+
+
 
 
 export default function UserProfile() {
   const { user } = useSelector((state) => state.user);
   const { allPosts } = useSelector((state) => state.allPosts);
+
+
   //profile changes
   const [showModal, setShowModal] = useState(false);
   const [userData, setUserData] = useState([]);
+
+
   //Experience Changes
   const [showModalExp, setShowModalExp] = useState(false);
   const [showModalEdu, setShowModalEdu] = useState(false);
 
   const currentUser = auth?.currentUser;
-
+  
 
   const filteredPosts = allPosts?.filter(
     (post) => post.uid === currentUser?.uid
@@ -99,11 +108,26 @@ export default function UserProfile() {
         {userData.experience?.map((entries) => (
           (entries.company != "")?<Entry post={entries} key={userData?.userID} /> : ""
           ))}
+
+
+       
+
+
+          
         
     </div>
     </ul>
     {/* Education */}
     <ul className="mt-5 mb-16 md:mb-24">
+    
+
+
+
+
+
+    
+
+
 
 <div className="relative mx-0 mt-0 mb-0 flex h-fit w-full min-w-[20rem] max-w-[90%] flex-col rounded-lg bg-gray-50 p-4 shadow-md sm:w-3/4 md:mx-auto md:w-3/4 lg:w-full">
 <p className="text-lg font-semibold">Education</p>
@@ -118,6 +142,19 @@ export default function UserProfile() {
      ))}
    
 </div>
+
+{/* */}
+
+
+
+
+{ (userData.displayName != undefined) && (<Body  userData ={userData}/> ) }
+
+
+
+
+
+
 </ul>
 {/*       
       <section className="relative h-72 w-full">

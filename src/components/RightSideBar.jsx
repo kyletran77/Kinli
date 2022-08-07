@@ -18,7 +18,7 @@ export default function RightSideBar() {
   // };
 
   return (
-    <div className="mx-2 hidden h-[31rem] w-[30rem] bg-slate-100 p-4 sm:hidden md:hidden lg:block">
+    <div className="mx-2  h-[31rem] w-[30rem] bg-slate-100 p-4 lg:block">
       <div className="rightsidebar mx-auto flex h-full max-w-xs flex-col gap-2 overflow-y-auto rounded-md bg-gray-50 p-4 shadow-md lg:block">
         <h1>Circles</h1>
         <ul className="flex flex-col gap-3">

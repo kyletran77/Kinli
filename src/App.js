@@ -42,7 +42,7 @@ function App() {
         <div className="flex min-h-screen justify-between bg-slate-100">
           <Sidebar />
           <Router />
-          <RightSideBar />
+          {/*<RightSideBar /> */}
         </div>
       ) : (
         <Router />

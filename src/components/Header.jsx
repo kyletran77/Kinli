@@ -5,7 +5,7 @@ import { logout } from "features/user/userSlice";
 import { auth } from "../firebase/firebase";
 import { signOut } from "firebase/auth";
 import { defaultAvatar } from "utils/Constants";
-import logo from "assets/jigsaw.png";
+import logo from "assets/Kinli.png";
 
 export default function Header() {
   const { user } = useSelector((state) => state.user);

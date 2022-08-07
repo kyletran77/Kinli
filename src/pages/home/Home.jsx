@@ -1,7 +1,8 @@
-import { TextEditor, Post } from "components/components";
+import { TextEditor, Post, RightSideBar } from "components/components";
 import { Empty } from "pages/pages";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+
 
 export default function Home() {
   const { user } = useSelector((state) => state.user);
@@ -37,6 +38,7 @@ export default function Home() {
   return (
     <div className="flex w-full flex-col sm:mx-2 sm:gap-2 md:mx-2 md:gap-2">
       <TextEditor />
+      <RightSideBar />
       {posts?.length > 0 && (
         <select
           className="w-fit self-center rounded-md py-1 px-3 focus:outline focus:outline-2 focus:outline-blue-400"

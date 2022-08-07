@@ -19,7 +19,7 @@ export default function Login() {
   });
   
 
-  const testLogin = { email: "theHippogriff@gmail.com", password: "buckbeak" };
+  const testLogin = { email: "kinlitest@gmail.com", password: "password" };
   const { email, password } = loginDetails;
   const lastLocation = location.state?.from?.pathname || "/";
   
@@ -108,13 +108,13 @@ export default function Login() {
           >
             Login
           </button>
-          {/* <div
+          <div
             role="button"
             className="w-1/2 rounded-md border-2 bg-gray-200 py-1 px-4 text-center"
             onClick={(e) => testLoginHandler(e, testLogin)}
           >
             Test User
-          </div> */}
+          </div>
         </div>
         <p>
         <div>

@@ -13,6 +13,7 @@ import {
   getDoc,
   setDoc,
 } from "firebase/firestore";
+import { MdDoubleArrow } from "react-icons/md";
 
 const allPostsCollection = collection(db, "allPosts");
 const usersCollection = collection(db, "users");
@@ -429,6 +430,9 @@ export const getCircle = async (circle, setCircleData) => {
       circleBio: "",
       circleID: "",
       circleCreator: currentUser,
+      circleChallenges: "",
+     
+
     });
   
     await setDoc (
@@ -469,3 +473,29 @@ export const getCircle = async (circle, setCircleData) => {
   )
  // dispatch(updateDP(userData.avatar));
   };
+
+  
+export const joinCircle = async (currentUser, circleID) => {
+  try {
+    await setDoc(
+      doc(collection(db, "allCircles"), circleID?.circleID),
+      {
+        memberCount: arrayUnion(currentUser.uid),
+      },
+      { merge: true }
+    );
+    await setDoc(
+      doc(collection(db, "users"), currentUser?.uid),
+      {
+        joinedCircle: arrayUnion(circleID?.circleID),
+      },
+      { merge: true }
+    );
+    toast.success(`You are now following ${circleID.circleName}`);
+  } catch (error) {
+    toast.error(`Couldn't follow ${circleID.circleName}. Try again!`);
+    console.log(currentUser)
+    console.log(circleID)
+
+  }
+};

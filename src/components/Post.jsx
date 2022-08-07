@@ -37,6 +37,7 @@ export default function Post({ post }) {
     imageURL: post?.imageURL,
   });
 
+
   const editPostHandler = () => {
     editPost(post, updatePost);
     setEnableEdit(false);

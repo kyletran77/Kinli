@@ -1,4 +1,4 @@
-import error from "assets/jigsaw.png";
+import error from "assets/Kinli.png";
 import { Link } from "react-router-dom";
 
 export default function Error() {

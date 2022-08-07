@@ -12,6 +12,7 @@ import Signup from "features/user/Signup";
 import Resume from "./resume/Resume";
 import Circles from "./circles/Circles";
 
+import Body from "./newBuilder/builder/builder";
 
 export {
   Home,
@@ -26,5 +27,8 @@ export {
   Login,
   Signup,
   Resume,
-  Circles
+  Circles,
+  Body
+
+  
 };

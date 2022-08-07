@@ -20,7 +20,14 @@ export default function EditProfileModal({
     circleCreator: "",
     circleID: "",
     circleName: "",
-    circleChallenge: "",
+    circleChallenges: "",
+      memberCount: int,
+      diamondCount: int,
+      circleCoverPhoto: photoURL,
+      circleAvatar: photoURL
+    
+
+
   });
 
   const updateUserInfo = (e) => {
@@ -132,3 +139,17 @@ export default function EditProfileModal({
     </div>
   );
 }
+
+
+
+//Diamonds
+//number of Members 
+//Individual Member Diamonds
+
+//Challenges
+
+//Route Photo for profile picture (avatar) , cover photo, 
+
+
+
+

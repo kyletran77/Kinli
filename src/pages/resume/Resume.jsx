@@ -5,7 +5,7 @@ export default function Resume() {
   return (
     <div className="App">
       <h1>Resume Editor</h1>
-      <p>Build your resume here!📝</p>
+      <p>Build your resume here!</p>
       <Editor />
       <div className="other">
         
