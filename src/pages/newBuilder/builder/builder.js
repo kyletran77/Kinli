@@ -81,7 +81,7 @@ const Body = (userData) => {
     <div className={styles.container}>
       {/* <p className={styles.heading}>Resume Builder</p> */}
       <div className={styles.toolbar}>
-        <div className={styles.colors}>
+        {/* <div className={styles.colors}>
           {colors.map((item) => (
             <span
               key={item}
@@ -92,12 +92,12 @@ const Body = (userData) => {
               onClick={() => setActiveColor(item)}
             />
           ))}
-        </div>
+        </div> */}
         <ReactToPrint
           trigger={() => {
             return (
               <button>
-                Download <ArrowDown />
+                Download Resume<ArrowDown />
               </button>
             );
           }}
