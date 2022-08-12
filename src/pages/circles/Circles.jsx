@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { auth } from "../../firebase/firebase";
 import { joinCircle, getCircle, getUser } from "../../firebase/firebase-calls";
 //import EditProfileModal from "./EditProfileModal";
-import { Post } from "components/components";
+import { Post, OppTextEditor } from "components/components";
 import { current } from "@reduxjs/toolkit";
 
 
@@ -20,24 +20,23 @@ export default function Circles() {
   const currentUser = auth?.currentUser;
   const [circleData, setCircleData] = useState([]);
 
-
-
-  const filteredPosts = allPosts?.filter(
-    (post) => post.uid
-  );
-  
   useEffect(
     () => {
-       if (currentUser) getUser(currentUser, setUserData);
+       if (currentUser.length==0) getUser(currentUser, setUserData);
     },
     // eslint-disable-next-line
     [userData]
   );
 
-
+  
   useEffect(
     () => {
-       if (otherCircle) getCircle(otherCircle?.circleID, setCircleData);
+      if (circleData.length ==0){
+        getCircle(otherCircle?.circleID, setCircleData);
+        console.log("getting Circle");
+        console.log(circleData);
+        console.log("done");
+      }
     },
     // eslint-disable-next-line
     [circleData]
@@ -45,6 +44,7 @@ export default function Circles() {
 
   return (
     <div className="ml-0 w-full pt-4 sm:ml-0 md:ml-0 lg:ml-3">
+      <OppTextEditor CircleID={circleData?.circleID}/>
       <section className="relative h-72 w-full">
         {circleData.coverPic && (
           <img
@@ -96,9 +96,10 @@ export default function Circles() {
       
 
             <ul className=" mb-16 md:mb-2">
-        {filteredPosts?.map((post) => (
+        {/* {filteredPosts?.map((post) => (
           <Post post={post} key={post?.postID} />
-          ))}
+          ))} */}
+          {circleData?.Opportunities?.map((opp) => (<Post post={opp} key={opp?.circleID}/>))}
       </ul>
       {/*  Experience Section */}
       
