@@ -8,6 +8,7 @@ import TextEditor from "./TextEditor";
 import Entry from "./Entry"
 import Section from "./Section"
 import ExpImages from "./ExpImages"
+import Opportunities from "./Opportunities"
 
 export {
   Comment,
@@ -19,5 +20,7 @@ export {
   TextEditor,
   Entry,
   Section,
-  ExpImages
+  ExpImages,
+  Opportunities,
+  
 };
