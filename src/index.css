@@ -21,3 +21,41 @@ body::-webkit-scrollbar {
   background-color: #93c5fd;
   border-radius: 10px;
 }
+
+.btn {
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 5px solid red;
+  height: 200px;
+  width: 200px;
+  overflow: hidden
+}
+
+.btn:hover{
+  background-color: rgb(201, 196, 196);
+  border:0px
+}
+
+.circleCard{
+  aspect-ratio: 1;
+  height: 200px;
+  width: 175px;
+  border-radius: 10%;
+}
+
+.circleCard:hover{
+  background-color: rgb(201, 196, 196);
+}
+
+.success {
+  border-color: #04AA6D;
+  color: green;
+}
+
+.success:hover {
+  background-color: #04AA6D;
+  color: white;
+}
+

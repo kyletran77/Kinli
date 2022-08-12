@@ -35,6 +35,7 @@ export default function Sidebar() {
           Profile
         </p>
       </NavLink>
+      
     </div>
   );
 }

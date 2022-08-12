@@ -11,6 +11,7 @@ import Login from "features/user/Login";
 import Signup from "features/user/Signup";
 import Resume from "./resume/Resume";
 import Circles from "./circles/Circles";
+import CircleMainPage from "./circles/CircleMainPage";
 
 import Body from "./newBuilder/builder/builder";
 
@@ -28,6 +29,7 @@ export {
   Signup,
   Resume,
   Circles,
+  CircleMainPage,
   Body
 
   
