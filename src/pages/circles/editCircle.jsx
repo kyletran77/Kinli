@@ -5,6 +5,10 @@ import { useEffect, useState } from "react";
 import { profileUpdate, uploadImage } from "../../firebase/firebase-calls";
 import toast from "react-hot-toast";
 import { FiEdit3 } from "react-icons/fi";
+import { snapshotEqual } from "firebase/firestore";
+
+
+
 
 export default function EditProfileModal({
   setShowModal,
@@ -62,7 +66,11 @@ export default function EditProfileModal({
     // eslint-disable-next-line
   }, [userData]);
 
+
+
   return (
+    //Add optional for Different Posts
+    //Opportunities Part
     <div className="fixed top-1/2 right-1/2 w-80 min-w-[20rem] max-w-[90%] translate-x-1/2 -translate-y-1/2 sm:w-3/4 md:bottom-0 md:w-2/3 md:-translate-y-3/4 lg:w-1/2">
       <form
         className="flex h-fit flex-col rounded-md bg-slate-200 p-4"
