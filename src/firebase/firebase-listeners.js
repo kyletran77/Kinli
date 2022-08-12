@@ -77,20 +77,7 @@ const postsListener = (dispatch) => {
       dispatch(setAllPosts(allPostsList));
     });
     toast.dismiss(loader);
-  } catch (error) {
-    console.error(error.message);
-  }
-};
-//opportunities Listener
-const OpportunitiesListener = (dispatch) => {
-  try {
-    const loader = toast.loading("Loading..");
-    const q = query(collection(db, "allOpportunities"), orderBy("createdAt", "desc"));
-    onSnapshot(q, (snapshot) => {
-      const allPostsList = snapshot.docs.map((doc) => doc.data());
-      dispatch(setAllPosts(allPostsList));
-    });
-    toast.dismiss(loader);
+    console.log("Post Fetched");
   } catch (error) {
     console.error(error.message);
   }
