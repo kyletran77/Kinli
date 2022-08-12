@@ -51,26 +51,26 @@ export default function CircleMainPage() {
       <div className="ml-0 w-full pt-4 sm:ml-0 md:ml-0 lg:ml-3">
         <section>
 
+        {/* Horizontal story flex container*/} 
           <div class="flex flex-row relative container space-x-24 mx-auto p-6 overflow-hidden">
-            {/* Wrap in a Button */} 
-            <button className="btn"></button>
-
-            <div className="overflow-hidden">
-              
+            {/* Wrap button in a div to not conflict with flex */} 
+            <div className="space-y-12">
+                <button className="btn">
+                    <div className="">
+                        <img className="" src="http://localhost:3000/static/media/avatar_03.29ac6c4071291083beb4.webp" alt="not found" />
+                    </div>   
+                </button>    
+                <h3 className="text-bold">Kevin Tran</h3>     
             </div>
-            <button className="success">
-              <div className="mt-8 space-y-2">
-                <img className="h-100 w-100 rounded-full" src="http://localhost:3000/static/media/avatar_03.29ac6c4071291083beb4.webp" alt="not found" />
-                <div className="p text-bold">Johnny Dinh</div>
-              </div>   
-            </button>
 
-            <button className="btn">
-              <div className="mt-8 space-y-2">
-                <img className="h-100 w-100 rounded-full" src="http://localhost:3000/static/media/avatar_03.29ac6c4071291083beb4.webp" alt="not found" />
-                <div className="p text-bold">Johnny Dinh</div>
-              </div>   
-            </button>
+            <div className="space-y-12">
+                <button className="btn">
+                    <div className="">
+                        <img className="" src="http://localhost:3000/static/media/avatar_03.29ac6c4071291083beb4.webp" alt="not found" />
+                    </div>   
+                </button>    
+                <h3 className="text-bold">Kevin Tran</h3>     
+            </div>
 
 
             <div className="bg-orange-600 w-[100px] h-[100px] rounded-full"></div>
@@ -81,11 +81,6 @@ export default function CircleMainPage() {
             <div className="bg-yellow-500 w-[100px] h-[100px] rounded-full"></div>
             <div className="aspect-auto bg-red-700 w-[100[x] h-[100] rounded-full"></div>
           </div>
-
-        {/* Trying to make horizontal bar under /*}
-        <div className="mt-10">
-          <hr />
-        </div>
 
         {/* Flex container for Groups You May Like & Circles*/}
         <div className="flex flex-col mt-24 space-y-16 p-10">
