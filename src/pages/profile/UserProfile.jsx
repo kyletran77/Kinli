@@ -42,7 +42,8 @@ export default function UserProfile() {
 
   useEffect(
     () => {
-      if (currentUser) getUser(currentUser, setUserData);
+      if (userData.length == 0) getUser(currentUser, setUserData);
+      console.log("User Fetched!")
     },
     // eslint-disable-next-line
     [currentUser]

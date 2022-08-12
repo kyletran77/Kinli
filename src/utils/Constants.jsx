@@ -1,4 +1,4 @@
-import { AiFillHome, AiFillCompass } from "react-icons/ai";
+import { AiFillHome, AiFillCompass, AiOutlineRead, AiOutlineQuestionCircle  } from "react-icons/ai";
 import { RiInboxArchiveFill } from "react-icons/ri";
 import { BsFillBookmarkFill } from "react-icons/bs";
 import { BsFileEarmarkPersonFill } from "react-icons/bs";
@@ -12,10 +12,19 @@ import cover03 from "assets/cover_03.webp";
 import cover04 from "assets/cover_04.webp";
 
 
+export const circleNav = [
+  { pathTo: "/", icon: <AiFillHome />, navPath: "Circle Home" },
+  { pathTo: "/questionAnswer", icon: <AiOutlineQuestionCircle />, navPath: "Q & A" },
+  { pathTo: "/opportunities", icon: <AiOutlineRead />, navPath: "Opportunities" },
+
+];
+
 export const navLinks = [
   { pathTo: "/", icon: <AiFillHome />, navPath: "Home" },
  // { pathTo: "/circles", icon: <BsFileEarmarkPersonFill />, navPath: "Circles" },
   { pathTo: "/explore", icon: <AiFillCompass />, navPath: "Explore" },
+  { pathTo: "/circleMainPage", icon: <AiFillCompass />, navPath: "Circle Testing" },
+
   // { pathTo: "/bookmarks", icon: <BsFillBookmarkFill />, navPath: "Bookmarks" },
   // { pathTo: "/archives", icon: <RiInboxArchiveFill />, navPath: "Archives" },
   // { pathTo: "/resume", icon: <BsFileEarmarkPersonFill />, navPath: "Resume" },

@@ -11,7 +11,8 @@ import {
   Login,
   Signup,
   Resume,
-  Circles
+  Circles,
+  CircleMainPage
 } from "pages/pages";
 
 export default function Router() {
@@ -26,6 +27,7 @@ export default function Router() {
         <Route path="/archives" element={<Archives />} />
          <Route path="/resume" element={<Resume />} /> 
          <Route path="/circle" element={<Circles />} /> 
+         <Route path="/circleMainPage" element={<CircleMainPage />} /> 
          <Route path="/circle/:circleID" element={<Circles />} />
 
       </Route>

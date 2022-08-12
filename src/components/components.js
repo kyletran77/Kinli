@@ -8,6 +8,8 @@ import TextEditor from "./TextEditor";
 import Entry from "./Entry"
 import Section from "./Section"
 import ExpImages from "./ExpImages"
+import Opportunities from "./Opportunities"
+import OppTextEditor from "./OppTextEditor";
 
 export {
   Comment,
@@ -19,5 +21,8 @@ export {
   TextEditor,
   Entry,
   Section,
-  ExpImages
+  ExpImages,
+  Opportunities,
+  OppTextEditor,
+
 };

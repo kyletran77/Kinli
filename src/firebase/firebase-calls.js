@@ -499,3 +499,33 @@ export const joinCircle = async (currentUser, circleID) => {
 
   }
 };
+export const createOpportunities = async (user, Circle, post) => {
+  try {
+    const loader = toast.loading("Posting...");
+    await setDoc(
+      doc(collection(db, "allCircles"), Circle),
+      {
+        Opportunities: arrayUnion({
+          author: user.displayName,
+          uid: user.uid,
+          photoURL: user.photoURL,
+          caption: post.caption,
+          createdAt: new Date().toLocaleString(),
+          imageURL: post.imageURL,
+          company: post.company,
+          likes: [],
+          comments: [],
+          circleID: Circle
+        }),
+      },
+      { merge: true }
+    );
+
+    toast.success("Opportunities sent.", { id: loader });
+  } catch (error) {
+    toast.error("Opportunities not sent. Try again!");
+    console.log(error)
+  }
+};
+
+//Opportunities

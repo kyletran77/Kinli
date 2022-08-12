@@ -77,6 +77,7 @@ const postsListener = (dispatch) => {
       dispatch(setAllPosts(allPostsList));
     });
     toast.dismiss(loader);
+    console.log("Post Fetched");
   } catch (error) {
     console.error(error.message);
   }

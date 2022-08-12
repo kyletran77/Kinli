@@ -8,14 +8,14 @@ export default function RightSideBar() {
   const { user } = useSelector((state) => state.user);
   
 
-  // const handleFollow = (currentUser, otherUser) => {
-  //   const isFollowing = user?.following?.some(
-  //     (user) => user === otherUser?.userID
-  //   );
-  //   isFollowing
-  //     ? unfollowUser(currentUser, otherUser)
-  //     : followUser(currentUser, otherUser);
-  // };
+  const handleFollow = (currentUser, otherUser) => {
+    const isFollowing = user?.following?.some(
+      (user) => user === otherUser?.userID
+    );
+    isFollowing
+      ? unfollowUser(currentUser, otherUser)
+      : followUser(currentUser, otherUser);
+  };
 
   return (
     <div className="mx-2  h-[31rem] w-[30rem] bg-slate-100 p-4 lg:block">
