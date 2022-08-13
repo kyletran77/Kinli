@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@bumaga/tabs": "^0.2.0",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@lexical/react": "0.3.8",
