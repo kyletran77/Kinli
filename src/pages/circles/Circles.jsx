@@ -6,7 +6,7 @@ import { auth } from "../../firebase/firebase";
 import { joinCircle, getCircle, getUser } from "../../firebase/firebase-calls";
 //import EditProfileModal from "./EditProfileModal";
 import { Post, OppTextEditor, QuestionTextEditor } from "components/components";
-import { current } from "@reduxjs/toolkit";
+import { Tabs, Tab, Panel } from '@bumaga/tabs' 
 
 
 export default function Circles() {
@@ -50,31 +50,62 @@ export default function Circles() {
 // --Render Components --
 //Opportunities
 const renderOpp=() =>  {
-  setOpp(true)
-  setQA(false)
-  setHome(false)
+  setOpp(true);
+  setQA(false);
+  setHome(false);
+  console.log("Opportunities pressed")
 
 }
 
 //Question and Answer
   const renderQA=() =>  {
-    setOpp(false)
-    setQA(true)
-    setHome(false)
+    setOpp(false);
+    setQA(true);
+    setHome(false);
+    console.log("QA pressed");
+
 }
 //Home
 const renderHome=() =>  {
-  setOpp(false)
-  setQA(false)
-  setHome(true)
+  setOpp(false);
+  setQA(false);
+  setHome(true);
+  console.log("Home pressed");
+
 }
+
+
 
 
   return (
     <div className="ml-0 w-full pt-4 sm:ml-0 md:ml-0 lg:ml-3">
-      {/* <OppTextEditor CircleID={circleData?.circleID}/>*/ } 
-      <QuestionTextEditor CircleID={circleData?.circleID}/>
-      <section className="relative h-72 w-full">
+        <div className="relative justify-center items-center mx-auto mt-2 flex  w-full min-w-[20rem] max-w-[90%] flex-row rounded-lg bg-gray-50 p-4 shadow-md sm:w-3/4 md:mx-auto md:w-3/4 lg:w-full">
+        <button
+            className="flex mx-5 rounded-full border-none bg-slate-100 p-1.5 text-2xl text-gray-600 shadow-md hover:cursor-pointer hover:brightness-95 "
+            onClick = {renderHome} >
+            Home
+          </button>
+      { /* Opportunities Button */}
+      <button
+            className="flex mx-5 rounded-full border-none bg-slate-100 p-1.5 text-2xl text-gray-600 shadow-md hover:cursor-pointer hover:brightness-95 "
+            onClick = {renderOpp }>
+            Opportunities
+          </button>
+
+          { /* Q&A Button */}
+          <button
+            className="flex mx-5 rounded-full border-none bg-slate-100 p-1.5 text-2xl text-gray-600 shadow-md hover:cursor-pointer hover:brightness-95 "
+            onClick = {renderQA }>
+          Q and A
+          </button>
+
+        
+          
+
+      </div>
+      {showOpp && <OppTextEditor CircleID={circleData?.circleID}/> }
+      {showQA && <QuestionTextEditor CircleID={circleData?.circleID}/>}
+      <section className="relative h-40 w-full">
      
         {circleData.coverPic && (
           <img
@@ -91,59 +122,10 @@ const renderHome=() =>  {
             onClick = {() => joinCircle (currentUser, circleData)  } //Follow Button for Circles
               
           >
-            <FiEdit3 />
-            
+          Join            
           </button>
 
-          { /* Opportunities Button */}
-          <button
-            className="absolute left-4 rounded-full border-none bg-slate-100 p-1.5 text-2xl text-gray-600 shadow-md hover:cursor-pointer hover:brightness-95 "
-            onClick = {() => renderOpp } //Follow Button for Circles
-              //Logic for Opportunities Button
-              //Once the Opportunities Button is pressed, we 
-            
-            
-            //Set 
-
-
-          >
-            <FiEdit3 />
-
-          </button>
-
-          { /* Q&A Button */}
-          <button
-            className="absolute -4 rounded-full border-none bg-slate-100 p-1.5 text-2xl text-gray-600 shadow-md hover:cursor-pointer hover:brightness-95 "
-            onClick = {() => renderQA } //Set to Question and Answer
-            //Set state of button to false
-             //Logic for Question and Answer
-             //Once the Q&A button is tapped, change state to false
-
-            //Stop Rendering Posts from Circle Page
-           
-            //Delete posts
-
-          >
-            <FiEdit3 />
-            
-          </button>
-
-
-
-          <button
-            className="absolute -4 rounded-full border-none bg-slate-100 p-1.5 text-2xl text-gray-600 shadow-md hover:cursor-pointer hover:brightness-95 "
-            onClick = {(state) => renderHome             
-            } //Home
-              //Set state of button to false
-             //--Logic for Home--
-             //Once the Home button is tapped, change state to true, allowing posts to show up.
-              //Delete posts
-
-          >
-            <FiEdit3 />
-            
-          </button>
-
+         
 
           <img
             src={user?.photoURL}
@@ -192,7 +174,9 @@ const renderHome=() =>  {
       {/*  Experience Section */}
       
         <ul className=" mb-16 md:mb-2">
-                {circleData?.Questions?.map((ques) => (<Post post={ques} key={ques?.circleID}/>))}
+                {showQA && circleData?.Questions?.map((ques) => (<Post post={ques} key={ques?.circleID}/>))}
+                {showOpp && circleData?.Opportunities?.map((ques) => (<Post post={ques} key={ques?.circleID}/>))}
+
         </ul>
 
       

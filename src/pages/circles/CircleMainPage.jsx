@@ -1,17 +1,10 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { FiEdit3 } from "react-icons/fi";
 import { useParams } from "react-router-dom";
 import { auth } from "../../firebase/firebase";
-import { joinCircle, getCircle, getUser } from "../../firebase/firebase-calls";
+import {getCircle, getUser } from "../../firebase/firebase-calls";
+import { Link } from "react-router-dom";
 //import EditProfileModal from "./EditProfileModal";
-import { Post } from "components/components";
-import { current } from "@reduxjs/toolkit";
-import { NavLink } from "react-router-dom";
-import { navLinks } from "utils/Constants";
-import { circleNav } from "utils/Constants";
-
-import { FaUserCircle } from "react-icons/fa";
 
 export default function CircleMainPage() {
   const { circleID } = useParams();
@@ -53,49 +46,31 @@ export default function CircleMainPage() {
 
         {/* Horizontal story flex container*/} 
           <div class="flex-row p-6 w-5/6 justify-center">
-            {/* Wrap button in a div to not conflict with flex 
-            <div className="space-y-12">
-                <button className="btn">
-                    <div className="">
-                        <img className="" src="http://localhost:3000/static/media/avatar_03.29ac6c4071291083beb4.webp" alt="not found" />
-                    </div>   
-                </button>    
-                <h3 className="text-bold">Kevin Tran</h3>     
-            </div>
+            <div className="flex flex-nowrap wrapper space-x-12 mx-24 w-full">
 
-            <div className="space-y-12">
-                <button className="btn">
-                    <div className="">
-                        <img className="" src="http://localhost:3000/static/media/avatar_03.29ac6c4071291083beb4.webp" alt="not found" />
-                    </div>   
-                </button>    
-                <h3 className="text-bold">Kevin Tran</h3>     
-            </div>
-            */} 
-          <div className="flex flex-nowrap wrapper space-x-12 w-full">
-            <div className="item">box-1</div>
-            <div className="item">box-2</div>
-            <div className="item">box-3</div>
-            <div className="item">box-4</div>
-            <div className="item">box-5</div>
-            <div className="item">box-6</div>
-            <div className="item">box-7</div>
-            <div className="item">box-7</div>
-            <div className="item">box-7</div>
-            <div className="item">box-7</div>
-            <div className="item">box-7</div>
-            <div className="item">box-7</div>
-            <div className="item">box-12</div>
-            <div className="item">box-12</div>
-          </div>
+            {/* iterate through circles in id list */}
+              {userData?.joinedCircle?.map((circles) => (
+                <Link className=""
+                  to={`/circle/${circles}`}>
+                    
+                    <div className="item">
+                    <img src={require("assets/cute-rabbit-with-duck-working-laptop-cartoon-illustration_56104-471.webp")} 
+                alt="" 
+                classname = "object-contain"/>
+                      {allCircles.filter((circle)=> circle.circleID === circles).circleName}
+</div>
+                </Link>
+              ))}
 
+
+            </div>
           </div>
         {/* End of Horizontal story flex container*/} 
 
 
         {/* Flex container for Groups You May Like & Circles*/}
         <div className="flex flex-col pt-12 space-y-16">
-          <h3 className="text-left text-red-500 font-bold">
+          <h3 className="text-left text-red-500 font-bold mx-24">
             Groups you may like...
           </h3>
 
@@ -103,38 +78,30 @@ export default function CircleMainPage() {
           <div className="flex flex-row items-center space-x-16 mx-24 p-8 content-center">
 
             {/* Button for circle suggestion*/}
-            <button className="button circleCard bg-gray-500 text-center">
-              <img src="http://localhost:3000/static/media/Kinli.0ed26425c18317df7836.png" alt="" />
-              <h5 className="font-bold mt-12">
-                Name
-              </h5>
-              <p className="text-justify mx-auto">
-                Diamond(s): 500
-                Industry: Finance
-              </p>
-            </button>
-
-            <div className="space-y-12">
-                <button className="button circleCard bg-gray-500 text-center">
-                <img src="http://localhost:3000/static/media/Kinli.0ed26425c18317df7836.png" alt="" />
+            {allCircles?.map((circles) => (
+              <Link className="button circleCard bg-gray-500 text-center"
+              to={`/circle/${circles?.circleID}`}
+              >
+                <img src={require("assets/cute-rabbit-with-duck-working-laptop-cartoon-illustration_56104-471.webp")} 
+                alt="" 
+                classname = "object-contain"/>
                 <h5 className="font-bold mt-12">
-                    Name
+                  {circles.circleName}
                 </h5>
-                <p className="text-justify mx-auto">
-                    Diamond(s): 500
-                    Industry: Finance
-                </p>
-                </button>
-                <h3 className="text-bold">Kevin Tran</h3>     
-            </div>
+              <p className="text-justify mx-auto">
+                Diamond(s): {circles.diamondCount}
+              </p>
+              <p className="text-justify mx-auto">
+              Industry: {circles.industry}
+              </p>
+
+              
+            </Link>
+            ))}
 
 
 
 
-            <div className="basis-1/5 bg-gray-500 w-[250px] h-[275px] rounded-lg hover:bg-gray-800"></div>
-            <div className="basis-1/5 bg-blue-500 w-[250px] h-[275px] rounded-lg hover:bg-blue-800"></div>
-            <div className="basis-1/5 bg-gray-500 w-[250px] h-[275px] rounded-lg hover:bg-gray-800"></div>
-            <div className="basis-1/5 bg-gray-500 w-[250px] h-[275px] rounded-lg hover:bg-gray-800"></div>
 
 
           </div>
