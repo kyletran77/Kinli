@@ -6,7 +6,6 @@ import { auth } from "../../firebase/firebase";
 import { joinCircle, getCircle, getUser } from "../../firebase/firebase-calls";
 //import EditProfileModal from "./EditProfileModal";
 import { Post, OppTextEditor, QuestionTextEditor } from "components/components";
-import { Tabs, Tab, Panel } from '@bumaga/tabs' 
 
 
 export default function Circles() {
