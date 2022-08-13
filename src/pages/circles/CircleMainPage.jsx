@@ -52,8 +52,8 @@ export default function CircleMainPage() {
         <section>
 
         {/* Horizontal story flex container*/} 
-          <div class="flex flex-row relative container space-x-24 mx-auto p-6 overflow-hidden">
-            {/* Wrap button in a div to not conflict with flex */} 
+          <div class="flex-row p-6 w-5/6 justify-center">
+            {/* Wrap button in a div to not conflict with flex 
             <div className="space-y-12">
                 <button className="btn">
                     <div className="">
@@ -71,27 +71,38 @@ export default function CircleMainPage() {
                 </button>    
                 <h3 className="text-bold">Kevin Tran</h3>     
             </div>
-
-
-            <div className="bg-orange-600 w-[100px] h-[100px] rounded-full"></div>
-            <div className="bg-blue-500 w-[100px] h-[100px] rounded-full"></div>
-            <div className="bg-green-400 w-[100px] h-[100px] rounded-full"></div>
-            <div className="bg-purple-300 w-[100px] h-[100px] rounded-full"></div>
-            <div className="bg-pink-400 w-[100px] h-[100px] rounded-full"></div>
-            <div className="bg-yellow-500 w-[100px] h-[100px] rounded-full"></div>
-            <div className="aspect-auto bg-red-700 w-[100[x] h-[100] rounded-full"></div>
+            */} 
+          <div className="flex flex-nowrap wrapper space-x-12 w-full">
+            <div className="item">box-1</div>
+            <div className="item">box-2</div>
+            <div className="item">box-3</div>
+            <div className="item">box-4</div>
+            <div className="item">box-5</div>
+            <div className="item">box-6</div>
+            <div className="item">box-7</div>
+            <div className="item">box-7</div>
+            <div className="item">box-7</div>
+            <div className="item">box-7</div>
+            <div className="item">box-7</div>
+            <div className="item">box-7</div>
+            <div className="item">box-12</div>
+            <div className="item">box-12</div>
           </div>
 
+          </div>
+        {/* End of Horizontal story flex container*/} 
+
+
         {/* Flex container for Groups You May Like & Circles*/}
-        <div className="flex flex-col mt-24 space-y-16 p-10">
+        <div className="flex flex-col pt-12 space-y-16">
           <h3 className="text-left text-red-500 font-bold">
             Groups you may like...
           </h3>
 
-        {/* Suggestions Container */}
+            {/* Suggestions Container */}
           <div className="flex flex-row items-center space-x-16 mx-24 p-8 content-center">
 
-            {/* Button for circcle suggestion*/}
+            {/* Button for circle suggestion*/}
             <button className="button circleCard bg-gray-500 text-center">
               <img src="http://localhost:3000/static/media/Kinli.0ed26425c18317df7836.png" alt="" />
               <h5 className="font-bold mt-12">
@@ -101,8 +112,25 @@ export default function CircleMainPage() {
                 Diamond(s): 500
                 Industry: Finance
               </p>
-              
             </button>
+
+            <div className="space-y-12">
+                <button className="button circleCard bg-gray-500 text-center">
+                <img src="http://localhost:3000/static/media/Kinli.0ed26425c18317df7836.png" alt="" />
+                <h5 className="font-bold mt-12">
+                    Name
+                </h5>
+                <p className="text-justify mx-auto">
+                    Diamond(s): 500
+                    Industry: Finance
+                </p>
+                </button>
+                <h3 className="text-bold">Kevin Tran</h3>     
+            </div>
+
+
+
+
             <div className="basis-1/5 bg-gray-500 w-[250px] h-[275px] rounded-lg hover:bg-gray-800"></div>
             <div className="basis-1/5 bg-blue-500 w-[250px] h-[275px] rounded-lg hover:bg-blue-800"></div>
             <div className="basis-1/5 bg-gray-500 w-[250px] h-[275px] rounded-lg hover:bg-gray-800"></div>

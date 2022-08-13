@@ -5,11 +5,14 @@ import RequiresAuth from "./RequiresAuth";
 import RightSideBar from "./RightSideBar";
 import Sidebar from "./Sidebar";
 import TextEditor from "./TextEditor";
-import Entry from "./Entry"
-import Section from "./Section"
-import ExpImages from "./ExpImages"
-import Opportunities from "./Opportunities"
+import Entry from "./Entry";
+import Section from "./Section";
+import ExpImages from "./ExpImages";
+import Opportunities from "./Opportunities";
 import OppTextEditor from "./OppTextEditor";
+import Questions from "./Questions";
+import QuestionTextEditor from "./QuestionTextEditor";
+
 
 export {
   Comment,
@@ -24,5 +27,6 @@ export {
   ExpImages,
   Opportunities,
   OppTextEditor,
-
+  Questions,
+  QuestionTextEditor
 };

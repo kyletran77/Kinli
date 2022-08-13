@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { auth } from "../../firebase/firebase";
 import { joinCircle, getCircle, getUser } from "../../firebase/firebase-calls";
 //import EditProfileModal from "./EditProfileModal";
-import { Post, OppTextEditor } from "components/components";
+import { Post, OppTextEditor, QuestionTextEditor } from "components/components";
 import { current } from "@reduxjs/toolkit";
 
 
@@ -72,7 +72,8 @@ const renderHome=() =>  {
 
   return (
     <div className="ml-0 w-full pt-4 sm:ml-0 md:ml-0 lg:ml-3">
-      <OppTextEditor CircleID={circleData?.circleID}/>
+      {/* <OppTextEditor CircleID={circleData?.circleID}/>*/ } 
+      <QuestionTextEditor CircleID={circleData?.circleID}/>
       <section className="relative h-72 w-full">
      
         {circleData.coverPic && (
@@ -178,19 +179,21 @@ const renderHome=() =>  {
         
             
       </div>
-          
-      
-            </ul>
-      
+          </ul>
 
+          {/* This is Kyle's way of iterating through opportunities 
             <ul className=" mb-16 md:mb-2">
-        {/* {filteredPosts?.map((post) => (
-          <Post post={post} key={post?.postID} />
-          ))} */}
-          {circleData?.Opportunities?.map((opp) => (<Post post={opp} key={opp?.circleID}/>))}
-      </ul>
+              {filteredPosts?.map((post) => (
+              <Post post={post} key={post?.postID} />
+              ))} *
+              {circleData?.Opportunities?.map((opp) => (<Post post={opp} key={opp?.circleID}/>))}
+            </ul>
+          /*}
       {/*  Experience Section */}
       
+        <ul className=" mb-16 md:mb-2">
+                {circleData?.Questions?.map((ques) => (<Post post={ques} key={ques?.circleID}/>))}
+        </ul>
 
       
       

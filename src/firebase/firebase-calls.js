@@ -529,3 +529,36 @@ export const createOpportunities = async (user, Circle, post) => {
 };
 
 //Opportunities
+
+
+
+// Create Q & A
+// use above as template
+export const createQuestion = async (user, Circle, post) => {
+  try {
+    const loader = toast.loading("Posting question...");
+    await setDoc(
+      doc(collection(db, "allCircles"), Circle),
+      {
+        Questions: arrayUnion({
+          author: user.displayName,
+          uid: user.uid,
+          photoURL: user.photoURL,
+          caption: post.caption,
+          createdAt: new Date().toLocaleString(),
+          imageURL: post.imageURL,
+          company: post.company,
+          likes: [],
+          comments: [],
+          circleID: Circle
+        }),
+      },
+      { merge: true }
+    );
+    toast.success("Created question!.", { id: loader });
+
+  } catch (error) {
+    toast.error("Could not create question. Try again!");
+    console.log(error)
+  }
+};

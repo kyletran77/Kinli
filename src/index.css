@@ -60,3 +60,30 @@ body::-webkit-scrollbar {
   color: white;
 }
 
+.wrapper{
+  max-height: 200px;
+  border: 0px solid black;
+  overflow-x: auto;
+  padding-bottom: 12px;
+}
+
+.wrapper .item{
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  padding: 4;
+  border: 1px solid blue;
+  height: 100px;
+  width: 100px;
+  background-color: transparent;
+}
+
+.wrapper::-webkit-scrollbar{
+  width: 1em;
+  background: #ddd;
+}
+
+.wrapper::-webkit-scrollbar-thumb{
+  background-color: #444;
+}
