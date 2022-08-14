@@ -42,68 +42,67 @@ export default function CircleMainPage() {
 
   return (
       <div className="ml-0 w-full pt-4 sm:ml-0 md:ml-0 lg:ml-3">
-        <section>
+        <section className="w-full h-full">
 
         {/* Horizontal story flex container*/} 
-          <div class="flex-row p-6 w-5/6 justify-center">
-            <div className="flex flex-nowrap wrapper space-x-12 mx-24 w-full">
+          <div class="flex-row justify-center mx-8 border-b-2 border-gray-200 h=1/4">
+            <div className="flex flex-nowrap wrapper space-x-12 w-full">
 
             {/* iterate through circles in id list */}
               {userData?.joinedCircle?.map((circles) => (
                 <Link className=""
                   to={`/circle/${circles}`}>
-                    
                     <div className="item">
                     <img src={require("assets/cute-rabbit-with-duck-working-laptop-cartoon-illustration_56104-471.webp")} 
-                alt="" 
-                classname = "object-contain"/>
+                      alt="" 
+                      classname = "object-contain"/>
                       {allCircles.filter((circle)=> circle.circleID === circles).circleName}
-</div>
+                    </div>
+                    <h5 className="pt-1 font-bold text-left">CircleName!</h5>
                 </Link>
               ))}
-
-
             </div>
           </div>
         {/* End of Horizontal story flex container*/} 
 
 
         {/* Flex container for Groups You May Like & Circles*/}
-        <div className="flex flex-col pt-12 space-y-16">
-          <h3 className="text-left text-red-500 font-bold mx-24">
-            Groups you may like...
-          </h3>
+        <div className="space-y-12 my-8 mx-8 rounded-lg h-3/5">
+          <div className="border-b-2 border-gray-200 mb-8 mt-24">
+            <h3 className="text-left w-full text-red-500 font-bold mx-auto">
+              Groups you may like...
+            </h3>
+          </div>
+
 
             {/* Suggestions Container */}
-          <div className="flex flex-row items-center space-x-16 mx-24 p-8 content-center">
+          <div className="flex-col md:flex-row md:flex w-full space-x-24 items-center rounded-lg" >
 
             {/* Button for circle suggestion*/}
             {allCircles?.map((circles) => (
-              <Link className="button circleCard bg-gray-500 text-center"
+              <Link className="button circleCard bg-red-200 content-justify text-justify rounded-lg"
               to={`/circle/${circles?.circleID}`}
               >
-                <img src={require("assets/cute-rabbit-with-duck-working-laptop-cartoon-illustration_56104-471.webp")} 
-                alt="" 
-                classname = "object-contain"/>
-                <h5 className="font-bold mt-12">
-                  {circles.circleName}
-                </h5>
-              <p className="text-justify mx-auto">
-                Diamond(s): {circles.diamondCount}
-              </p>
-              <p className="text-justify mx-auto">
-              Industry: {circles.industry}
-              </p>
+                {/* Each individual circle container */}
+                <div className="sm:text-sm">
+                  <div className="rounded-lg w-full h-full overflow-hidden">
+                    <img src={require("assets/cute-rabbit-with-duck-working-laptop-cartoon-illustration_56104-471.webp")} 
+                    alt="" 
+                    classname = "object-contain"/>
+                  </div>
 
-              
+                  <h5 className="pt-1 font-bold text-left">
+                    {circles.circleName}
+                  </h5>
+                  <p className="text-left mx-auto">
+                    Diamond(s): {circles.diamondCount}
+                  </p>
+                  <p className="text-text-left mx-auto">
+                  Industry: {circles.industry}
+                  </p>
+                </div>
             </Link>
             ))}
-
-
-
-
-
-
           </div>
         </div>
 

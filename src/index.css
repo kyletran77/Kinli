@@ -27,7 +27,7 @@ body::-webkit-scrollbar {
   display: grid;
   place-items: center;
   padding: 0;
-  border: 5px solid red;
+  border: 3px solid red;
   height: 100px;
   width: 100px;
   overflow: hidden;
@@ -41,9 +41,8 @@ body::-webkit-scrollbar {
 
 .circleCard{
   aspect-ratio: 1;
-  height: 200px;
-  width: 175px;
-  border-radius: 10%;
+  height: 15%;
+  width: 15%;
 }
 
 .circleCard:hover{
@@ -72,11 +71,20 @@ body::-webkit-scrollbar {
   border-radius: 50%;
   display: grid;
   place-items: center;
-  padding: 4;
-  border: 1px solid blue;
+  padding: 0;
+  border: 1px solid rgb(78, 78, 232);
   height: 100px;
   width: 100px;
   background-color: transparent;
+  object-fit:cover;
+  overflow:hidden;
+
+  
+}
+
+.item:hover{
+  background-color: #80808080;
+  border:0px
 }
 
 .wrapper::-webkit-scrollbar{

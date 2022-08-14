@@ -18,8 +18,8 @@ export default function RightSideBar() {
   };
 
   return (
-    <div className="mx-2  h-[31rem] w-[30rem] bg-slate-100 p-4 lg:block">
-      <div className="rightsidebar mx-auto flex h-full max-w-xs flex-col gap-2 overflow-y-auto rounded-md bg-gray-50 p-4 shadow-md lg:block">
+    <div className="mx-2 h-[31rem] w-[20rem] bg-slate-100 p-4 hidden md:block">
+      <div className="rightsidebar hidden md:flex mx-auto flex h-full max-w-xs flex-col gap-2 overflow-y-auto rounded-md bg-gray-50 p-4 shadow-md lg:block">
         <h1>Circles</h1>
         <ul className="flex flex-col gap-3">
           {allCircles.map((circle) => (
@@ -34,7 +34,7 @@ export default function RightSideBar() {
                 alt="user-dp"
                 className="aspect-square h-9 w-fit rounded-full object-cover"
               />
-              <div className="flex w-full items-center justify-between">
+              <div className="flex w-full items-center justify-between hover:bg-gray-200 rounded-lg">
                 <div>
                   <Link
                     to={`/circle/${circle?.circleID}`}

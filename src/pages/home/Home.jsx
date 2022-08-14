@@ -37,8 +37,11 @@ export default function Home() {
 
   return (
     <div className="flex w-full flex-col sm:mx-2 sm:gap-2 md:mx-2 md:gap-2">
-      <TextEditor />
-      <RightSideBar />
+      <div className="flex flex-row">
+        <RightSideBar />
+        <TextEditor />
+      </div>
+
       {posts?.length > 0 && (
         <select
           className="w-fit self-center rounded-md py-1 px-3 focus:outline focus:outline-2 focus:outline-blue-400"

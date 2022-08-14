@@ -1,4 +1,5 @@
 import { AiFillHome, AiFillCompass, AiOutlineRead, AiOutlineQuestionCircle  } from "react-icons/ai";
+import { HiUserGroup } from "react-icons/hi";
 import { RiInboxArchiveFill } from "react-icons/ri";
 import { BsFillBookmarkFill } from "react-icons/bs";
 import { BsFileEarmarkPersonFill } from "react-icons/bs";
@@ -23,7 +24,7 @@ export const navLinks = [
   { pathTo: "/", icon: <AiFillHome />, navPath: "Home" },
  // { pathTo: "/circles", icon: <BsFileEarmarkPersonFill />, navPath: "Circles" },
   { pathTo: "/explore", icon: <AiFillCompass />, navPath: "Explore" },
-  { pathTo: "/circleMainPage", icon: <AiFillCompass />, navPath: "Circle Testing" },
+  { pathTo: "/circleMainPage", icon: <HiUserGroup />, navPath: "Circles" },
 
   // { pathTo: "/bookmarks", icon: <BsFillBookmarkFill />, navPath: "Bookmarks" },
   // { pathTo: "/archives", icon: <RiInboxArchiveFill />, navPath: "Archives" },

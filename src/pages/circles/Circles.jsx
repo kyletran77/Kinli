@@ -104,7 +104,7 @@ const renderHome=() =>  {
       </div>
       {showOpp && <OppTextEditor CircleID={circleData?.circleID}/> }
       {showQA && <QuestionTextEditor CircleID={circleData?.circleID}/>}
-      <section className="relative h-40 w-full">
+      <section className="relative h-40 w-full mt-16">
      
         {circleData.coverPic && (
           <img
