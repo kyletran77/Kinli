@@ -25,6 +25,8 @@ export const navLinks = [
  // { pathTo: "/circles", icon: <BsFileEarmarkPersonFill />, navPath: "Circles" },
   { pathTo: "/explore", icon: <AiFillCompass />, navPath: "Explore" },
   { pathTo: "/circleMainPage", icon: <HiUserGroup />, navPath: "Circles" },
+  { pathTo: "/about", icon: <HiUserGroup />, navPath: "About Kinli" },
+
 
   // { pathTo: "/bookmarks", icon: <BsFillBookmarkFill />, navPath: "Bookmarks" },
   // { pathTo: "/archives", icon: <RiInboxArchiveFill />, navPath: "Archives" },

@@ -12,7 +12,8 @@ import {
   Signup,
   Resume,
   Circles,
-  CircleMainPage
+  CircleMainPage,
+  About
 } from "pages/pages";
 
 export default function Router() {
@@ -28,6 +29,7 @@ export default function Router() {
          <Route path="/resume" element={<Resume />} /> 
          <Route path="/circle" element={<Circles />} /> 
          <Route path="/circleMainPage" element={<CircleMainPage />} /> 
+         <Route path="/about" element={<About />} /> 
          <Route path="/circle/:circleID" element={<Circles />} />
 
       </Route>
