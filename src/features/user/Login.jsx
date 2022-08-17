@@ -5,6 +5,9 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { userLogin } from "../../firebase/firebase-calls";
 import { auth, provider} from "../../firebase/firebase"
 import { signInWithPopup } from "firebase/auth";
+import HeroHome from "../../pages/landing/partials/HeroHome"
+import FeaturesHome from "../../pages/landing/partials/Features"
+import Landing from "../../pages/landing/Landing" 
 // import { signInWithGoogle } from "../../firebase/firebase";
 
 
@@ -13,6 +16,10 @@ export default function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
+  const [showSignUp, setShowSignUp] = useState(false);
+
+
   const [loginDetails, setLoginDetails] = useState({
     email: "",
     password: "",
@@ -28,7 +35,10 @@ export default function Login() {
     const { name, value } = e.target;
     setLoginDetails((prev) => ({ ...prev, [name]: value }));
   };
-
+  const loginClick = (e) =>{
+    console.log("click");
+    setShowLogin(true);
+  }
   const loginHandler = (e) => {
     e.preventDefault();
     userLogin(email, password, dispatch, lastLocation, navigate);
@@ -64,12 +74,12 @@ export default function Login() {
 
 
   return (
-    <div className="flex h-[92vh] items-center justify-center bg-gray-200">
+    <div className="flex  items-center justify-center bg-yellow-100">
       {/* <center>
                 <button style={{"marginTop" : "200px"}} 
                 onClick={signin}>Sign In with Google</button>
             </center> */}
-      <form
+      {(showLogin) ? (<form
         className="flex h-96 w-80 flex-col items-center justify-center gap-4 rounded-md bg-slate-50 p-9 shadow-md sm:w-96"
         onSubmit={loginHandler}
       >
@@ -124,7 +134,20 @@ export default function Login() {
             Create Account
           </Link>
         </p>
-      </form>
+      </form>): (
+        <div className="flex flex-col min-h-screen overflow-hidden">
+        <main className="flex-grow">
+  
+          <HeroHome />
+          <FeaturesHome setShowLogin={loginClick}/>
+        </main>
+         <button type="button" class="text-white font-bold bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              onClick={()=>setShowLogin(true)}
+              >Login</button>
+  
+      </div>
+      )
+      }
     </div>
   );
 }

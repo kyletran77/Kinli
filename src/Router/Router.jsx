@@ -13,7 +13,7 @@ import {
   Resume,
   Circles,
   CircleMainPage,
-  About
+  About,
 } from "pages/pages";
 
 export default function Router() {
@@ -21,6 +21,7 @@ export default function Router() {
     <Routes>
       <Route element={<RequiresAuth />}>
         <Route path="/" element={<Home />} />
+
         <Route path="/explore" element={<Explore />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/profile/:profileID" element={<OtherProfile />} />

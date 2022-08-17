@@ -13,8 +13,8 @@ import Resume from "./resume/Resume";
 import Circles from "./circles/Circles";
 import CircleMainPage from "./circles/CircleMainPage";
 import About from "./about/About";
-
 import Body from "./newBuilder/builder/builder";
+
 
 export {
   Home,
@@ -32,5 +32,5 @@ export {
   Circles,
   CircleMainPage,
   Body,
-  About  
+  About,
 };
