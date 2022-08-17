@@ -1,8 +1,10 @@
-import { AiFillHome, AiFillCompass, AiOutlineRead, AiOutlineQuestionCircle  } from "react-icons/ai";
+import { AiFillHome, AiFillCompass, AiOutlineRead, AiOutlineQuestionCircle, AiFillBulb  } from "react-icons/ai";
 import { HiUserGroup } from "react-icons/hi";
 import { RiInboxArchiveFill } from "react-icons/ri";
 import { BsFillBookmarkFill } from "react-icons/bs";
 import { BsFileEarmarkPersonFill } from "react-icons/bs";
+import { FcAbout } from "react-icons/fc";
+
 import avatar01 from "assets/avatar_01.webp";
 import avatar02 from "assets/avatar_02.webp";
 import avatar03 from "assets/avatar_03.webp";
@@ -25,7 +27,7 @@ export const navLinks = [
  // { pathTo: "/circles", icon: <BsFileEarmarkPersonFill />, navPath: "Circles" },
   { pathTo: "/explore", icon: <AiFillCompass />, navPath: "Explore" },
   { pathTo: "/circleMainPage", icon: <HiUserGroup />, navPath: "Circles" },
-  { pathTo: "/about", icon: <HiUserGroup />, navPath: "About Kinli" },
+  { pathTo: "/about", icon: <FcAbout />, navPath: "About Kinli" },
 
 
   // { pathTo: "/bookmarks", icon: <BsFillBookmarkFill />, navPath: "Bookmarks" },
