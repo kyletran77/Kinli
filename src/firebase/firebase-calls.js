@@ -496,9 +496,29 @@ export const joinCircle = async (currentUser, circleID) => {
     toast.error(`Couldn't follow ${circleID.circleName}. Try again!`);
     console.log(currentUser)
     console.log(circleID)
-
   }
 };
+
+export const completeChallenge = async (currentUser, circleID) => {
+  try {
+    await setDoc(
+      doc(collection(db, "allCircles"), circleID?.circleID),
+      {
+        challenges: arrayUnion(currentUser?.uid),
+        diamondCount: circleID?.challenges.length*100,
+      },
+      { merge: true }
+    );
+    toast.success(`You have completed this challenge!`);
+  } catch (error) {
+    toast.error(`Couldn't complete challenge. Try again!`);
+    console.log(error)
+    console.log(currentUser)
+    console.log(circleID)
+  }
+};
+
+
 export const createOpportunities = async (user, Circle, post) => {
   try {
     const loader = toast.loading("Posting...");

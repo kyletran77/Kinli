@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { FiEdit3 } from "react-icons/fi";
 import { useParams } from "react-router-dom";
 import { auth } from "../../firebase/firebase";
-import { joinCircle, getCircle, getUser } from "../../firebase/firebase-calls";
+import { joinCircle, getCircle, completeChallenge, getUser } from "../../firebase/firebase-calls";
 //import EditProfileModal from "./EditProfileModal";
 import { Post, OppTextEditor, QuestionTextEditor } from "components/components";
 
@@ -141,16 +141,25 @@ const renderHome=() =>  {
           
           
           <p className="text-sm sm:text-base">{circleData?.diamondCount} 💎 </p>
+          {/* <p className="text-sm sm:text-base">{circleData?.challenges.length * 100} 💎 </p> */}
+
+
           
         </div>
           
           
       </section>
-       <ul className="mt-44 ">   
-      <div className="relative mx-auto mt-2 flex  w-full min-w-[20rem] max-w-[90%] flex-col rounded-lg bg-gray-50 p-4 shadow-md sm:w-3/4 md:mx-auto md:w-3/4 lg:w-full">
-      <p className="text-sm sm:text-base text-sky-400">CHALLENGE: {circleData?.circleChallenges} +10💎</p> 
+       <ul className="mt-44 ">
 
-            
+      {/* Challenges Container */}    
+      <div className="relative mx-auto mt-2 flex  w-full min-w-[20rem] max-w-[90%] flex-col rounded-lg bg-gray-50 p-4 shadow-md sm:w-3/4 md:mx-auto md:w-3/4 lg:w-full">
+        
+      <p className="text-sm sm:text-base text-sky-400">CHALLENGE: {circleData?.circleChallenges} +100 💎</p> 
+      <button className="absolute right-64 bg-green-200 rounded-full mbot-10 border-none text-xl text-gray-600 shadow-md hover:cursor-pointer hover:bg-green-100 "
+            onClick= {() => completeChallenge(currentUser, circleData) } //Complete Button for Circles    
+          >
+          Complete Challenge            
+          </button>      
       </div>
       <div className="relative mx-auto mt-2 flex  w-full min-w-[20rem] max-w-[90%] flex-col rounded-lg bg-gray-50 p-4 shadow-md sm:w-3/4 md:mx-auto md:w-3/4 lg:w-full">
       <p className="text-sm sm:text-base text-sky-400">Posts from {circleData?.circleName} Members</p> 
