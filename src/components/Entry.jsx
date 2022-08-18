@@ -30,7 +30,7 @@ export default function Entry({ post }) {
           />
 
           <div class=" flex flex-col text-left font-semibold"> 
-            <p classname = "text-lg">{post?.jobTitle}</p>
+            <p className = "text-lg">{post?.jobTitle}</p>
             <p className="text-sm sm:text-base font-semibold">{post?.company}</p>
             <p className="text-sm sm:text-base text-gray-500">{post?.workDates}</p>
             <p className="text-sm sm:text-base">{post?.description}</p>

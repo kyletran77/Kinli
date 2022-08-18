@@ -81,7 +81,7 @@ export default function Post({ post }) {
   };
 
   return (
-    <div className="relative mx-auto mt-2 mb-8 flex h-fit w-full min-w-[20rem] max-w-[90%] flex-col rounded-lg bg-gray-50 p-4 shadow-md sm:w-3/4 md:mx-auto md:w-3/4 lg:w-full">
+    <div className="sm:text-s text-l relative mx-auto mt-2 mb-8 flex h-fit w-full min-w-[20rem] max-w-[90%] flex-col rounded-lg bg-gray-50 p-4 shadow-md sm:w-3/4 md:mx-auto md:w-3/4 lg:w-full">
       <Link to={`/profile/${post.uid}`}>
         <header className="flex items-center gap-2">
           <img

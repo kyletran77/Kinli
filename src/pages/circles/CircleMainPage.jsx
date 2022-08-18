@@ -45,7 +45,7 @@ export default function CircleMainPage() {
         <section className="w-full h-full">
 
         {/* Horizontal story flex container*/} 
-          <div class="flex-row justify-center mx-8 border-b-2 border-gray-200 h=1/4">
+          <div className="flex-row justify-center mx-8 border-b-2 border-gray-200 h=1/4">
             <div className="flex flex-nowrap wrapper space-x-12 w-full">
 
             {/* iterate through circles in id list */}
@@ -53,12 +53,12 @@ export default function CircleMainPage() {
                 <Link className=""
                   to={`/circle/${circles}`}>
                     <div className="item">
-                    <img src={require("assets/cute-rabbit-with-duck-working-laptop-cartoon-illustration_56104-471.webp")} 
-                      alt="" 
-                      classname = "object-contain"/>
-                      {allCircles.filter((circle)=> circle.circleID === circles).circleName}
+                      <img src={require("assets/cute-rabbit-with-duck-working-laptop-cartoon-illustration_56104-471.webp")} 
+                        alt="" 
+                        className = "object-contain"/>
                     </div>
-                    <h5 className="pt-1 font-bold text-left">CircleName!</h5>
+                    <h5 className="pt-1 font-bold text-center">{allCircles.find(circle => circle.circleID === circles).circleName}</h5>
+
                 </Link>
               ))}
             </div>
@@ -88,7 +88,7 @@ export default function CircleMainPage() {
                   <div className="rounded-lg w-full h-full overflow-hidden">
                     <img src={require("assets/cute-rabbit-with-duck-working-laptop-cartoon-illustration_56104-471.webp")} 
                     alt="" 
-                    classname = "object-contain"/>
+                    className = "object-contain"/>
                   </div>
 
                   <h5 className="pt-1 font-bold text-left">
