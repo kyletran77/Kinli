@@ -4,7 +4,6 @@ import Mailchimp from "react-mailchimp-form"
 
 import HeroImage from '../images/hero-image.png';
 import landing from "../images/landing.png";
-import Rec from "../../../components/Recomendation/index"
 import { SocialIcon } from 'react-social-icons';
 import SocialMediaButtons from 'react-social-media-buttons';
 
