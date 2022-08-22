@@ -95,7 +95,7 @@ export default function TextEditor() {
   };
   //problem with the text area/form only responsive on certain sizes
   return (
-    <div className="text-l mx-2 flex w-full md:w-1/2 flex-col gap-4 bg-gray-100 p-4">
+    <div className="text-s md:text-l mx-2 flex w-full md:w-1/2 flex-col gap-4 bg-gray-100 p-4">
       <form
         className="mx-auto w-full max-w-3xl bg-gray-50 shadow-md"
         onSubmit={(e) => submitHandler(e)}
@@ -145,14 +145,12 @@ export default function TextEditor() {
             </div>
            {/* DropDown Menu */}
            <select onChange={TagClick}> 
-        {/* Creating the default / starting option for our 
-          dropdown.
-         */}
-      <option value="⬇️ Select an Experience to Tag ⬇️"> -- Select an Experience to Tag -- </option>
-      {userData?.allExp?.map((exp) => (exp.company != "")?<option key={exp.company} value={exp.company}>{exp.company}</option>: "")}
+            {/* Creating the default / starting option for our dropdown.    */}
+            <option value="⬇️ Select an Experience to Tag ⬇️"> -- Select an Experience to Tag -- </option>
+            {userData?.allExp?.map((exp) => (exp.company != "")?<option key={exp.company} value={exp.company}>{exp.company}</option>: "")}
 
 
-    </select>
+            </select>
            {/* <DropdownList
             dataKey="company"
             textField="company"
