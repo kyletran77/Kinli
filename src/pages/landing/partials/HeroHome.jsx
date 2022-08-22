@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
 import Modal from '../utils/Modal';
+import Mailchimp from "react-mailchimp-form"
 
 import HeroImage from '../images/hero-image.png';
 import landing from "../images/landing.png";
+import Rec from "../../../components/Recomendation/index"
+import { SocialIcon } from 'react-social-icons';
+import SocialMediaButtons from 'react-social-media-buttons';
+
+
 
 function HeroHome({setShowLogin}) {
 
   const [videoModalOpen, setVideoModalOpen] = useState(false);
+  const url = "https://gmail.us5.list-manage.com/subscribe/post?u=f0e76fea54c485e0d8c9b1bce&amp;id=bf9de081e9&amp;f_id=007adee6f0"
+
 
   return (
     <section className="relative">
@@ -31,13 +39,13 @@ function HeroHome({setShowLogin}) {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
         {/* Hero content */}
-        <div className="pt-32 pb-12 md:pt-40 md:pb-20">
+        <div className="pt-10 pb-12 md:pt-40 md:pb-20">
 
           {/* Section header */}
           <div className="text-center">
             <h1 className="text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-4" data-aos="zoom-y-out">Never be<span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400"> alone</span></h1>
             <div className="max-w-3xl mx-auto">
-              <p className="text-xl text-gray-600 mb-8 font-bold" data-aos="zoom-y-out" data-aos-delay="150">Build your professional profile through team challenges and work together as a CIRCLE to be number #1​.</p>
+              <p className="text-xl text-gray-600 font-bold" data-aos="zoom-y-out" data-aos-delay="150">Build your professional profile like LinkedIn, but network through groups better than LinkedIn​.</p>
               <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center" data-aos="zoom-y-out" data-aos-delay="300">
                
                 {/* <button className="flex text-white bg-blue-600 hover:bg-blue-700 mb-4 sm:w-auto sm:mb-0" onClick={(e) => { e.preventDefault(); e.stopPropagation(); setVideoModalOpen(true); }} aria-controls="modal">
@@ -47,6 +55,41 @@ function HeroHome({setShowLogin}) {
               {/* <button type="button" class="text-white font-bold bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
               onClick={(prev)=>setShowLogin(prev)}
               >Login</button> */}
+              <div classname= "mt-10 flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
+              <Mailchimp 
+                action={url}
+                fields={[
+                  {
+                    name: 'EMAIL',
+                    placeholder: 'Email',
+                    type: 'email',
+                    required: true
+                  }
+                ]}
+                messages = {
+                  {
+                    sending: "Sending...",
+                    success: "Thank you for subscribing!",
+                    error: "An unexpected internal error has occurred.",
+                    empty: "Please enter an e-mail.",
+                    duplicate: "Too many subscribe attempts for this email address",
+                    button: "Join Us!"
+                  }
+                }
+                className = "mt-5 font-bold"
+                />
+              </div>
+              <div className='mt-5 flex-row ml-10'>
+              {/* <SocialIcon url="https://www.facebook.com/profile.php?id=100084942515997" />
+              <SocialIcon url="https://www.instagram.com/kinlicircles/" /> */}
+              <SocialMediaButtons
+                links={['https://www.facebook.com/profile.php?id=100084942515997','https://www.instagram.com/kinlicircles/','https://www.linkedin.com/company/joobie/']}
+                buttonStyle={{margin: '0px 5px', backgroundColor: '#cce7ff', borderRadius: '30%'}}
+                iconStyle={{color: '#134d8b'}}
+                openNewTab={true}
+              />
+              </div>
+
 
               </div>
             </div>
@@ -57,6 +100,9 @@ function HeroHome({setShowLogin}) {
             <div className="relative flex justify-center mb-8 mt-0" data-aos="zoom-y-out" data-aos-delay="450">
               <div className="flex flex-col justify-center">
                 <img className="mx-auto" src={landing} width="768" height="432" alt="Hero" />
+                {/* <Rec/>, document. */}
+              {/* (<Rec />, document.querySelector("#root")); */}
+
                 {/* <svg className="absolute inset-0 max-w-full mx-auto md:max-w-none h-auto" width="768" height="432" viewBox="0 0 768 432" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                   <defs>
                     <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="hero-ill-a">

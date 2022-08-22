@@ -22,7 +22,7 @@ function Landing({setShowLogin}) {
         <HeroHome />
         {/* <FeaturesHome setShowLogin={}/> */}
         {/* <FeaturesBlocks /> */}
-        {/* <Testimonials /> */}
+        <Testimonials />
         {/* <Newsletter /> */}
 
       </main>
