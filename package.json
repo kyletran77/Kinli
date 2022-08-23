@@ -14,7 +14,7 @@
     "emoji-picker-react": "^3.5.1",
     "firebase": "^9.8.1",
     "lexical": "0.3.8",
-    "react": "^18.1.0",
+    "react": "^14.1.0",
     "react-dom": "^18.1.0",
     "react-feather": "^2.0.9",
     "react-hot-toast": "^2.2.0",
