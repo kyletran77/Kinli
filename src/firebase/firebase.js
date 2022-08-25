@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
@@ -17,12 +18,13 @@ const firebaseConfig = {
   storageBucket: "jooby-b9791.appspot.com",
   messagingSenderId: "39659342369",
   appId: "1:39659342369:web:103c895c5b72cc17e47160",
-
+  measurementId: "G-0E37YXSR5C"
 
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage();

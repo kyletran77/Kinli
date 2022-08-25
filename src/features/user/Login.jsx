@@ -10,6 +10,7 @@ import FeaturesHome from "../../pages/landing/partials/Features"
 import Testimonials from "pages/landing/partials/Testimonials";
 import Landing from "../../pages/landing/Landing" 
 // import { signInWithGoogle } from "../../firebase/firebase";
+import { getAnalytics, logEvent } from "firebase/analytics";
 
 
 export default function Login() {
@@ -20,6 +21,9 @@ export default function Login() {
   const [showLogin, setShowLogin] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
 
+  const analytics = getAnalytics();
+  logEvent(analytics, 'visit_landing');
+  console.log("landed");
 
   const [loginDetails, setLoginDetails] = useState({
     email: "",
