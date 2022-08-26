@@ -27,6 +27,13 @@ export default function Header() {
         <img src={logo} alt="main-logo" className="aspect-square w-5 h-5" />
         <h1 className="text-xl text-gray-600">Kinli</h1>
       </Link>
+      <div className="bg-white md:m-0 md:flex flex flex-row justify-between items-center mt-2 mb-2 ml-0"><a
+          className="hover:text-gray-600 font-semibold text-base 
+          text-center text-gray-400 block cursor-pointer"  href="#">About Us</a><a
+          className="hover:text-gray-600 font-semibold text-base mr-6 ml-6 
+          text-center text-gray-400 block cursor-pointer"  href="#">The Team</a><a
+          className="hover:text-gray-600 font-semibold text-base 
+          text-center text-gray-400 block cursor-pointer"  href="#">Lead a Circle</a></div>
       <div className="flex gap-4">
         <Link to="/profile">
           <img

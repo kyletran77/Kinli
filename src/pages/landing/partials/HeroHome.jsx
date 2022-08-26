@@ -17,9 +17,9 @@ function HeroHome({setShowLogin}) {
 
   return (
     <section className="relative">
-
-      {/* Illustration behind hero content */}
-      <div className="absolute left-1/2 transform -translate-x-1/2 bottom-0 pointer-events-none" aria-hidden="true">
+      <div className="flex h-1/2 justify-center items-center mr-auto ml-auto flex-wrap container">
+    <div className="flex w-full h-full justify-center items-center pr-4 pl-4 md:w-1/2 md:mb-0">
+    <div className="absolute left-1/2 transform -translate-x-1/2 bottom-0 pointer-events-none" aria-hidden="true">
         <svg width="1360" height="578" viewBox="0 0 1360 578" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="illustration-01">
@@ -30,7 +30,7 @@ function HeroHome({setShowLogin}) {
           </defs>
           <g fill="url(#illustration-01)" fillRule="evenodd">
             <circle cx="1232" cy="128" r="128" />
-            <circle cx="155" cy="443" r="64" />
+            <circle cx="650" cy="443" r="64" />
           </g>
         </svg>
       </div>
@@ -39,24 +39,25 @@ function HeroHome({setShowLogin}) {
 
         {/* Hero content */}
         <div className="pt-10 pb-12 md:pt-40 md:pb-20">
-
+          {/* Cool Colors */}
+        <div class="absolute opacity-70 -inset-px rounded-xl blur-xl group-hover:opacity-100
+                    group-hover:-inset-1 duration-200 bg-gradient-to-r from-yellow-400 via-pink-500 to-blue-400"></div>
           {/* Section header */}
           <div className="text-center">
-            <h1 className="text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-4" data-aos="zoom-y-out">Never be<span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400"> alone</span></h1>
+            <h1 className="text-8xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-4 z-40" data-aos="zoom-y-out">Never be<span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400"> alone</span></h1>
             <div className="w-full mx-auto">
-              <p className="p-8 text-xl text-center text-gray-600 font-bold" data-aos="zoom-y-out" data-aos-delay="150">Build your professional profile 
-              like LinkedIn, but network through groups better than LinkedIn​.</p>
+              <p className="p-8 text-xl text-center text-gray-600 font-bold z-0" data-aos="zoom-y-out" data-aos-delay="150">Further your career in close circles on Kinli, not on LinkedIn
+              </p>
               <div className="mx-16 flex flex-col sm:flex-row sm:max-w-none sm:flex sm:justify-center" data-aos="zoom-y-out" data-aos-delay="300">
                
-                {/* <button className="flex text-white bg-blue-600 hover:bg-blue-700 mb-4 sm:w-auto sm:mb-0" onClick={(e) => { e.preventDefault(); e.stopPropagation(); setVideoModalOpen(true); }} aria-controls="modal">
-              
-                <span className="ml-3">Try us out!</span>
-              </button> */}
-              {/* <button type="button" class="text-white font-bold bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-              onClick={(prev)=>setShowLogin(prev)}
-              >Login</button> */}
               <div classname= "mt-10 flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0">
-              <Mailchimp 
+              
+                <a class="inline-flex font-bold text-base items-center justify-center bg-gray-900 text-white
+                    border-transparent mx-1.5 px-8 py-3 false relative z-10 leading-7 transition-all border duration-200
+                    rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 hover:bg-gray-600
+                    focus:ring-offset-[#FFE942] cursor-pointer mt-4">Sign Up</a>
+
+              {/* <Mailchimp 
                 action={url}
                 fields={[
                   {
@@ -77,7 +78,7 @@ function HeroHome({setShowLogin}) {
                   }
                 }
                 className = "mt-5 mx-auto space-y-4 text-center font-bold"
-                />
+                /> */}
               </div>
               <ul className='w-full justify-center flex sm:w-1/2 mt-4 flex-row ml-0 sm:ml-10 space-x-10'>
               {/* <SocialIcon url="https://www.facebook.com/profile.php?id=100084942515997" />
@@ -96,53 +97,24 @@ function HeroHome({setShowLogin}) {
           </div>
 
           {/* Hero image */}
-          <div>
-            <div className="relative flex justify-center mb-8 mt-0" data-aos="zoom-y-out" data-aos-delay="450">
-              <div className="flex flex-col justify-center">
-                <img className="mx-auto" src={landing} width="768" height="432" alt="Hero" />
-                {/* <Rec/>, document. */}
-              {/* (<Rec />, document.querySelector("#root")); */}
-
-                {/* <svg className="absolute inset-0 max-w-full mx-auto md:max-w-none h-auto" width="768" height="432" viewBox="0 0 768 432" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-                  <defs>
-                    <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="hero-ill-a">
-                      <stop stopColor="#FFF" offset="0%" />
-                      <stop stopColor="#EAEAEA" offset="77.402%" />
-                      <stop stopColor="#DFDFDF" offset="100%" />
-                    </linearGradient>
-                    <linearGradient x1="50%" y1="0%" x2="50%" y2="99.24%" id="hero-ill-b">
-                      <stop stopColor="#FFF" offset="0%" />
-                      <stop stopColor="#EAEAEA" offset="48.57%" />
-                      <stop stopColor="#DFDFDF" stopOpacity="0" offset="100%" />
-                    </linearGradient>
-                    <radialGradient cx="21.152%" cy="86.063%" fx="21.152%" fy="86.063%" r="79.941%" id="hero-ill-e">
-                      <stop stopColor="#4FD1C5" offset="0%" />
-                      <stop stopColor="#81E6D9" offset="25.871%" />
-                      <stop stopColor="#338CF5" offset="100%" />
-                    </radialGradient>
-                    <circle id="hero-ill-d" cx="384" cy="216" r="64" />
-                  </defs>
-                  <g fill="none" fillRule="evenodd">
-                    <circle fillOpacity=".04" fill="url(#hero-ill-a)" cx="384" cy="216" r="128" />
-                    <circle fillOpacity=".16" fill="url(#hero-ill-b)" cx="384" cy="216" r="96" />
-                    <g fillRule="nonzero">
-                      <use fill="#000" xlinkHref="#hero-ill-d" />
-                      <use fill="url(#hero-ill-e)" xlinkHref="#hero-ill-d" />
-                    </g>
-                  </g>
-                </svg> */}
-              </div>
-              
-            </div>
-
-            {/* Modal */}
-            
-
-          </div>
-
+         
         </div>
 
       </div>
+    </div>
+    <div className="flex w-full h-full justify-center items-center pr-4 pl-4 md:w-1/2 md:mb-0">
+      <div>
+              <div className="relative flex justify-center mb-8 mt-0" data-aos="zoom-y-out" data-aos-delay="450">
+                <div className="flex flex-col justify-center">
+                  <img className="mx-auto" src={landing} width="768" height="432" alt="Hero" />
+                </div>
+              </div>
+            </div>
+
+      </div>
+  </div>
+      {/* Illustration behind hero content */}
+      
     </section>
   );
 }

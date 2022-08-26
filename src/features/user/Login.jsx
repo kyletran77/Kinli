@@ -8,7 +8,8 @@ import { signInWithPopup } from "firebase/auth";
 import HeroHome from "../../pages/landing/partials/HeroHome"
 import FeaturesHome from "../../pages/landing/partials/Features"
 import Testimonials from "pages/landing/partials/Testimonials";
-import Landing from "../../pages/landing/Landing" 
+import CircleFeatures from "pages/landing/partials/CircleFeatures";
+import Footer from "pages/landing/partials/Footer";
 // import { signInWithGoogle } from "../../firebase/firebase";
 import { getAnalytics, logEvent } from "firebase/analytics";
 
@@ -141,21 +142,23 @@ export default function Login() {
         </p>
       </form>): (
         <div className="flex flex-col overflow-hidden w-full">
-        <main className="flex-grow">
-  
-          <HeroHome />
-          <FeaturesHome setShowLogin={loginClick}/>
-          <Testimonials/>
-        </main>
-        <div className="w-full mb-8">
+          <main className="flex-grow">
+            <HeroHome />
+            <CircleFeatures/>
+            <Footer/>
+            {/* <FeaturesHome setShowLogin={loginClick}/> */}
+            {/* <Testimonials/> */}
+          </main>
+        {/* <div className="w-full mb-8">
           <button type="button" class="mx-12 w-5/6 sm:w-1/6 text-white text-center font-bold bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                 onClick={()=>setShowLogin(true)}
                 >Login
           </button>
-        </div>
-
+        </div> */}
   
       </div>
+      
+
       )
       }
     </div>
