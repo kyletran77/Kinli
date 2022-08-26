@@ -46,7 +46,7 @@ function HeroHome({setShowLogin}) {
             <div className="w-full mx-auto">
               <p className="p-8 text-xl text-center text-gray-600 font-bold" data-aos="zoom-y-out" data-aos-delay="150">Build your professional profile 
               like LinkedIn, but network through groups better than LinkedIn​.</p>
-              <div className="mx-16 flex sm:max-w-none sm:flex sm:justify-center" data-aos="zoom-y-out" data-aos-delay="300">
+              <div className="mx-16 flex flex-col sm:flex-row sm:max-w-none sm:flex sm:justify-center" data-aos="zoom-y-out" data-aos-delay="300">
                
                 {/* <button className="flex text-white bg-blue-600 hover:bg-blue-700 mb-4 sm:w-auto sm:mb-0" onClick={(e) => { e.preventDefault(); e.stopPropagation(); setVideoModalOpen(true); }} aria-controls="modal">
               
@@ -76,10 +76,10 @@ function HeroHome({setShowLogin}) {
                     button: "Join Us!"
                   }
                 }
-                className = "mt-5 space-y-4 text-left font-bold"
+                className = "mt-5 mx-auto space-y-4 text-center font-bold"
                 />
               </div>
-              <ul className='w-full sm:w-1/2 mt-4 flex-row ml-0 sm:ml-10 space-x-10'>
+              <ul className='w-full justify-center flex sm:w-1/2 mt-4 flex-row ml-0 sm:ml-10 space-x-10'>
               {/* <SocialIcon url="https://www.facebook.com/profile.php?id=100084942515997" />
               <SocialIcon url="https://www.instagram.com/kinlicircles/" /> */}
               <SocialMediaButtons
