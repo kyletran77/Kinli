@@ -37,8 +37,8 @@ function Features() {
 
           {/* Section header */}
           <div className="max-w-3xl mx-auto  text-center pb-12 md:pb-16">
-            <h1 className="h2 mb-4 font-extrabold">Kinli's Goals</h1>
-            <p className="text-xl text-gray-600 font-semibold">Kinli is used to help individuals by bringing them into circles, where they can learn and grow with their career with team members. Be on the lookout for excellent job opportunities and knowledge!</p>
+            <h1 className="p-8 h2 mb-4 font-extrabold">Kinli's Goals</h1>
+            <p className="px-8 text-xl text-gray-600 font-semibold">Kinli is used to help individuals by bringing them into circles, where they can learn and grow with their career with team members. Be on the lookout for excellent job opportunities and knowledge!</p>
           </div>
 
           {/* Section content */}
@@ -48,7 +48,7 @@ function Features() {
             <div className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-7 lg:col-span-6 md:mt-6" data-aos="fade-right">
               <div className="md:pr-4 lg:pr-12 xl:pr-16 mb-8">
                 <h3 className="h3 mb-3 font-bold">What is a Circle?</h3>
-                <p className="text-xl font-medium text-gray-600">Circles are communities formed around a specific interest; Engineering, Business, Nursing, etc. The circle's main goal is engagement, support, and growth. </p>
+                <p className="px-4 text-xl font-medium text-gray-600">Circles are communities formed around a specific interest: engineering, business, etc. <br></br>The circle's main goal is engagement, support, and growth. </p>
               </div>
               {/* Tabs buttons */}
               <div className="mb-8 md:mb-0">
@@ -58,7 +58,7 @@ function Features() {
                   onClick={(e) => { e.preventDefault(); setTab(1); }}
                 >
                   <div>
-                    <div className="font-bold leading-snug tracking-tight mb-1">Team Challenges</div>
+                    <div className="texet-center font-bold leading-snug tracking-tight mb-1">Team Challenges</div>
                     <div className="text-gray-600">Complete challenges and collect diamonds for your Circle to be the top of the charts! Improve your portfolio and have fun as team!</div>
                   </div>
                   <div className="flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">

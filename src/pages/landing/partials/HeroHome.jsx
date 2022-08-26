@@ -43,9 +43,10 @@ function HeroHome({setShowLogin}) {
           {/* Section header */}
           <div className="text-center">
             <h1 className="text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-4" data-aos="zoom-y-out">Never be<span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400"> alone</span></h1>
-            <div className="max-w-3xl mx-auto">
-              <p className="text-xl text-gray-600 font-bold" data-aos="zoom-y-out" data-aos-delay="150">Build your professional profile like LinkedIn, but network through groups better than LinkedIn​.</p>
-              <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center" data-aos="zoom-y-out" data-aos-delay="300">
+            <div className="w-full mx-auto">
+              <p className="p-8 text-xl text-center text-gray-600 font-bold" data-aos="zoom-y-out" data-aos-delay="150">Build your professional profile 
+              like LinkedIn, but network through groups better than LinkedIn​.</p>
+              <div className="mx-16 flex sm:max-w-none sm:flex sm:justify-center" data-aos="zoom-y-out" data-aos-delay="300">
                
                 {/* <button className="flex text-white bg-blue-600 hover:bg-blue-700 mb-4 sm:w-auto sm:mb-0" onClick={(e) => { e.preventDefault(); e.stopPropagation(); setVideoModalOpen(true); }} aria-controls="modal">
               
@@ -54,7 +55,7 @@ function HeroHome({setShowLogin}) {
               {/* <button type="button" class="text-white font-bold bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
               onClick={(prev)=>setShowLogin(prev)}
               >Login</button> */}
-              <div classname= "mt-10 flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0 ml-3">
+              <div classname= "mt-10 flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0">
               <Mailchimp 
                 action={url}
                 fields={[
@@ -75,19 +76,19 @@ function HeroHome({setShowLogin}) {
                     button: "Join Us!"
                   }
                 }
-                className = "mt-5 font-bold"
+                className = "mt-5 space-y-4 text-left font-bold"
                 />
               </div>
-              <div className='mt-5 flex-row ml-10'>
+              <ul className='w-full sm:w-1/2 mt-4 flex-row ml-0 sm:ml-10 space-x-10'>
               {/* <SocialIcon url="https://www.facebook.com/profile.php?id=100084942515997" />
               <SocialIcon url="https://www.instagram.com/kinlicircles/" /> */}
               <SocialMediaButtons
                 links={['https://www.facebook.com/profile.php?id=100084942515997','https://www.instagram.com/kinlicircles/','https://www.linkedin.com/company/joobie/']}
-                buttonStyle={{margin: '0px 5px', backgroundColor: '#cce7ff', borderRadius: '30%'}}
+                buttonStyle={{margin: '0px 0.25em', backgroundColor: '#cce7ff', borderRadius: '30%'}}
                 iconStyle={{color: '#134d8b'}}
                 openNewTab={true}
               />
-              </div>
+              </ul>
 
 
               </div>
