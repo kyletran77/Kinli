@@ -6,10 +6,10 @@ function Footer() {
     <footer>
      <div className="bg-white w-full mx-auto pt-16 pb-16 ">
   <nav className="w-full bg-top bg-cover">
-    <div className="max-w-screen-2xl md:flex-row flex w-full justify-between mt-auto mr-auto mb-auto ml-auto">
-      <div className="flex flex-row justify-center items-center"><a className="flex font-bold text-xl items-center
-          text-grey-800 false tracking-wide no-underline hover:no-underline cursor-pointer mx-auto ml-10">Kinli</a></div>
-      <div className="bg-white md:m-0 md:flex flex flex-row justify-between items-center mt-2 mb-2 ml-0"><a
+    <div className="max-w-screen-2xl flex-col md:flex-row flex w-full justify-between mt-auto mr-auto mb-auto ml-auto">
+      <div className="flex flex-row justify-center items-center mx-4 sm:mx-0"><a className="flex font-bold text-xl items-center
+          text-grey-800 false tracking-wide no-underline hover:no-underline cursor-pointer mx-auto sm:ml-10">Kinli</a></div>
+      <div className="md:m-0 md:flex flex flex-row mx-4 justify-center items-center mt-4 mb-4 sm:mt-2 sm: mb-2 ml-0"><a
           className="hover:text-gray-600 font-semibold text-base 
           text-center text-gray-400 block cursor-pointer"  href="#">About Us</a><a
           className="hover:text-gray-600 font-semibold text-base mr-6 ml-6 

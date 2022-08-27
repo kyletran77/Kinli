@@ -22,18 +22,19 @@ export default function Header() {
   };
 
   return (
-    <div className="flex h-12 items-center justify-between bg-slate-100 p-3 font-semibold bg-white">
+    <div className="flex flex-col sm:flex-row h-12 items-center justify-between bg-slate-100 p-3 font-semibold bg-white">
       <Link to="/" className="flex">
         <img src={logo} alt="main-logo" className="aspect-square w-5 h-5" />
         <h1 className="text-xl text-gray-600">Kinli</h1>
       </Link>
-      <div className="bg-white md:m-0 md:flex flex flex-row justify-between items-center mt-2 mb-2 ml-0"><a
+      <div className="w-full sm:bg-white md:m-0 md:flex flex flex-row justify-center mt-4 sm:mt-2 mb-2 ml-0"><a
           className="hover:text-gray-600 font-semibold text-base 
           text-center text-gray-400 block cursor-pointer"  href="#">About Us</a><a
           className="hover:text-gray-600 font-semibold text-base mr-6 ml-6 
           text-center text-gray-400 block cursor-pointer"  href="#">The Team</a><a
           className="hover:text-gray-600 font-semibold text-base 
           text-center text-gray-400 block cursor-pointer"  href="#">Lead a Circle</a></div>
+      {/* 
       <div className="flex gap-4">
         <Link to="/profile">
           <img
@@ -56,6 +57,7 @@ export default function Header() {
           </Link>
         )}
       </div>
+      */}
     </div>
   );
 }
