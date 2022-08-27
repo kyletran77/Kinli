@@ -6,6 +6,7 @@ import HeroImage from '../images/hero-image.png';
 import landing from "../images/landing.png";
 import { SocialIcon } from 'react-social-icons';
 import SocialMediaButtons from 'react-social-media-buttons';
+import { getAnalytics, logEvent } from "firebase/analytics";
 
 
 
@@ -13,7 +14,12 @@ function HeroHome({setShowLogin}) {
 
   const [videoModalOpen, setVideoModalOpen] = useState(false);
   const url = "https://gmail.us5.list-manage.com/subscribe/post?u=f0e76fea54c485e0d8c9b1bce&amp;id=bf9de081e9&amp;f_id=007adee6f0"
-
+  
+  function recordLaunchSignup() {
+    const analytics = getAnalytics();
+    logEvent(analytics, 'launch_signup_button');
+    console.log("clicked launch signup");
+  }
 
   return (
     <section className="relative">
@@ -56,7 +62,8 @@ function HeroHome({setShowLogin}) {
                     border-transparent mx-1.5 px-8 py-3 false relative z-10 leading-7 transition-all border duration-200
                     rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 hover:bg-gray-600
                     focus:ring-offset-[#FFE942] cursor-pointer mt-4"
-                    href="/signup">Sign Up</a>
+                    href="/signup"
+                    onClick= { () => recordLaunchSignup()}>Sign Up</a>
 
               {/* <Mailchimp 
                 action={url}
