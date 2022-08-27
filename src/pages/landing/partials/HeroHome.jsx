@@ -52,10 +52,11 @@ function HeroHome({setShowLogin}) {
                
               <div classname= "mt-10 flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0">
               
-                <a class="inline-flex font-bold text-base items-center justify-center bg-gray-900 text-white
+                <a className="inline-flex font-bold text-base items-center justify-center bg-gray-900 text-white
                     border-transparent mx-1.5 px-8 py-3 false relative z-10 leading-7 transition-all border duration-200
                     rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 hover:bg-gray-600
-                    focus:ring-offset-[#FFE942] cursor-pointer mt-4">Sign Up</a>
+                    focus:ring-offset-[#FFE942] cursor-pointer mt-4"
+                    href="/signup">Sign Up</a>
 
               {/* <Mailchimp 
                 action={url}
