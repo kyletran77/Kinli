@@ -22,7 +22,7 @@ export default function Header() {
   };
 
   return (
-    <div className="flex flex-col sm:flex-row h-12 items-center justify-between bg-slate-100 p-3 font-semibold bg-white">
+    <div className="flex flex-col sm:flex-row h-12 items-center justify-between p-3 font-semibold bg-white">
       <Link to="/" className="flex">
         <img src={logo} alt="main-logo" className="aspect-square w-5 h-5" />
         <h1 className="text-xl text-gray-600">Kinli</h1>

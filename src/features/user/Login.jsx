@@ -80,7 +80,7 @@ export default function Login() {
 
 
   return (
-    <div className="flex justify-center bg-yellow-100">
+    <div className="flex justify-center bg-white">
       {/* <center>
                 <button style={{"marginTop" : "200px"}} 
                 onClick={signin}>Sign In with Google</button>
@@ -141,7 +141,7 @@ export default function Login() {
           </Link>
         </p>
       </form>): (
-        <div className="flex flex-col overflow-hidden w-full">
+        <div className="mt-12 sm:mt-0 flex flex-col overflow-hidden w-full ">
           <main className="flex-grow">
             <HeroHome />
             <CircleFeatures/>

@@ -8,6 +8,7 @@ import { auth, db } from "../../firebase/firebase";
 import { signup } from "./userSlice";
 import { defaultAvatar } from "utils/Constants";
 import toast from "react-hot-toast";
+import { getAnalytics, logEvent } from "firebase/analytics";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -23,6 +24,11 @@ export default function Signup() {
   });
   const { email, password, confirmPassword, name, profilePic } = signupDetails;
 
+  function recordSignup() {
+    const analytics = getAnalytics();
+    logEvent(analytics, 'signup');
+    console.log("signed up!");
+  }
   const changeHandler = (e) => {
     const { name, value } = e.target;
     setSignUpDetails((prev) => ({ ...prev, [name]: value }));
@@ -161,6 +167,7 @@ export default function Signup() {
           <button
             type="submit"
             className="w-1/2 rounded-md border-2 bg-gray-200 py-1 px-4"
+            onClick= { () => recordSignup()}
           >
             Sign Up
           </button>
