@@ -14,13 +14,18 @@ import {
   Circles,
   CircleMainPage,
   About,
+  LandingLeader
 } from "pages/pages";
 
 export default function Router() {
   return (
     <Routes>
       <Route element={<RequiresAuth />}>
-        <Route path="/" element={<Home />} />
+        {/* <Route path="/" element={<Home />} /> */}
+        <Route path="/" element={<Login />} />
+
+        <Route path="/leader" element={<LandingLeader />} />
+
 
         <Route path="/explore" element={<Explore />} />
         <Route path="/profile" element={<UserProfile />} />
@@ -32,6 +37,7 @@ export default function Router() {
          <Route path="/circleMainPage" element={<CircleMainPage />} /> 
          <Route path="/about" element={<About />} /> 
          <Route path="/circle/:circleID" element={<Circles />} />
+
 
       </Route>
       <Route path="/login" element={<Login />} />

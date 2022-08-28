@@ -14,6 +14,7 @@ import Circles from "./circles/Circles";
 import CircleMainPage from "./circles/CircleMainPage";
 import About from "./about/About";
 import Body from "./newBuilder/builder/builder";
+import LandingLeader from "./landingLeader/Landing";
 
 
 export {
@@ -33,4 +34,5 @@ export {
   CircleMainPage,
   Body,
   About,
+  LandingLeader,
 };

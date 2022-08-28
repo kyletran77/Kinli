@@ -31,33 +31,11 @@ export default function Header() {
           className="hover:text-gray-600 font-semibold text-base 
           text-center text-gray-400 block cursor-pointer"  href="#">About Us</a><a
           className="hover:text-gray-600 font-semibold text-base mr-6 ml-6 
-          text-center text-gray-400 block cursor-pointer"  href="#">The Team</a><a
+          text-center text-gray-400 block cursor-pointer"  href="/login">Network</a><a
           className="hover:text-gray-600 font-semibold text-base 
-          text-center text-gray-400 block cursor-pointer"  href="#">Lead a Circle</a></div>
-      {/* 
-      <div className="flex gap-4">
-        <Link to="/profile">
-          <img
-            className="max-w-9 aspect-square h-9 max-h-9 w-fit rounded-full object-cover"
-            src={
-              currentUser?.photoURL
-                ? currentUser?.photoURL
-                : defaultAvatar.cover
-            }
-            alt="user-avatar"
-          />
-        </Link>
-        {user ? (
-          <button onClick={logoutHandler}>
-            <MdOutlineLogout className="text-2xl" />
-          </button>
-        ) : (
-          <Link to="/login" className="self-center" state={{ from: location }}>
-            <MdLogin className="text-2xl" />
-          </Link>
-        )}
-      </div>
-      */}
+          text-center text-gray-400 block cursor-pointer"  href="/leader">Lead a Circle</a></div>
+
+
     </div>
   );
 }
