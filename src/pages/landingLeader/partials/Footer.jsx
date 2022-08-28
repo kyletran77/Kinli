@@ -9,13 +9,13 @@ function Footer() {
     <div className="max-w-screen-2xl flex-col md:flex-row flex w-full justify-between mt-auto mr-auto mb-auto ml-auto">
       <div className="flex flex-row justify-center items-center mx-4 sm:mx-0"><a className="flex font-bold text-xl items-center
           text-grey-800 false tracking-wide no-underline hover:no-underline cursor-pointer mx-auto sm:ml-10">Kinli</a></div>
-      <div className="md:m-0 md:flex flex flex-row mx-4 justify-center items-center mt-4 mb-4 sm:mt-2 sm: mb-2 ml-0"><a
+      <div className="w-full sm:bg-white md:m-0 md:flex flex flex-row justify-center mt-4 sm:mt-2 mb-2 ml-0"><a
           className="hover:text-gray-600 font-semibold text-base 
-          text-center text-gray-400 block cursor-pointer"  href="#">About Us</a><a
+          text-center text-gray-400 block cursor-pointer"  href="/aboutLaunch">About Us</a><a
           className="hover:text-gray-600 font-semibold text-base mr-6 ml-6 
-          text-center text-gray-400 block cursor-pointer"  href="#">The Team</a><a
+          text-center text-gray-400 block cursor-pointer"  href="/login">Network</a><a
           className="hover:text-gray-600 font-semibold text-base 
-          text-center text-gray-400 block cursor-pointer"  href="#">Lead a Circle</a></div>
+          text-center text-gray-400 block cursor-pointer"  href="/leader">Lead a Circle</a></div>
       <div className="md:m-0 md:flex flex flex-row justify-center items-center"><a className="mr-2 ml-2
           block cursor-pointer"><svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewbox="0 0
           24 24"><path d="M20.283 10.356h-8.327v3.451h4.792c-.446 2.193-2.313 3.453-4.792 3.453a5.27 5.27 0 0
