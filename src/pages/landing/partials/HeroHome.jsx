@@ -12,13 +12,14 @@ import { getAnalytics, logEvent } from "firebase/analytics";
 
 function HeroHome({setShowLogin}) {
 
-  const [videoModalOpen, setVideoModalOpen] = useState(false);
+  const [signUp, setSignUp] = useState(false);
   const url = "https://gmail.us5.list-manage.com/subscribe/post?u=f0e76fea54c485e0d8c9b1bce&amp;id=bf9de081e9&amp;f_id=007adee6f0"
   
   function recordLaunchSignup() {
     const analytics = getAnalytics();
     logEvent(analytics, 'launch_signup_button');
     console.log("clicked launch signup");
+    setSignUp(true);
   }
 
   return (
@@ -47,25 +48,28 @@ function HeroHome({setShowLogin}) {
         <div className="pt-10 pb-12 md:pt-40 md:pb-20">
           {/* Cool Colors */}
         <div class="absolute opacity-70 -inset-px rounded-xl blur-xl group-hover:opacity-100
-                    group-hover:-inset-1 duration-200 bg-gradient-to-r from-yellow-400 via-pink-500 to-blue-400"></div>
+                    group-hover:-inset-1 duration-200 bg-gradient-to-r from-yellow-400 via-pink-500 to-blue-400 z-0"></div>
           {/* Section header */}
-          <div className="text-center">
+          <div className=" relative text-center z-40">
             <h1 className="text-8xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-4 z-40" data-aos="zoom-y-out">Never be<span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400"> alone</span></h1>
-            <div className="w-full mx-auto">
-              <p className="p-8 text-xl text-center text-gray-600 font-bold z-0" data-aos="zoom-y-out" data-aos-delay="150">Further your career in close circles on Kinli, not on LinkedIn
+            <div className="w-full mx-auto z-40">
+              <p className="p-8 text-3xl text-center text-gray-600 font-bold z-40" data-aos="zoom-y-out" data-aos-delay="150">Further your career in Kinli CIRCLES, not alone on LinkedIn
+              </p>
+              <p className="p-8 text-xl text-center text-gray-600 font-bold z-0" data-aos="zoom-y-out" data-aos-delay="150">You caught us a little early! Sign up for our private beta! Follow us on Instagram and LinkedIn for updates and funny job content!
               </p>
               <div className="mx-16 flex flex-col sm:flex-row sm:max-w-none sm:flex sm:justify-center" data-aos="zoom-y-out" data-aos-delay="300">
                
               <div classname= "mt-10 flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0">
               
-                <a className="inline-flex font-bold text-base items-center justify-center bg-gray-900 text-white
+                {!signUp && (<a className="inline-flex font-bold text-base items-center justify-center bg-gray-900 text-white
                     border-transparent mx-1.5 px-8 py-3 false relative z-10 leading-7 transition-all border duration-200
                     rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 hover:bg-gray-600
                     focus:ring-offset-[#FFE942] cursor-pointer mt-4"
-                    href="/signup"
-                    onClick= { () => recordLaunchSignup()}>Sign Up</a>
-
-              {/* <Mailchimp 
+                    onClick= { () => recordLaunchSignup()}>Sign Up</a>)}
+             
+              
+              </div>
+              {signUp && (<Mailchimp 
                 action={url}
                 fields={[
                   {
@@ -82,12 +86,11 @@ function HeroHome({setShowLogin}) {
                     error: "An unexpected internal error has occurred.",
                     empty: "Please enter an e-mail.",
                     duplicate: "Too many subscribe attempts for this email address",
-                    button: "Join Us!"
+                    button: "Sign Up!"
                   }
                 }
-                className = "mt-5 mx-auto space-y-4 text-center font-bold"
-                /> */}
-              </div>
+                className = "mt-0 5mx-auto space-y-4 text-center font-bold font-xl"
+                />)}
               <ul className='w-full justify-center flex sm:w-1/2 mt-4 flex-row ml-0 sm:ml-10 space-x-10'>
               {/* <SocialIcon url="https://www.facebook.com/profile.php?id=100084942515997" />
               <SocialIcon url="https://www.instagram.com/kinlicircles/" /> */}
