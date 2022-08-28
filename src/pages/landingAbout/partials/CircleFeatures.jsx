@@ -17,14 +17,14 @@ function CircleFeatures() {
                     <img src={change} className="h-auto w-full lg:w-auto lg:h-full object-contain object-top"/>
 
         <div className="mt-5 mr-5 mb-5 ml-5">
-          <p className="text-center font-bold text-2xl mb-2 ">A change in the way people look at careers</p>
+          <p className="font-bold text-2xl mb-2 ">A change in the way people look at careers</p>
         </div>
       </div>
       <div className="bg-white text-left transition-shadow duration-200 rounded group hover:shadow-2xl flex flex-col
           justify-between items-center overflow-hidden shadow-xl ml-0">
         <img src={direction} className="h-auto w-full lg:w-auto lg:h-full object-contain object-top"/>
         <div className="mt-5 mr-5 mb-5 ml-5">
-          <p className="text-center font-bold text-2xl mb-2">
+          <p className="font-bold text-2xl mb-2">
             A sense of professional direction for future generations
           </p>
         </div>
@@ -35,7 +35,7 @@ function CircleFeatures() {
 
         <div className="mt-5 mr-5 mb-5 ml-5">
        
-          <p className="text-center font-bold text-2xl mb-2 ">Make connecting with others easier</p>
+          <p className="font-bold text-2xl mb-2 ">Make connecting with others easier</p>
         </div>
       </div>
     </div>

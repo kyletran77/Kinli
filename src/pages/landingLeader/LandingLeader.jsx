@@ -15,7 +15,7 @@ function LandingLeader() {
     <div className="flex flex-col min-h-screen overflow-hidden">
 
    
-      <main className="flex-grow">
+      <main className="mt-12 flex-grow">
 
         <HeroHome />
         <CircleFeatures/>
