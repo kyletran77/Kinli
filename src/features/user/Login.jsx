@@ -141,7 +141,7 @@ export default function Login() {
           </Link>
         </p>
       </form>): (
-        <div className="mt-12 sm:mt-0 flex flex-col overflow-hidden w-full ">
+        <div className="mt-12 sm:mt-0 flex flex-col overflow-hidden w-full">
           <main className="flex-grow">
             <HeroHome />
             <CircleFeatures/>
