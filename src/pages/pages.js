@@ -34,6 +34,6 @@ export {
   CircleMainPage,
   Body,
   About,
-  LandingAbout,
   LandingLeader,
+  LandingAbout,
 };
