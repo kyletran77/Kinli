@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Modal from '../utils/Modal';
-import MailchimpSubscribe from "react-mailchimp-subscribe"
+import Mailchimp from "react-mailchimp-form"
 
 import HeroImage from '../images/hero-image.png';
-import landing from "../images/landing.png";
+import backgroundImg from "../images/Saly-32.png";
 import { SocialIcon } from 'react-social-icons';
 import SocialMediaButtons from 'react-social-media-buttons';
 import { getAnalytics, logEvent } from "firebase/analytics";
@@ -21,59 +21,6 @@ function HeroHome({setShowLogin}) {
     console.log("clicked launch signup");
     setSignUp(true);
   }
-  const CustomForm = ({ status, message, onValidated }) => {
-    let email, name;
-    const submit = () =>
-      email &&
-      name &&
-      email.value.indexOf("@") > -1 &&
-      onValidated({
-        EMAIL: email.value,
-        NAME: name.value
-      });
-  
-    return (
-      <div
-        style={{
-          background: "#efefef",
-          borderRadius: 10,
-          padding: 10,
-          display: "inline-block"
-        }}
-      >
-        {status === "sending" && <div style={{ color: "blue" }}>sending...</div>}
-        {status === "error" && (
-          <div
-            style={{ color: "red" }}
-            dangerouslySetInnerHTML={{ __html: message }}
-          />
-        )}
-        {status === "success" && (
-          <div
-            style={{ color: "green" }}
-            dangerouslySetInnerHTML={{ __html: message }}
-          />
-        )}
-        {/* <input
-          style={{ fontSize: "2em", padding: 5 }}
-          ref={node => (name = node)}
-          type="text"
-          placeholder="Name"
-        />
-        <br /> */}
-        <input
-          style={{ fontSize: "1.5em", padding: 10, fontWeight: 'bold' }}
-          ref={node => (email = node)}
-          type="email"
-          placeholder="Email"
-        />
-        <br />
-        <button style={{ fontSize: "1.5em", padding: 5, fontWeight: 'bold'}} onClick={submit}>
-          Sign Up!
-        </button>
-      </div>
-    );
-  };
 
   return (
     <section className="relative">
@@ -104,11 +51,12 @@ function HeroHome({setShowLogin}) {
                     group-hover:-inset-1 duration-200 bg-gradient-to-r from-yellow-400 via-pink-500 to-blue-400 z-0"></div>
           {/* Section header */}
           <div className=" relative text-center z-40">
-            <h1 className="text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-4 z-40" data-aos="zoom-y-out">Never be<span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400"> alone</span></h1>
+            <h1 className="text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-4 z-40" data-aos="zoom-y-out">What we aim to do at<span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400"> Kinli</span></h1>
             <div className="w-full mx-auto z-40">
-              <p className="p-8 text-2xl text-center text-gray-600 font-bold z-40" data-aos="zoom-y-out" data-aos-delay="150">Further your career in Kinli CIRCLES, not alone on LinkedIn
+              <p className="p-8 text-2xl text-center text-gray-600 font-bold z-40" data-aos="zoom-y-out" data-aos-delay="150">Establish a new way for people to start building their professional network
               </p>
-             
+              <p className="p-8 text-xl text-center text-gray-600 font-bold z-0" data-aos="zoom-y-out" data-aos-delay="150">You caught us a little early! Sign up for our private beta! Follow us on Instagram and LinkedIn for updates and funny job content!
+              </p>
               <div className="mx-16 flex flex-col sm:flex-row sm:max-w-none sm:flex sm:justify-center" data-aos="zoom-y-out" data-aos-delay="300">
                
               <div classname= "mt-10 flex justify-center items-center w-8 h-8 bg-white rounded-full shadow flex-shrink-0">
@@ -121,25 +69,28 @@ function HeroHome({setShowLogin}) {
              
               
               </div>
-              {signUp && 
-              (
-                <div>
-                   
-                <MailchimpSubscribe
-          url={url}
-          render={({ subscribe, status, message }) => (
-            <CustomForm
-              status={status}
-              message={message}
-              onValidated={formData => subscribe(formData)}
-            />
-          )}
-        />
-        <p className="p-8 text-xl text-center text-gray-600 font-bold z-0" data-aos="zoom-y-out" data-aos-delay="150">You caught us a little early! Sign up for our private beta! Follow us on Instagram and LinkedIn for updates and funny job content!
-              </p>
-        </div>
-              )
+              {signUp && (<Mailchimp 
+                action={url}
+                fields={[
+                  {
+                    name: 'EMAIL',
+                    placeholder: 'Email',
+                    type: 'email',
+                    required: true
+                  }
+                ]}
+                messages = {
+                  {
+                    sending: "Sending...",
+                    success: "Thank you for subscribing!",
+                    error: "An unexpected internal error has occurred.",
+                    empty: "Please enter an e-mail.",
+                    duplicate: "Too many subscribe attempts for this email address",
+                    button: "Sign Up!"
+                  }
                 }
+                className = "mt-0 5mx-auto space-y-4 text-center font-bold font-xl"
+                />)}
               <ul className='w-full justify-center flex sm:w-1/2 mt-4 flex-row ml-0 sm:ml-10 space-x-10'>
               {/* <SocialIcon url="https://www.facebook.com/profile.php?id=100084942515997" />
               <SocialIcon url="https://www.instagram.com/kinlicircles/" /> */}
@@ -149,7 +100,6 @@ function HeroHome({setShowLogin}) {
                 iconStyle={{color: '#134d8b'}}
                 openNewTab={true}
               />
-              
               </ul>
 
 
@@ -167,7 +117,7 @@ function HeroHome({setShowLogin}) {
       <div>
               <div className="relative flex justify-center mb-8 mt-0" data-aos="zoom-y-out" data-aos-delay="450">
                 <div className="flex flex-col justify-center">
-                  <img className="mx-auto" src={landing} width="768" height="432" alt="Hero" />
+                  <img className="mx-auto" src={backgroundImg} width="768" height="432" alt="Hero" />
                 </div>
               </div>
             </div>

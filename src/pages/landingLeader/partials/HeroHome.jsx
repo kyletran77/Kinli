@@ -105,7 +105,7 @@ function HeroHome({setShowLogin}) {
                     group-hover:-inset-1 duration-200 bg-gradient-to-r from-yellow-400 via-pink-500 to-blue-400 z-0"></div>
           {/* Section header */}
           <div className=" relative text-center z-40">
-            <h1 className="text-6xl md:text-7xl font-extrabold leading-tighter tracking-tighter mb-4 z-40" data-aos="zoom-y-out">Leaders lead Kinli<span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400"> Circles</span></h1>
+            <h1 className="text-5xl md:text-7xl font-extrabold leading-tighter tracking-tighter mb-4 z-40" data-aos="zoom-y-out">Leaders lead Kinli<span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400"> Circles</span></h1>
             <div className="w-full mx-auto z-40">
               <p className="p-8 text-3xl text-center text-gray-600 font-bold z-40" data-aos="zoom-y-out" data-aos-delay="150">Compete to be the top circle in the world! Show everyone that you are a leader.
               </p>

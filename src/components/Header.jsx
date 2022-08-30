@@ -27,15 +27,37 @@ export default function Header() {
         <img src={logo} alt="main-logo" className="aspect-square w-5 h-5" />
         <h1 className="text-xl text-gray-600">Kinli</h1>
       </Link>
-      <div className="w-full sm:bg-white md:m-0 md:flex flex flex-row justify-center mt-4 sm:mt-2 mb-2 ml-0"><a
+      <div className="w-full sm:bg-white md:m-0 md:flex flex flex-row justify-center mt-4 sm:mt-2 ml-0"><a
           className="hover:text-gray-600 font-semibold text-base 
-          text-center text-gray-400 block cursor-pointer"  href="#">About Us</a><a
+          text-center text-gray-400 block cursor-pointer"  href="/aboutLaunch">About Us</a><a
           className="hover:text-gray-600 font-semibold text-base mr-6 ml-6 
           text-center text-gray-400 block cursor-pointer"  href="/login">Network</a><a
           className="hover:text-gray-600 font-semibold text-base 
           text-center text-gray-400 block cursor-pointer"  href="/leader">Lead a Circle</a></div>
-
-
+      {/* 
+      <div className="flex gap-4">
+        <Link to="/profile">
+          <img
+            className="max-w-9 aspect-square h-9 max-h-9 w-fit rounded-full object-cover"
+            src={
+              currentUser?.photoURL
+                ? currentUser?.photoURL
+                : defaultAvatar.cover
+            }
+            alt="user-avatar"
+          />
+        </Link>
+        {user ? (
+          <button onClick={logoutHandler}>
+            <MdOutlineLogout className="text-2xl" />
+          </button>
+        ) : (
+          <Link to="/login" className="self-center" state={{ from: location }}>
+            <MdLogin className="text-2xl" />
+          </Link>
+        )}
+      </div>
+      */}
     </div>
   );
 }
