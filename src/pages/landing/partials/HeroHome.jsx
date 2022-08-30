@@ -104,9 +104,9 @@ function HeroHome({setShowLogin}) {
                     group-hover:-inset-1 duration-200 bg-gradient-to-r from-yellow-400 via-pink-500 to-blue-400 z-0"></div>
           {/* Section header */}
           <div className=" relative text-center z-40">
-            <h1 className="text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-4 z-40" data-aos="zoom-y-out">Never be<span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400"> alone</span></h1>
+            <h1 className="text-8xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-4 z-40" data-aos="zoom-y-out">Never be<span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400"> alone</span></h1>
             <div className="w-full mx-auto z-40">
-              <p className="p-8 text-2xl text-center text-gray-600 font-bold z-40" data-aos="zoom-y-out" data-aos-delay="150">Further your career in Kinli CIRCLES, not alone on LinkedIn
+              <p className="p-8 text-3xl text-center text-gray-600 font-bold z-40" data-aos="zoom-y-out" data-aos-delay="150">Gamify your professional network with Kinli Circles
               </p>
              
               <div className="mx-16 flex flex-col sm:flex-row sm:max-w-none sm:flex sm:justify-center" data-aos="zoom-y-out" data-aos-delay="300">
