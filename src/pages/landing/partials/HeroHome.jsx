@@ -54,13 +54,13 @@ function HeroHome({setShowLogin}) {
             dangerouslySetInnerHTML={{ __html: message }}
           />
         )}
-        {/* <input
-          style={{ fontSize: "2em", padding: 5 }}
+        <input
+          style={{ fontSize: "1.5em", padding: 10, fontWeight: 'bold' }}
           ref={node => (name = node)}
           type="text"
           placeholder="Name"
         />
-        <br /> */}
+        <br />
         <input
           style={{ fontSize: "1.5em", padding: 10, fontWeight: 'bold' }}
           ref={node => (email = node)}
@@ -141,8 +141,6 @@ function HeroHome({setShowLogin}) {
               )
                 }
               <ul className='w-full justify-center flex sm:w-1/2 mt-4 flex-row ml-0 sm:ml-10 space-x-10'>
-              {/* <SocialIcon url="https://www.facebook.com/profile.php?id=100084942515997" />
-              <SocialIcon url="https://www.instagram.com/kinlicircles/" /> */}
               <SocialMediaButtons
                 links={['https://www.facebook.com/profile.php?id=100084942515997','https://www.instagram.com/kinlicircles/','https://www.linkedin.com/company/joobie/']}
                 buttonStyle={{margin: '0px 0.25em', backgroundColor: '#cce7ff', borderRadius: '30%'}}
