@@ -12,18 +12,19 @@ import CircleFeatures from "./partials/CircleFeatures";
 
 function LandingLeader() {
   return (
-    <div className="flex flex-col min-h-screen overflow-hidden">
+    <div className="flex bg-white">
+      <div className="mt-12 sm:mt-0 flex flex-col overflow-hidden w-full">
+        <main className="flex-grow">
 
-   
-      <main className="mt-12 flex-grow">
+          <HeroHome />
+          <CircleFeatures/>
+          <Footer/>
 
-        <HeroHome />
-        <CircleFeatures/>
-        <Footer/>
+        </main>
 
-      </main>
-
+      </div>
     </div>
+
   );
 }
 
