@@ -22,8 +22,7 @@ export default function Router() {
   return (
     <Routes>
       <Route element={<RequiresAuth />}>
-        {/* <Route path="/" element={<Home />} /> */}
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Home />} />
 
         <Route path="/leader" element={<LandingLeader />} />
 
