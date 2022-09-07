@@ -12,6 +12,7 @@ import Opportunities from "./Opportunities";
 import OppTextEditor from "./OppTextEditor";
 import Questions from "./Questions";
 import QuestionTextEditor from "./QuestionTextEditor";
+import CircleRanking from "./CircleRanking";
 
 
 export {
@@ -28,5 +29,6 @@ export {
   Opportunities,
   OppTextEditor,
   Questions,
-  QuestionTextEditor
+  QuestionTextEditor,
+  CircleRanking,
 };

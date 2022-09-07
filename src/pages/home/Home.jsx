@@ -1,4 +1,4 @@
-import { TextEditor, Post, RightSideBar } from "components/components";
+import { TextEditor, Post, RightSideBar, CircleRanking } from "components/components";
 import { Empty } from "pages/pages";
 import { useState } from "react";
 import { useSelector } from "react-redux";
@@ -40,6 +40,7 @@ export default function Home() {
       <div className="flex flex-row">
         <RightSideBar />
         <TextEditor />
+        <CircleRanking/>
       </div>
 
       {posts?.length > 0 && (

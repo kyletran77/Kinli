@@ -38,7 +38,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      {location.pathname !== "/login" && location.pathname !== "/signup" && location.pathname !== "/aboutLaunch" && location.pathname !== "/leader" && location.pathname !== "/"? (
+      {location.pathname !== "/login" && location.pathname !== "/signup" && location.pathname !== "/aboutLaunch" && location.pathname !== "/leader"? (
 
         <div className="flex min-h-screen justify-between bg-slate-100">
           <Sidebar />
