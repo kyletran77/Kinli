@@ -36,7 +36,7 @@ export default function Home() {
   const posts = sortHandler(filteredPosts);
 
   return (
-    <div className="flex w-full flex-col sm:mx-2 sm:gap-2 md:mx-2 md:gap-2">
+    <div className="flex w-full flex-col mx-auto">
       <div className="flex flex-row">
         <RightSideBar />
         <TextEditor />

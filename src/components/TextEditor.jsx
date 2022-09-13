@@ -95,7 +95,7 @@ export default function TextEditor() {
   };
   //problem with the text area/form only responsive on certain sizes
   return (
-    <div className="text-s md:text-l mx-2 flex w-full md:w-1/2 flex-col gap-4 bg-gray-100 p-4">
+    <div className="mb-4 text-s md:text-l mx-auto flex w-full flex-col gap-4 bg-slate-300 p-4 rounded-lg">
       <form
         className="mx-auto w-full max-w-3xl bg-gray-50 shadow-md"
         onSubmit={(e) => submitHandler(e)}
@@ -116,9 +116,9 @@ export default function TextEditor() {
             className="mx-auto aspect-auto max-h-96"
           />
         )}
-        <div className="flex items-center justify-between px-3 py-2">
+        <div className="flex items-center justify-between p-3 mx-auto mt-2 mb-2 h-fit w-full min-w-[20rem] max-w-[90%] flex-col rounded-lg bg-gray-50 shadow-md sm:w-3/4 md:mx-auto md:w-3/4 lg:w-full">
           <div className="flex gap-4">
-            <label htmlFor="post-image" className="text-2xl text-gray-500">
+            <label htmlFor="post-image" className="text-1xl text-gray-500">
               <input
                 type="file"
                 id="post-image"
@@ -133,7 +133,7 @@ export default function TextEditor() {
               className="relative text-gray-500"
               onClick={(e) => setShowEmojis((prev) => !prev)}
             >
-              <RiEmotionLaughLine className="text-2xl" />
+              <RiEmotionLaughLine className="text-1xl" />
               {showEmojis && (
                 <div className="emojipicker absolute z-10">
                   <EmojiPicker
@@ -144,9 +144,9 @@ export default function TextEditor() {
               )}
             </div>
            {/* DropDown Menu */}
-           <select onChange={TagClick}> 
+           <select class="text=1xl justify-center" onChange={TagClick}> 
             {/* Creating the default / starting option for our dropdown.    */}
-            <option value="⬇️ Select an Experience to Tag ⬇️"> -- Select an Experience to Tag -- </option>
+            <option value="⬇ Select an Experience to Tag ⬇">Select an Experience to Tag</option>
             {userData?.allExp?.map((exp) => (exp.company != "")?<option key={exp.company} value={exp.company}>{exp.company}</option>: "")}
 
 
