@@ -150,7 +150,7 @@ export default function Login() {
             {/* <Testimonials/> */}
           </main>
         <div className="w-full mb-8">
-          <button type="button" class="mx-12 w-5/6 sm:w-1/6 text-white text-center font-bold bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+          <button type="button" class="mx-auto w-5/6 sm:w-1/6 text-white text-center font-bold bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                 onClick={()=>setShowLogin(true)}
                 >Login
           </button>

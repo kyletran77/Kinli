@@ -40,6 +40,7 @@ export default function OtherProfile() {
           <p className="text-lg font-semibold">{otherUser?.displayName}</p>
           <p className="text-center text-sm sm:text-base">{otherUser?.bio}</p>
           <p className="text-sm sm:text-base">{otherUser?.website}</p>
+          <p className="text-sm sm:text-base">Status:{otherUser?.status}</p>
           <div className="absolute right-5 top-5">
             {user?.following?.some((id) => id === otherUser?.userID) ? (
               <button

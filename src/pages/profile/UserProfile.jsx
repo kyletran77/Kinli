@@ -76,6 +76,8 @@ export default function UserProfile() {
           <p className="text-lg font-semibold">{currentUser?.displayName}</p>
           <p className="text-center text-sm sm:text-base">{userData?.bio}</p>
           <p className="text-sm sm:text-base">{userData?.website}</p>
+          <p className="text-sm sm:text-base">Status: {userData?.status}</p>
+
           
           <div className="flex flex-wrap justify-center gap-1 px-2 text-slate-50 sm:gap-2 md:w-full md:justify-center md:gap-3 md:px-0 lg:scale-100 lg:gap-5">
             <div className="rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 px-3 py-1 shadow-md">

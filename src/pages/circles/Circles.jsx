@@ -147,7 +147,6 @@ const getEngagement=() => {
            <p className="text-center text-sm sm:text-base text-indent space-y-4 font-semi-bold">{circleData?.circleBio}</p>
         {/*   <p className="text-sm sm:text-base text-sky-400">{circleData?.circleChallenges}</p> */}
            <p className="text-sm sm:text-base font-semibold ">{circleData?.memberCount?.length} Members </p>
-           <p className="text-sm sm:text-base font-semibold ">{circleData?.memberCount?.length} Members </p>
 
           <p className="text-sm sm:text-base">{circleData?.diamondCount}  </p>
 
@@ -159,7 +158,7 @@ const getEngagement=() => {
 
             {allUsers.find(user => user.userID === member).displayName}
             &nbsp;
-            {allUsers.find(user => user.userID === member)?.status}
+            Status: {allUsers.find(user => user.userID === member)?.status}
             </div>
             ))}
           </ul>

@@ -20,6 +20,7 @@ export default function EditProfileModal({
     avatar: "",
     bio: "",
     website: "",
+    status:"",
   });
 
   const updateUserInfo = (e) => {
@@ -45,6 +46,7 @@ export default function EditProfileModal({
       avatar: userInfo?.avatar ? userInfo?.avatar : userData.avatar,
       bio: userInfo?.bio ? userInfo?.bio : userData.bio,
       website: userInfo?.website ? userInfo?.website : userData.website,
+      status: userInfo?.status ? userInfo.status : userData.status,
     }));
     setShowModal(false);
   };
@@ -121,6 +123,13 @@ export default function EditProfileModal({
           className="m-2 p-2 focus:outline focus:outline-1 focus:outline-slate-400"
           onChange={updateUserInfo}
         />
+
+        <select id="availablity" type="text" name="status" onChange={updateUserInfo} class="m-2 p-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full">
+          <option selected>Specify your availability</option>
+          <option value="Open to coffee chats">Open to coffee chats</option>
+          <option value="Open to messaging">Open to messaging</option>
+          <option value="Busy at the moment">Busy at the moment</option>
+        </select>
         <button
           type="submit"
           className="mx-auto mt-2 w-fit rounded-lg bg-slate-100 p-2 outline-none hover:cursor-pointer hover:bg-slate-300"
