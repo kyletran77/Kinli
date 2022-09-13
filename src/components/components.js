@@ -13,6 +13,7 @@ import OppTextEditor from "./OppTextEditor";
 import Questions from "./Questions";
 import QuestionTextEditor from "./QuestionTextEditor";
 import CircleRanking from "./CircleRanking";
+import ProgressBar from "./ProgressBar"
 
 
 export {
@@ -31,4 +32,5 @@ export {
   Questions,
   QuestionTextEditor,
   CircleRanking,
+  ProgressBar
 };

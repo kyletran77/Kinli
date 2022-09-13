@@ -10,12 +10,46 @@ import {
 import Router from "Router/Router";
 import "App.css";
 import { Toaster } from "react-hot-toast";
+import Schedule from 'react-schedule-job'
+import 'react-schedule-job/dist/index.css'
+import { updateDiamonds } from "./firebase/firebase-calls";
+
 
 function App() {
   const location = useLocation();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
+  const {allCircles} = useSelector((state) => state.allCircles)
   const currentUser = auth?.currentUser;
+      
+  const function_1 = () => {
+    allCircles.map((circle)=>
+    { 
+      const engagement = circle.engagement;
+      var updatedDiamond = circle.diamondCount;
+
+      if (engagement ==1) updatedDiamond += 3;
+      if (engagement >= 0.75) updatedDiamond += 2;
+      if (engagement >= 0.5) updatedDiamond += 1;
+
+      updateDiamonds(circle.circleID, updatedDiamond, circle.engagement);
+
+
+
+    })
+  }
+  ;
+    
+
+      
+  const jobs = [
+        {
+          fn: function_1,
+          id: '1',
+          schedule: '0 0,23 * * *',
+        }
+      ]
+    
 
   useEffect(
     () => {
@@ -35,6 +69,7 @@ function App() {
     [currentUser]
   );
 
+
   return (
     <div className="App">
       <Header />
@@ -48,6 +83,11 @@ function App() {
         <Router />
       )}
       <Toaster />
+      <Schedule 
+        jobs={jobs}
+        timeZone='UTC'
+        dashboard={{ hidden: false }}
+      />
     </div>
   );
 }

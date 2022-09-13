@@ -3,15 +3,16 @@ import { useSelector } from "react-redux";
 import { FiEdit3 } from "react-icons/fi";
 import { useParams } from "react-router-dom";
 import { auth } from "../../firebase/firebase";
-import { joinCircle, getCircle, completeChallenge, getUser } from "../../firebase/firebase-calls";
+import { joinCircle, getCircle, completeChallenge, getUser, updateEngagement} from "../../firebase/firebase-calls";
 //import EditProfileModal from "./EditProfileModal";
-import { Post, OppTextEditor, QuestionTextEditor } from "components/components";
+import { Post, OppTextEditor, QuestionTextEditor, ProgressBar } from "components/components";
 
 
 export default function Circles() {
   const { circleID } = useParams();
   const { user } = useSelector((state) => state.user);
   const { allPosts } = useSelector((state) => state.allPosts);
+  const { allUsers } = useSelector((state) => state.allUsers);
   const [showModal, setShowModal] = useState(false);
   const [userData, setUserData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -19,6 +20,7 @@ export default function Circles() {
   const otherCircle = allCircles?.find((circle) => circle?.circleID == circleID)
   const currentUser = auth?.currentUser;
   const [circleData, setCircleData] = useState([]);
+  const [engage, setEngagement] = useState(0);
   
   const [showOpp, setOpp] = useState(false);
   const [ShowHome, setHome] = useState(true);
@@ -28,18 +30,15 @@ export default function Circles() {
     () => {
        if (currentUser?.length==0) getUser(currentUser, setUserData);
     },
-    // eslint-disable-next-line
     [userData]
   );
 
   
   useEffect(
     () => {
-      if (circleData?.length ==0){
+      if (circleData.length ==0){
         getCircle(otherCircle?.circleID, setCircleData);
         console.log("getting Circle");
-        console.log(circleData);
-        console.log("done");
         setIsLoading(false);
       }
     },
@@ -55,7 +54,7 @@ const renderOpp=() =>  {
   setQA(false);
   setHome(false);
   console.log("Opportunities pressed")
-
+  getEngagement();
 }
 
 //Question and Answer
@@ -64,6 +63,7 @@ const renderOpp=() =>  {
     setQA(true);
     setHome(false);
     console.log("QA pressed");
+    getEngagement();
 
 }
 //Home
@@ -72,7 +72,13 @@ const renderHome=() =>  {
   setQA(false);
   setHome(true);
   console.log("Home pressed");
+  getEngagement();
 
+}
+const getEngagement=() => {
+  if (!isNaN(circleData?.challenges?.length/circleData?.memberCount?.length)) setEngagement(circleData?.challenges?.length/circleData?.memberCount?.length)
+        updateEngagement(circleData?.circleID, engage)
+        console.log(engage);
 }
 
 
@@ -107,8 +113,9 @@ const renderHome=() =>  {
       {isLoading && <p>Loading</p>}
 
       {!isLoading && (
+        
         <div>
-       <section className="relative h-40 w-full mt-16">
+       <section className="relative h-80 w-full mt-16">
       
          {circleData.coverPic && (
            <img
@@ -139,19 +146,34 @@ const renderHome=() =>  {
            <p className="text-lg font-semibold underline">{circleData?.circleName}</p>
            <p className="text-center text-sm sm:text-base text-indent space-y-4 font-semi-bold">{circleData?.circleBio}</p>
         {/*   <p className="text-sm sm:text-base text-sky-400">{circleData?.circleChallenges}</p> */}
-           <p className="text-sm sm:text-base font-semibold ">{circleData?.memberCount?.length-1} Members </p>
+           <p className="text-sm sm:text-base font-semibold ">{circleData?.memberCount?.length} Members </p>
+           <p className="text-sm sm:text-base font-semibold ">{circleData?.memberCount?.length} Members </p>
+
+          <p className="text-sm sm:text-base">{circleData?.diamondCount}  </p>
+
+
+          <h1 className ="mt-4">List of Users{'\n'}</h1>
+          <ul className="mx-auto flex flex-col">
+          {circleData?.memberCount?.map((member) => (
+            <div className="bg-slate-200 rounded-lg pt-1 font-bold text-center text-l flex flex-row">
+
+            {allUsers.find(user => user.userID === member).displayName}
+            &nbsp;
+            {allUsers.find(user => user.userID === member)?.status}
+            </div>
+            ))}
+          </ul>
           
  
            
            
            <p className="text-sm sm:text-base">{circleData?.diamondCount} 💎 </p>
            {/* <p className="text-sm sm:text-base">{circleData?.challenges.length * 100} 💎 </p> */}
- 
+           <ProgressBar done = {`${100*(circleData?.challenges?.length/circleData?.memberCount?.length)}`}/>
+
  
            
          </div>
-           
-           
        </section>
         <ul className="mt-44 ">
  

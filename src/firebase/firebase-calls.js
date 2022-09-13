@@ -1,6 +1,8 @@
 import { login, updateDP } from "features/user/userSlice";
 import { signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { useSelector } from "react-redux";
+
 import toast from "react-hot-toast";
 import { auth, db, storage } from "./firebase";
 import {
@@ -17,6 +19,8 @@ import { MdDoubleArrow } from "react-icons/md";
 
 const allPostsCollection = collection(db, "allPosts");
 const usersCollection = collection(db, "users");
+const allCircles = collection(db, "allCircles");
+
 const date = new Date().toLocaleDateString("en-IN", {
   year: "numeric",
   month: "short",
@@ -84,6 +88,7 @@ export const profileUpdate = async (
       avatar: userInfo?.avatar ? userInfo?.avatar : userData.avatar,
       bio: userInfo?.bio ? userInfo?.bio : userData.bio ?? "",
       website: userInfo?.website ? userInfo?.website : userData.website ?? "",
+      status: userInfo?.status ? userInfo?.status : userData.status ?? "",
     },
     { merge: true }
   );
@@ -475,43 +480,63 @@ export const getCircle = async (circle, setCircleData) => {
   };
 
   
-export const joinCircle = async (currentUser, circleID) => {
+  export const joinCircle = async (currentUser, currentCircle) => {
+    try {
+      console.log('here');
+      console.log(currentCircle.circleID);
+      console.log(currentUser.uid);
+  
+      if (currentCircle.memberCount.includes(currentUser.uid)) {
+        throw 'Already in the circle!';
+      }
+  
+      await setDoc(
+        doc(collection(db, "allCircles"), currentCircle?.circleID),
+        {
+          memberCount: arrayUnion(currentUser.uid),
+        },
+        { merge: true }
+      );
+      await setDoc(
+        doc(collection(db, "users"), currentUser?.uid),
+        {
+          joinedCircle: arrayUnion(currentCircle?.circleID),
+        },
+        { merge: true }
+      );
+      toast.success(`You are now following ${currentCircle?.circleName}`);
+    } catch (error) {
+      console.log(error);
+      toast.error(`Couldn't follow ${currentCircle?.circleName}. Try again!`);
+      console.log(currentUser)
+      console.log(currentCircle)
+    }
+  };
+export const updateEngagement = async (circleID, engagement) => {
   try {
     await setDoc(
-      doc(collection(db, "allCircles"), circleID?.circleID),
+      doc(collection(db, "allCircles"), circleID),
       {
-        memberCount: arrayUnion(currentUser.uid),
+        engagement: engagement,
       },
       { merge: true }
     );
-    await setDoc(
-      doc(collection(db, "users"), currentUser?.uid),
-      {
-        joinedCircle: arrayUnion(circleID?.circleID),
-      },
-      { merge: true }
-    );
-    toast.success(`You are now following ${circleID.circleName}`);
   } catch (error) {
-    toast.error(`Couldn't follow ${circleID.circleName}. Try again!`);
-    console.log(currentUser)
-    console.log(circleID)
   }
 };
 
 export const completeChallenge = async (currentUser, circleID) => {
   try {
     await setDoc(
-      doc(collection(db, "allCircles"), circleID?.circleID),
+      doc(collection(db, "allCircles"), circleID),
       {
         challenges: arrayUnion(currentUser?.uid),
-        diamondCount: circleID?.challenges.length*100,
       },
       { merge: true }
     );
-    toast.success(`You have completed this challenge!`);
+    toast.success(`You have engaged with your CIRCLE!`);
   } catch (error) {
-    toast.error(`Couldn't complete challenge. Try again!`);
+    toast.error(`Couldn't record engagement. Try again!`);
     console.log(error)
     console.log(currentUser)
     console.log(circleID)
@@ -542,6 +567,7 @@ export const createOpportunities = async (user, Circle, post) => {
     );
 
     toast.success("Opportunities sent.", { id: loader });
+    completeChallenge(user, Circle);
   } catch (error) {
     toast.error("Opportunities not sent. Try again!");
     console.log(error)
@@ -576,9 +602,32 @@ export const createQuestion = async (user, Circle, post) => {
       { merge: true }
     );
     toast.success("Created question!.", { id: loader });
+    completeChallenge(user, Circle);
 
   } catch (error) {
     toast.error("Could not create question. Try again!");
     console.log(error)
   }
 };
+export const updateDiamonds = async(circleID, diamond, engagementScore) => {
+  try {
+    await setDoc(
+      doc(collection(db, "allCircles"), circleID),
+      {
+        diamondCount: diamond,
+        challenges: [],
+        engagement: 0,
+        // calendar: arrayUnion({
+
+
+        // })
+
+      },
+      { merge: true }
+    );
+  } catch (error) {
+    console.log(error)
+  }
+  
+  
+}

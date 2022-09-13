@@ -15,7 +15,6 @@ export default function Entry({ post }) {
   const { user } = useSelector((state) => state.user);
 
   
-
   const filteredPosts = allPosts?.filter(
     (exp) => exp.uid === currentUser?.uid & exp.company ==post?.company
   );
