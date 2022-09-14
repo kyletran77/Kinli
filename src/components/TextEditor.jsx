@@ -95,16 +95,16 @@ export default function TextEditor() {
   };
   //problem with the text area/form only responsive on certain sizes
   return (
-    <div className="mb-4 text-s md:text-l mx-auto flex w-full flex-col gap-4 bg-slate-300 p-4 rounded-lg">
+    <div className="mb-4 text-s md:text-l mx-auto flex w-full flex-col gap-4 p-4">
       <form
-        className="mx-auto w-full max-w-3xl bg-gray-50 shadow-md"
+        className="mx-auto w-full max-w-3x bg-gray-50 shadow-md rounded-lg"
         onSubmit={(e) => submitHandler(e)}
       >
 
         <textarea
           rows="4"
           placeholder="What's on your mind?"
-          className={`w-full resize-none rounded-sm border-none bg-gray-50 p-4 outline-none`}
+          className={`w-full resize-none rounded-sm border-none p-4 outline-none`}
           name="caption"
           value={newPost.caption}
           onInput={inputHandler}
@@ -116,7 +116,7 @@ export default function TextEditor() {
             className="mx-auto aspect-auto max-h-96"
           />
         )}
-        <div className="flex items-center justify-between p-3 mx-auto mt-2 mb-2 h-fit w-full min-w-[20rem] max-w-[90%] flex-col rounded-lg bg-gray-50 shadow-md sm:w-3/4 md:mx-auto md:w-3/4 lg:w-full">
+        <div className="flex items-center justify-between p-3 mx-auto mt-2 mb-2 h-fit w-full min-w-[20rem] max-w-[90%] flex-col rounded-lg bg-orange-100 shadow-md sm:w-3/4 md:mx-auto md:w-3/4 lg:w-full">
           <div className="flex gap-4">
             <label htmlFor="post-image" className="text-1xl text-gray-500">
               <input
@@ -127,13 +127,13 @@ export default function TextEditor() {
                 className="hidden"
                 onChange={(e) => handleImage(e.target.files[0])}
               />
-              <RiImageAddFill />
+              <RiImageAddFill className="text-1xl my-2"/>
             </label>
             <div
               className="relative text-gray-500"
               onClick={(e) => setShowEmojis((prev) => !prev)}
             >
-              <RiEmotionLaughLine className="text-1xl" />
+              <RiEmotionLaughLine className="text-1xl my-2" />
               {showEmojis && (
                 <div className="emojipicker absolute z-10">
                   <EmojiPicker
@@ -144,9 +144,9 @@ export default function TextEditor() {
               )}
             </div>
            {/* DropDown Menu */}
-           <select class="text=1xl justify-center" onChange={TagClick}> 
+           <select class="text-1xl hover:outline mx-auto border-2" onChange={TagClick}> 
             {/* Creating the default / starting option for our dropdown.    */}
-            <option value="⬇ Select an Experience to Tag ⬇">Select an Experience to Tag</option>
+            <option value="⬇ Tag an experience ⬇">Tag an experience</option>
             {userData?.allExp?.map((exp) => (exp.company != "")?<option key={exp.company} value={exp.company}>{exp.company}</option>: "")}
 
 

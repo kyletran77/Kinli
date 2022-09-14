@@ -45,7 +45,7 @@ export default function Home() {
 
       {posts?.length > 0 && (
         <select
-          className="w-fit self-center rounded-md py-1 px-3 focus:outline focus:outline-2 focus:outline-blue-400"
+          className="w-fit self-center bg-white rounded-md py-1 px-3 focus:outline focus:outline-2 focus:outline-blue-400"
           onChange={(e) => setSortBy(e.target.value)}
           value={sortBy}
         >

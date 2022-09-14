@@ -27,7 +27,7 @@ export default function Header() {
         <img src={logo} alt="main-logo" className="aspect-square w-5 h-5" />
         <h1 className="text-xl text-gray-600">Kinli</h1>
       </Link>
-      <div className="w-full bg-white md:m-0 md:flex flex flex-row justify-center mt-4 sm:mt-2 ml-0"><a
+      <div className="hidden md:flex w-full bg-white md:m-0 flex-row justify-center mt-2 sm:mt-2 ml-0"><a
           className="hover:text-gray-600 font-semibold text-base 
           text-center text-gray-400 block cursor-pointer"  href="/aboutLaunch">About Us</a><a
           className="hover:text-gray-600 font-semibold text-base mr-6 ml-6 

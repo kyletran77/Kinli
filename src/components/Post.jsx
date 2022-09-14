@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FiEdit3, FiTrash, FiCheck, FiHeart } from "react-icons/fi";
+import { FiEdit3, FiTrash, FiCheck, FiHeart, FiBookmark } from "react-icons/fi";
 import { RiInboxArchiveLine, RiInboxUnarchiveLine } from "react-icons/ri";
 import { auth } from "../firebase/firebase";
 import { Comment } from "./components";
@@ -90,7 +90,7 @@ export default function Post({ post }) {
             className="aspect-square h-9 w-fit rounded-full object-cover "
           />
           <p className="font-semibold">{post?.author}</p>
-          <p className="focus:outline-none">  --   {post?.company}</p>
+          <p className="focus:outline-none font-semibold ml-4">{post?.company}</p>
 
         </header>
       </Link>
@@ -128,7 +128,7 @@ export default function Post({ post }) {
         </div>
       ) : (
         <div>
-          <p className="pl-11 text-base text-gray-600">{updatePost?.caption}</p>
+          <p className="mx-autotext-base text-gray-600">{updatePost?.caption}</p>
           {updatePost?.imageURL && (
             <img
               src={updatePost?.imageURL}
@@ -150,7 +150,7 @@ export default function Post({ post }) {
             </button>
           ) : (
             <button
-              className="rounded-full border-none bg-slate-100 p-1.5 text-gray-500 shadow-md hover:cursor-pointer hover:brightness-95 "
+              className="rounded-full border-none bg-slate-100 p-1.5 text-l text-gray-500 shadow-md hover:cursor-pointer hover:brightness-95 "
               onClick={() => setEnableEdit((prev) => !prev)}
             >
               <FiEdit3 />
@@ -158,7 +158,7 @@ export default function Post({ post }) {
           )}
 
           <button
-            className="rounded-full border-none bg-slate-100 p-1.5 text-gray-500 shadow-md hover:cursor-pointer hover:brightness-95 "
+            className="rounded-full border-none bg-slate-100 p-1.5 text-l text-gray-500 shadow-md hover:cursor-pointer hover:brightness-95 "
             onClick={() => deletePost(post)}
           >
             <FiTrash />
@@ -168,9 +168,9 @@ export default function Post({ post }) {
             onClick={() => toggleArchive(post)}
           >
             {user?.archives?.some(({ postID }) => postID === post?.postID) ? (
-              <RiInboxUnarchiveLine className="text-xl" />
+              <FiBookmark className="text-l" />
             ) : (
-              <RiInboxArchiveLine className="text-xl" />
+              <FiBookmark className="text-l brightness-65" />
             )}
           </button>
         </div>
