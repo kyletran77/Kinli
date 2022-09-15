@@ -282,6 +282,27 @@ export const postComment = async ({ postID }, comment, user) => {
     );
   } catch (error) {
     toast.error("Couldn't post the comment. Try again!");
+    console.log("Ayo");
+  }
+};
+export const postCommentOpportunities = async ({ postID }, comment, user) => {
+  try {
+    await setDoc(
+      doc(allCircles, postID),
+      {
+        comments: arrayUnion({
+          avatar: user.photoURL,
+          displayName: user.displayName,
+          userID: user.uid,
+          comment: comment,
+          date: date,
+        }),
+      },
+      { merge: true }
+    );
+  } catch (error) {
+    toast.error("Couldn't post the comment. Try again!");
+    console.log(error);
   }
 };
 
@@ -617,11 +638,6 @@ export const updateDiamonds = async(circleID, diamond, engagementScore) => {
         diamondCount: diamond,
         challenges: [],
         engagement: 0,
-        // calendar: arrayUnion({
-
-
-        // })
-
       },
       { merge: true }
     );

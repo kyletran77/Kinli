@@ -13,7 +13,7 @@ import {
   dislikePost,
   editPost,
   likePost,
-  postComment,
+  postCommentOpportunities,
   unarchivePost,
   undoBookmarkPost,
   uploadImage,
@@ -222,7 +222,7 @@ export default function Opportunities({ post }) {
         <footer>
           <div className="relative w-full px-1">
             <textarea
-              placeholder="Drop a comment.."
+              placeholder="no"
               className="mt-2 w-full resize-none bg-gray-100 px-2 py-2 text-sm focus:outline-none"
               value={comment}
               onChange={(e) => setComment(e.target.value)}
@@ -230,7 +230,7 @@ export default function Opportunities({ post }) {
             <button
               className="absolute right-4 bottom-1/2 translate-y-1/2 rounded-md border-none bg-blue-500 px-3 py-1 text-sm text-gray-100"
               onClick={() => {
-                postComment(post, comment, currentUser);
+                postCommentOpportunities(post, comment, currentUser);
                 setComment("");
               }}
             >

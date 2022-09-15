@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { auth } from "../../firebase/firebase";
 import { joinCircle, getCircle, completeChallenge, getUser, updateEngagement} from "../../firebase/firebase-calls";
 //import EditProfileModal from "./EditProfileModal";
-import { Post, OppTextEditor, QuestionTextEditor, ProgressBar } from "components/components";
+import { Post, OppTextEditor, QuestionTextEditor, ProgressBar, Opportunities, Questions } from "components/components";
 
 
 export default function Circles() {
@@ -138,7 +138,7 @@ const getEngagement=() => {
           
  
            <img
-             src={user?.photoURL}
+             src={circleData?.img}
              alt="user-dp"
              className="md:h-18 lg:h-18 aspect-square h-14 w-fit rounded-full object-cover xl:h-24"
            />
@@ -148,10 +148,8 @@ const getEngagement=() => {
         {/*   <p className="text-sm sm:text-base text-sky-400">{circleData?.circleChallenges}</p> */}
            <p className="text-sm sm:text-base font-semibold ">{circleData?.memberCount?.length} Members </p>
 
-          <p className="text-sm sm:text-base">{circleData?.diamondCount}  </p>
 
 
-          <h1 className ="mt-4">List of Users{'\n'}</h1>
           <ul className="mx-auto flex flex-col">
           {circleData?.memberCount?.map((member) => (
             <div className="bg-slate-200 rounded-lg pt-1 font-bold text-center text-l flex flex-row">
@@ -198,8 +196,8 @@ const getEngagement=() => {
  
        
          <ul className=" mb-16 md:mb-2">
-                 {showQA && circleData?.Questions?.map((ques) => (<Post post={ques} key={ques?.circleID}/>))}
-                 {showOpp && circleData?.Opportunities?.map((ques) => (<Post post={ques} key={ques?.circleID}/>))}
+                 {showQA && circleData?.Questions?.map((ques) => (<Questions post={ques} key={ques?.circleID}/>))}
+                 {showOpp && circleData?.Opportunities?.map((ques) => (<Opportunities post={ques} key={ques?.circleID}/>))}
  
          </ul>
          </div>

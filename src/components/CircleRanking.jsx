@@ -36,10 +36,11 @@ export default function CircleRanking() {
                     <li className="flex-row">
                     <img
                 src={
-                  require("assets/cute-rabbit-with-duck-working-laptop-cartoon-illustration_56104-471.webp")
+                  circle?.img
+    
                 }
                 alt="user-dp"
-                className="aspect-square h-9 w-fit rounded-full object-cover ml-0"
+                className="aspect-square h-9 w-fit rounded-full object-cover"
               />
                     {circle?.circleName}
 

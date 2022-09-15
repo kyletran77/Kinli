@@ -299,29 +299,166 @@ const Resume = forwardRef((props, ref) => {
     swapSourceTarget(source, target);
   }, [source]);
 
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!props.activeColor || !container) return;
+  // useEffect(() => {
+  //   const container = containerRef.current;
+  //   if (!props.activeColor || !container) return;
 
-    container.style.setProperty("--color", props.activeColor);
-  }, [props.activeColor]);
+  //   container.style.setProperty("--color", props.activeColor);
+  // }, [props.activeColor]);
 
   return (
     <div ref={ref}>
-      <div ref={containerRef} className={styles.container}>
-      <head>
+      <div ref={containerRef}>
+      <body class="">
+    <div class="mt-6 max-w-screen-lg md:flex mx-auto">
+      <div class="md:w-1/3 p-2 relative">
+        
+            {/* <img
+              class="h-32 w-32 rounded-full mx-auto mx-4"
+              src="https://avatars3.githubusercontent.com/u/59800600?s=460&amp;u=95f222387f598c85508c9b6d5d8662ebf4ae8b85&amp;v=4"
+            /> */}
+            <div class="mb-12 text-center mt-4 justify-center items-center">
+              <h1 class="text-2xl text-xl text-gray-800 font-bold">
+              {info?.basicInfo?.detail?.name}
+              </h1>
+              <div class="md:text-lg text-gray-600">Software Engineer</div>
+              <div class="text-gray-600 md:hidden mt-1">
+                moh.usman168@gmail.com
+           
+          </div>
+          <div class="mx-4 my-4 hidden md:block">
+            <div class="my-5 text-lg text-gray-600 flex">
+              <div class="mr-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M20,4H6C4.897,4,4,4.897,4,6v5h2V8l6.4,4.8c0.178,0.133,0.389,0.2,0.6,0.2s0.422-0.067,0.6-0.2L20,8v9h-8v2h8 c1.103,0,2-0.897,2-2V6C22,4.897,21.103,4,20,4z M13,10.75L6.666,6h12.668L13,10.75z"
+                  />
+                  <path d="M2 12H9V14H2zM4 15H10V17H4zM7 18H11V20H7z" />
+                </svg>
+              </div>
+              moh.usman168@gmail.com
+            </div>
+            <div class="my-5 text-lg text-gray-600 flex">
+              <div class="mr-2">
+                <svg
+                  class="text-gray-600"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12,14c2.206,0,4-1.794,4-4s-1.794-4-4-4s-4,1.794-4,4S9.794,14,12,14z M12,8c1.103,0,2,0.897,2,2s-0.897,2-2,2 s-2-0.897-2-2S10.897,8,12,8z"
+                  />
+                  <path
+                    d="M11.42,21.814C11.594,21.938,11.797,22,12,22s0.406-0.062,0.58-0.186C12.884,21.599,20.029,16.44,20,10 c0-4.411-3.589-8-8-8S4,5.589,4,9.995C3.971,16.44,11.116,21.599,11.42,21.814z M12,4c3.309,0,6,2.691,6,6.005 c0.021,4.438-4.388,8.423-6,9.73C10.389,18.427,5.979,14.441,6,10C6,6.691,8.691,4,12,4z"
+                  />
+                </svg>
+              </div>
+              Bogor, Indonesia
+            </div>
+            <a
+              href="https://www.linkedin.com/in/usman168"
+              class="my-5 text-blue-500 text-lg text-gray-600 flex"
+            >
+              <div class="mr-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M20,3H4C3.447,3,3,3.448,3,4v16c0,0.552,0.447,1,1,1h16c0.553,0,1-0.448,1-1V4C21,3.448,20.553,3,20,3z M8.339,18.337H5.667	v-8.59h2.672V18.337z M7.003,8.574c-0.856,0-1.548-0.694-1.548-1.548s0.691-1.548,1.548-1.548c0.854,0,1.548,0.693,1.548,1.548	S7.857,8.574,7.003,8.574z M18.338,18.337h-2.669V14.16c0-0.996-0.018-2.277-1.388-2.277c-1.39,0-1.601,1.086-1.601,2.207v4.248	h-2.667v-8.59h2.56v1.174h0.037c0.355-0.675,1.227-1.387,2.524-1.387c2.704,0,3.203,1.778,3.203,4.092V18.337z"
+                  />
+                </svg>
+              </div>
+              LinkedIn
+            </a>
+          </div>
+          <div class="mx-4 hidden md:block">
+            <a
+              href="mailto:moh.usman168@gmail.com"
+              class="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700 transition duration-150 ease-in-out w-full py-2 text-white rounded text-base"
+            >
+              Hire me
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="md:w-2/3 p-2 w-full">
+        <div class="mx-4 mb-6">
+          <h1 class="mb-4 text-4xl text-gray-700 font-bold">Summary</h1>
+          <p class="text-lg">
+            Enthusiastically explore new technologies for efficiency, always
+            looking for ways to solve the problem as efficiently as possible,
+            giving priority simplicity of code.
+          </p>
+        </div>
+        <div class="mx-4">
+          <h1 class="mb-4 text-4xl text-gray-700 font-bold">Experience</h1>
+          <ul>
+            
+            <li class="mb-4">
+              <h2 class="text-2xl font-medium text-gray-800">
+                Data Center Linux Sysadmin
+              </h2>
+              <div class="mt-1">
+                <div>
+                  <i class="bx bx-buildings text-sm" ></i>
+                  <small class="text-base text-gray-800">
+                    PT. Bonet Utama
+                  </small>
+                </div>
+                <div>
+                  <i class="bx bx-calendar text-sm" ></i>
+                  <small class="text-sm text-gray-600"
+                    >Agu 2017 - Okt 2018</small
+                  >
+                </div>
+              </div>
+            </li>
+            <li class="mb-4">
+              <h2 class="text-2xl font-medium text-gray-800">
+                IT Support Internship
+              </h2>
+              <div class="mt-1">
+                <div>
+                  <i class="bx bx-buildings" ></i>
+                  <small class="text-base text-gray-800">
+                    PT. Nutrifood Indonesia
+                  </small>
+                </div>
+                <div class="">
+                  <i class="bx bx-calendar" ></i>
+                  <small class="text-sm text-gray-600">3 Month</small>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="mx-4">
+          <h1 class="mb-4 text-4xl text-gray-700 font-bold">Skill</h1>
+          <ul>
+            <li class="mb-6 flex flex-wrap">
+              <span
+                class="mr-2 my-1 rounded-full border px-4 text-sm py-2 font-medium bg-gray-200"
+                >Flask</span
+              >
+              
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
 
-<title>John Doe</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css" media="all" /> 
-<link rel="stylesheet" type="text/css" href="resume.css" media="all" />
-
-</head>
-<body>
+{/* <body>
 
 <div id="doc2" class="yui-t7">
 <div id="inner">
@@ -334,23 +471,9 @@ const Resume = forwardRef((props, ref) => {
         <h2></h2>
       </div>
 
-{/*    <div class="yui-gf last">
-          <div class="yui-u first">
-            <h2>Education</h2>
-          </div>
-          {info.education?.sections[0]?.map((item) => (
-
-              <div class="yui-u">
-            <h2>{item.company}</h2>
-            <h3>{item.description} &mdash; </h3>
-          </div> ))}
-        </div> */}
-
 
       <div class="yui-u">
         <div class="contact-info">
-          {/* <h3><a id="pdf" href="#"></a></h3> */}
-          {/* <h3><a href="mailto:name@yourdomain.com"></a></h3> */}
           <h3></h3>
         </div>
       </div>
@@ -360,67 +483,7 @@ const Resume = forwardRef((props, ref) => {
   <div id="bd">
     <div id="yui-main">
       <div class="yui-b">
-{/* }
         <div class="yui-gf">
-          <div class="yui-u first">
-            <h2>Profile</h2>
-          </div>
-          <div class="yui-u">
-            <p class="enlarge">
-            </p>
-          </div>
-        </div>
-
-        <div class="yui-gf">
-          <div class="yui-u first">
-            <h2>Skills</h2>
-          </div>
-          <div class="yui-u">
-
-              <div class="talent">
-                <h2>Web Design</h2>
-                <p>Assertively exploit wireless initiatives rather than synergistic core competencies.	</p>
-              </div>
-
-              <div class="talent">
-                <h2>Interface Design</h2>
-                <p>Credibly streamline mission-critical value with multifunctional functionalities.	 </p>
-              </div>
-
-              <div class="talent">
-                <h2>Project Direction</h2>
-                <p>Proven ability to lead and manage a wide variety of design and development projects in team and independent situations.</p>
-              </div>
-          </div>
-        </div>
-
-        <div class="yui-gf">
-          <div class="yui-u first">
-            <h2>Technical</h2>
-          </div>
-          <div class="yui-u">
-            <ul class="talent">
-              <li>XHTML</li>
-              <li>CSS</li>
-              <li class="last">Javascript</li>
-            </ul>
-
-            <ul class="talent">
-              <li>Jquery</li>
-              <li>PHP</li>
-              <li class="last">CVS / Subversion</li>
-            </ul>
-
-            <ul class="talent">
-              <li>OS X</li>
-              <li>Windows XP/Vista</li>
-              <li class="last">Linux</li>
-            </ul>
-          </div>
-        </div>
-*/}
-        <div class="yui-gf">
-      
           <div class="yui-u first">
             <h2>Experience</h2>
           </div>
@@ -433,15 +496,9 @@ const Resume = forwardRef((props, ref) => {
               <h4>{item.workDates}</h4>
               <p>{item.description} </p>
             </div>))}
-
-            
-
-           
-
           </div>
         </div>
           
-        
         <div class="yui-gf ">
           <div class="yui-u first">
             <h2>Education</h2>
@@ -456,8 +513,6 @@ const Resume = forwardRef((props, ref) => {
 
           </div> ))}
         </div>
-
-
       </div>
     </div>
   </div>
@@ -472,52 +527,9 @@ const Resume = forwardRef((props, ref) => {
 </div>
 
 
-</body>
-        {/* <div className={styles.header}>
-          <p className={styles.heading}>{info.basicInfo?.detail?.name}</p>
-          <p className={styles.subHeading}>{info.basicInfo?.detail?.title}</p>
+</body> */}
 
-          <div className={styles.links}>
-            {info.basicInfo?.detail?.email ? (
-              <a className={styles.link} type="email">
-                <AtSign /> {info.basicInfo?.detail?.email}
-              </a>
-            ) : (
-              <span />
-            )}
-            {info.basicInfo?.detail?.phone ? (
-              <a className={styles.link}>
-                <Phone /> {info.basicInfo?.detail?.phone}
-              </a>
-            ) : (
-              <span />
-            )}
-            {info.basicInfo?.detail?.linkedin ? (
-              <a className={styles.link}>
-                <Linkedin /> {info.basicInfo?.detail?.linkedin}
-              </a>
-            ) : (
-              <span />
-            )}
-            {info.basicInfo?.detail?.github ? (
-              <a className={styles.link}>
-                <GitHub /> {info.basicInfo?.detail?.github}
-              </a>
-            ) : (
-              <span />
-            )}
-          </div>
-        </div>
-
-        <div className={styles.main}>
-          <div className={styles.col1}>
-            {columns[0].map((item) => sectionDiv[item])}
-          </div>
-          <div className={styles.col2}>
-            {columns[1].map((item) => sectionDiv[item])}
-          </div>
-        </div>
-      </div> */}
+    
     </div>
     </div>
    

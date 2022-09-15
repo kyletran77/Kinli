@@ -26,10 +26,8 @@ export default function RightSideBar() {
             <li className="my-1 flex items-center gap-1" key={circle.circleID}>
               <img
                 src={
-                  // otherUser?.avatar
-                  //   ? otherUser?.avatar
-                  //   : "http://cdn.onlinewebfonts.com/svg/img_264570.png"
-                  require("assets/cute-rabbit-with-duck-working-laptop-cartoon-illustration_56104-471.webp")
+                  circle?.img
+    
                 }
                 alt="user-dp"
                 className="aspect-square h-9 w-fit rounded-full object-cover"
