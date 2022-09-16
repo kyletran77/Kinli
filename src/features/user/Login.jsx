@@ -86,7 +86,7 @@ export default function Login() {
                 onClick={signin}>Sign In with Google</button>
             </center> */}
       {(showLogin) ? (<form
-        className="flex h-96 w-80 flex-col items-center justify-center gap-4 rounded-md bg-slate-50 p-9 shadow-md sm:w-96"
+        className="flex h-96 w-80 flex-col items-center justify-center gap-4 rounded-md p-9 shadow-md sm:w-96"
         onSubmit={loginHandler}
       >
         <h1 className="text-xl font-semibold">Login</h1>
@@ -141,20 +141,21 @@ export default function Login() {
           </Link>
         </p>
       </form>): (
-        <div className="mt-0 flex flex-col overflow-hidden w-full">
+        <div className="main mt-0 flex flex-col overflow-hidden w-full">
           <main className="flex-grow">
             <HeroHome />
             <CircleFeatures/>
+            <div className="w-full flex flex-col p-4">
+              <button type="button" class=" text-white text-center md:w-1/2 md:mx-auto font-bold bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                    onClick={()=>setShowLogin(true)}
+                    >Login
+              </button>
+            </div>
             <Footer/>
             {/* <FeaturesHome setShowLogin={loginClick}/> */}
             {/* <Testimonials/> */}
           </main>
-        <div className="w-full flex flex-col p-4">
-          <button type="button" class=" text-white text-center md:w-1/2 md:mx-auto font-bold bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                onClick={()=>setShowLogin(true)}
-                >Login
-          </button>
-        </div>
+
       </div>
       
 

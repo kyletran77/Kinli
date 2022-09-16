@@ -22,12 +22,12 @@ export default function Header() {
   };
 
   return (
-    <div className="flex flex-col sm:flex-row h-12 items-center justify-between p-3 font-semibold bg-white">
+    <div className="main flex flex-col sm:flex-row h-12 items-center justify-between p-3 font-semibold bg-white">
       <Link to="/" className="flex">
-        <img src={logo} alt="main-logo" className="aspect-square w-5 h-5" />
+        <img src={logo} alt="main-logo" className="aspect-square w-6 h-6" />
         <h1 className="text-xl text-gray-600">Kinli</h1>
       </Link>
-      <div className="hidden md:flex w-full bg-white md:m-0 flex-row justify-center mt-2 sm:mt-2 ml-0"><a
+      <div className="hidden md:flex w-full md:m-0 flex-row justify-center mt-2 sm:mt-2 ml-0"><a
           className="hover:text-gray-600 font-semibold text-base 
           text-center text-gray-400 block cursor-pointer"  href="/aboutLaunch">About Us</a><a
           className="hover:text-gray-600 font-semibold text-base mr-6 ml-6 

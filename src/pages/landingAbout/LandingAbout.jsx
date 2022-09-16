@@ -12,8 +12,8 @@ import CircleFeatures from "./partials/CircleFeatures";
 
 function LandingAbout() {
   return (
-    <div className="flex bg-white">
-      <div className="mt-12 sm:mt-0 flex flex-col overflow-hidden w-full">
+    <div className="flex">
+      <div className="sm:mt-0 flex flex-col overflow-hidden w-full">
         <main className="flex-grow">
 
           <HeroHome />
