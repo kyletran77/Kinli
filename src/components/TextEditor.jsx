@@ -116,9 +116,9 @@ export default function TextEditor() {
             className="mx-auto aspect-auto max-h-96"
           />
         )}
-        <div className="flex items-center justify-between p-3 mx-auto mt-2 mb-2 h-fit w-full min-w-[20rem] max-w-[90%] flex-col rounded-lg bg-orange-100 shadow-md sm:w-3/4 md:mx-auto md:w-3/4 lg:w-full">
+        <div className="flex items-center justify-between p-3 mx-auto mt-2 mb-2 h-fit w-full min-w-[20rem] max-w-[90%] flex-col sm:w-3/4 md:mx-auto md:w-3/4 lg:w-full">
           <div className="flex gap-4">
-            <label htmlFor="post-image" className="text-1xl text-gray-500">
+            <label htmlFor="post-image" className="text-1xl text-black">
               <input
                 type="file"
                 id="post-image"
@@ -130,7 +130,7 @@ export default function TextEditor() {
               <RiImageAddFill className="text-1xl my-2"/>
             </label>
             <div
-              className="relative text-gray-500"
+              className="relative text-black"
               onClick={(e) => setShowEmojis((prev) => !prev)}
             >
               <RiEmotionLaughLine className="text-1xl my-2" />
@@ -144,7 +144,7 @@ export default function TextEditor() {
               )}
             </div>
            {/* DropDown Menu */}
-           <select class="text-1xl hover:outline mx-auto border-2" onChange={TagClick}> 
+           <select class="text-1xl hover:outline mx-auto border-2 " onChange={TagClick}> 
             {/* Creating the default / starting option for our dropdown.    */}
             <option value="⬇ Tag an experience ⬇">Tag an experience</option>
             {userData?.allExp?.map((exp) => (exp.company != "")?<option key={exp.company} value={exp.company}>{exp.company}</option>: "")}
