@@ -87,22 +87,22 @@ const getEngagement=() => {
   return (
     
     <div className="ml-0 w-full pt-4 sm:ml-0 md:ml-0 lg:ml-3">
-      <div className="relative justify-center items-center mx-auto mt-2 flex  w-full min-w-[20rem] max-w-[90%] flex-row rounded-lg bg-gray-50 p-4 shadow-md sm:w-3/4 md:mx-auto md:w-3/4 lg:w-full">
+      <div className="relative justify-center items-center mx-auto mt-2 flex w-full min-w-[20rem] max-w-[90%] flex-row rounded-lg bg-gray-50 py-4 shadow-md sm:w-3/4 md:mx-auto md:w-3/4 lg:w-full">
          <button
-             className="flex mx-5 rounded-full border-none bg-slate-100 p-1.5 text-2xl text-gray-600 shadow-md hover:cursor-pointer hover:brightness-95 "
+             className="flex mx-5 rounded-full border-none bg-slate-100 text-lg md:text-2xl text-gray-600 shadow-md hover:cursor-pointer hover:brightness-95 "
              onClick = {renderHome} >
              Home
            </button>
        { /* Opportunities Button */}
        <button
-             className="flex mx-5 rounded-full border-none bg-slate-100 p-1.5 text-2xl text-gray-600 shadow-md hover:cursor-pointer hover:brightness-95 "
+             className="flex mx-5 rounded-full border-none bg-slate-100 text-lg md:text-2xl text-gray-600 shadow-md hover:cursor-pointer hover:brightness-95 "
              onClick = {renderOpp }>
              Opportunities
            </button>
  
            { /* Q&A Button */}
            <button
-             className="flex mx-5 rounded-full border-none bg-slate-100 p-1.5 text-2xl text-gray-600 shadow-md hover:cursor-pointer hover:brightness-95 "
+             className="flex mx-5 rounded-full border-none bg-slate-100 text-lg md:text-2xl text-gray-600 shadow-md hover:cursor-pointer hover:brightness-95 "
              onClick = {renderQA }>
            Q and A
            </button>
@@ -115,8 +115,11 @@ const getEngagement=() => {
       {!isLoading && (
         
         <div>
-       <section className="relative h-80 w-full mt-16">
-      
+       <section className="">
+        <div class="h-full w-full p-4">
+          
+
+        
          {circleData.coverPic && (
            <img
              src={circleData.coverPic}
@@ -126,14 +129,17 @@ const getEngagement=() => {
          )}
  
          { /* Following Button */}
-         <div className="absolute right-1/2 -bottom-1/2 mx-auto flex h-fit w-80 translate-x-1/2 flex-col items-center gap-2 rounded-lg bg-slate-50 py-3 px-2 shadow sm:w-96 md:w-96 lg:w-96">
-           <button
-             className="absolute right-4 rounded-full border-none bg-slate-100 p-1.5 text-2xl text-gray-600 shadow-md hover:cursor-pointer hover:brightness-95 "
-             onClick = {() => joinCircle (currentUser, circleData)  } //Follow Button for Circles
-               
-           >
-           Join            
-           </button>
+         <div className="mx-auto flex h-fit w-80 flex-col items-center gap-2 rounded-lg bg-slate-50 py-3 px-2 shadow sm:w-96 md:w-96 lg:w-96">
+          <div class="justify-items-end w-full ml-64">
+            <button
+              className="justify-items-end rounded-full border-none bg-slate-100 p-1.5 text-2xl text-gray-600 shadow-md hover:cursor-pointer hover:brightness-95 "
+              onClick = {() => joinCircle (currentUser, circleData)  } //Follow Button for Circles
+                
+            >
+            Join            
+            </button>
+          </div>
+
  
           
  
@@ -152,8 +158,7 @@ const getEngagement=() => {
 
           <ul className="mx-auto flex flex-col">
           {circleData?.memberCount?.map((member) => (
-            <div className="bg-slate-200 rounded-lg pt-1 font-bold text-center text-l flex flex-row">
-
+            <div className="rounded-lg pt-1 font-bold text-center text-l flex flex-row">
             {allUsers.find(user => user.userID === member).displayName}
             &nbsp;
             Status: {allUsers.find(user => user.userID === member)?.status}
@@ -161,38 +166,29 @@ const getEngagement=() => {
             ))}
           </ul>
           
- 
-           
-           
            <p className="text-sm sm:text-base">{circleData?.diamondCount} 💎 </p>
            {/* <p className="text-sm sm:text-base">{circleData?.challenges.length * 100} 💎 </p> */}
            <ProgressBar done = {`${100*(circleData?.challenges?.length/circleData?.memberCount?.length)}`}/>
-
- 
-           
-         </div>
+         </div> 
+        </div>
        </section>
-        <ul className="mt-44 ">
+      <ul className="mt-2">
  
        {/* Challenges Container */}    
-       <div className="relative mx-auto mt-2 flex  w-full min-w-[20rem] max-w-[90%] flex-col rounded-lg bg-gray-50 p-4 shadow-md sm:w-3/4 md:mx-auto md:w-3/4 lg:w-full">
-         
-       <p className="text-sm sm:text-base text-sky-400">CHALLENGE: {circleData?.circleChallenges} +100 💎</p> 
-       <button className="absolute right-64 bg-green-200 rounded-full mbot-10 border-none text-xl text-gray-600 shadow-md hover:cursor-pointer hover:bg-green-100 "
+       <div className="relative mx-auto flex w-full min-w-[20rem] max-w-[90%] flex-col rounded-lg bg-gray-50 p-4 shadow-md sm:w-3/4 md:mx-auto md:w-3/4 lg:w-full"> 
+       <p className="text-sm sm:text-base text-sky-400">CHALLENGE: {circleData?.circleChallenges} +1 💎</p> 
+       <button className="mt-2 w-full bg-green-200 rounded-full border-none text-base text-gray-600 shadow-md hover:cursor-pointer hover:bg-green-100 "
              onClick= {() => completeChallenge(currentUser, circleData) } //Complete Button for Circles    
            >
            Complete Challenge            
            </button>      
        </div>
+
        <div className="relative mx-auto mt-2 flex  w-full min-w-[20rem] max-w-[90%] flex-col rounded-lg bg-gray-50 p-4 shadow-md sm:w-3/4 md:mx-auto md:w-3/4 lg:w-full">
        <p className="text-sm sm:text-base text-sky-400">Posts from {circleData?.circleName} Members</p> 
-       
-       
        <p className="text-sm sm:text-base text-sky-400"> Questions and Answers {circleData?.circleName} Members</p> 
-         
-             
        </div>
-           </ul>
+      </ul>
  
        
          <ul className=" mb-16 md:mb-2">

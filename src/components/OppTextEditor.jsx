@@ -94,17 +94,18 @@ export default function OppTextEditor({CircleID}) {
   };
   //problem with the text area/form only responsive on certain sizes
   return (
-    <div className="text-l mx-auto flex w-full flex-col gap-4 bg-gray-100 p-4">
-        Opportunities
+    <div className="mx-auto p-2 items-center w-full mt-2 justify-center content-center text-l flex flex-col gap-4">
+
+      <div class="flex flex-col w-96">
+      <h5 class="mx-auto text-lg text-center bg-gray-50 mb-2 rounded-lg w-80 md:w-full">Post opportunities here!</h5>
       <form
-        className="mx-auto w-full max-w-3xl bg-gray-50 shadow-md"
+        className="bg-gray-50 mx-8 md:mx-0 shadow-md rounded-lg"
         onSubmit={(e) => submitHandler(e)}
       >
-
         <textarea
           rows="4"
           placeholder="What's on your mind?"
-          className={`w-full resize-none rounded-sm border-none bg-gray-50 p-4 outline-none`}
+          className={`resize-none rounded-sm border-none bg-gray-50 p-4 outline-none`}
           name="caption"
           value={newPost.caption}
           onInput={inputHandler}
@@ -144,7 +145,7 @@ export default function OppTextEditor({CircleID}) {
               )}
             </div>
            {/* DropDown Menu */}
-           <select onChange={TagClick}> 
+           <select class="text-sm md:text-1xl" onChange={TagClick}> 
         {/* Creating the default / starting option for our 
           dropdown.
          */}
@@ -178,6 +179,7 @@ export default function OppTextEditor({CircleID}) {
         </div>
 
       </form>
+      </div>
     </div>
   );
 }

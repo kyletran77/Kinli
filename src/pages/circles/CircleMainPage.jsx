@@ -45,20 +45,19 @@ export default function CircleMainPage() {
         <section className="w-full h-full">
 
         {/* Horizontal story flex container*/} 
-          <div className="flex-row justify-center mx-8 border-b-2 border-gray-200 h=1/4">
-            <div className="flex flex-nowrap wrapper space-x-12 w-full">
+          <div className="flex-row justify-center mx-8 border-2 border-black h=1/4">
+            <div className="flex flex-nowrap wrapper space-x-4 w-full">
 
             {/* iterate through circles in id list */}
               {userData?.joinedCircle?.map((circles) => (
                 <Link className=""
                   to={`/circle/${circles}`}>
-                    <div className="item">
-                      <img src={require("assets/cute-rabbit-with-duck-working-laptop-cartoon-illustration_56104-471.webp")} 
+                    <div className="item items-center mx-auto">
+                      <img src={circles?.img} 
                         alt="" 
                         className = "object-contain"/>
                     </div>
-                    <h5 className="pt-1 font-bold text-center">{allCircles.find(circle => circle.circleID === circles).circleName}</h5>
-
+                    <h5 className="pt-1 font-bold text-center text-sm md:text-base w-48">{allCircles.find(circle => circle.circleID === circles).circleName}</h5>
                 </Link>
               ))}
             </div>
@@ -67,9 +66,9 @@ export default function CircleMainPage() {
 
 
         {/* Flex container for Groups You May Like & Circles*/}
-        <div className="space-y-12 my-8 mx-8 rounded-lg h-3/5">
-          <div className="border-b-2 border-gray-200 mb-8 mt-24">
-            <h3 className="text-left w-full text-red-500 font-bold mx-auto">
+        <div className="space-y-0 mx-8 rounded-lg h-3/5">
+          <div className="border-b-2 border-gray-200 mb-8 mt-8">
+            <h3 className="text-left text-black font-bold mx-auto">
               Groups you may like...
             </h3>
           </div>
@@ -84,14 +83,14 @@ export default function CircleMainPage() {
               to={`/circle/${circles?.circleID}`}
               >
                 {/* Each individual circle container */}
-                <div className="sm:text-sm">
+                <div className="sm:text-sm max-h-96 bg-white rounded-lg">
                   <div className="rounded-lg w-full h-full overflow-hidden">
-                    <img src={require("assets/cute-rabbit-with-duck-working-laptop-cartoon-illustration_56104-471.webp")} 
+                    <img src={circles?.img} 
                     alt="" 
-                    className = "object-contain"/>
+                    className = "h-64 w-full object-cover"/>
                   </div>
 
-                  <h5 className="pt-1 font-bold text-left">
+                  <h5 className="mt-4 font-bold text-left">
                     {circles.circleName}
                   </h5>
                   <p className="text-left mx-auto">
