@@ -57,7 +57,7 @@ export default function CircleMainPage() {
                         alt="" 
                         className = "object-contain"/>
                     </div>
-                    <h5 className="pt-1 font-bold text-center text-sm md:text-base w-48">{allCircles.find(circle => circle.circleID === circles).circleName}</h5>
+                    <h5 className="pt-1 font-bold text-center text-sm md:text-base w-48 mb-2">{allCircles.find(circle => circle.circleID === circles).circleName}</h5>
                 </Link>
               ))}
             </div>
