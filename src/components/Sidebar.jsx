@@ -6,7 +6,7 @@ import { FaUserCircle } from "react-icons/fa";
 export default function Sidebar() {
   const { user } = useSelector((state) => state.user);
   return (
-    <div className="fixed border-gray-200 border-r-2 bottom-0 z-10 my-0 mx-0 flex h-fit w-full items-center justify-between self-end bg-gray-50 py-2 px-2 text-gray-700 sm:py-0 lg:static lg:z-0 lg:mb-auto lg:mt-4 lg:h-[80vh] lg:w-fit lg:flex-col lg:px-5 lg:py-4 xl:mx-3 xl:items-start xl:justify-start xl:gap-7 xl:px-5">
+    <div className="fixed border-gray-200 border-r-2 bottom-0 z-10 my-0 mx-0 flex h-fit w-full items-center justify-between self-end bg-gray-50 py-2 px-2 text-gray-700 sm:py-0 lg:h-64 lg:static lg:z-0 lg:mb-auto lg:mt-4 lg:w-fit lg:flex-col lg:px-5 lg:py-4 xl:mx-3 xl:items-start xl:justify-start xl:gap-7 xl:px-5">
       {navLinks.map(({ pathTo, icon, img, navPath }) => (
         <NavLink
           to={pathTo}
