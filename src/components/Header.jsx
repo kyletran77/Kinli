@@ -31,7 +31,7 @@ export default function Header() {
           className="hover:text-gray-600 font-semibold text-base 
           text-center text-gray-400 block cursor-pointer"  href="/aboutLaunch">About Us</a><a
           className="hover:text-gray-600 font-semibold text-base mr-6 ml-6 
-          text-center text-gray-400 block cursor-pointer"  href="/login">Network</a><a
+          text-center text-gray-400 block cursor-pointer"  href="/login">Home</a><a
           className="hover:text-gray-600 font-semibold text-base 
           text-center text-gray-400 block cursor-pointer"  href="/leader">Lead a Circle</a></div>
       {/* 

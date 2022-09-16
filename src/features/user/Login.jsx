@@ -120,13 +120,13 @@ export default function Login() {
         <div className="mt-4 flex w-full gap-2">
           <button
             type="submit"
-            className="w-1/2 rounded-md border-2 bg-gray-200 py-1 px-4"
+            className="w-1/2 text-lg rounded-md border-2 bg-gray-200 py-1 px-4"
           >
             Login
           </button>
           <div
             role="button"
-            className="w-1/2 rounded-md border-2 bg-gray-200 py-1 px-4 text-center"
+            className="w-1/2 text-lg rounded-md border-2 bg-gray-200 py-1 px-4 text-center"
             onClick={(e) => testLoginHandler(e, testLogin)}
           >
             Test User
@@ -141,7 +141,7 @@ export default function Login() {
           </Link>
         </p>
       </form>): (
-        <div className="mt-12 sm:mt-0 flex flex-col overflow-hidden w-full">
+        <div className="mt-0 flex flex-col overflow-hidden w-full">
           <main className="flex-grow">
             <HeroHome />
             <CircleFeatures/>
@@ -149,13 +149,12 @@ export default function Login() {
             {/* <FeaturesHome setShowLogin={loginClick}/> */}
             {/* <Testimonials/> */}
           </main>
-        <div className="w-full mb-8">
-          <button type="button" class="mx-auto w-5/6 sm:w-1/6 text-white text-center font-bold bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+        <div className="w-full flex flex-col p-4">
+          <button type="button" class=" text-white text-center md:w-1/2 md:mx-auto font-bold bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                 onClick={()=>setShowLogin(true)}
                 >Login
           </button>
         </div>
-  
       </div>
       
 
