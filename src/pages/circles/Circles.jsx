@@ -86,25 +86,25 @@ const getEngagement=() => {
 
   return (
     
-    <div className="ml-0 w-full pt-4 sm:ml-0 md:ml-0 lg:ml-3">
+    <div className="w-full pt-4 sm:ml-0 md:ml-0 lg:ml-3">
       <div className="relative justify-center items-center mx-auto mt-2 flex w-full min-w-[20rem] max-w-[90%] flex-row rounded-lg bg-gray-50 py-4 shadow-md sm:w-3/4 md:mx-auto md:w-3/4 lg:w-full">
          <button
-             className="flex mx-5 rounded-full border-none bg-slate-100 text-lg md:text-2xl text-gray-600 shadow-md hover:cursor-pointer hover:brightness-95 "
+             className="flex mx-2 md:mx-5 rounded-full border-none bg-slate-100 text-lg md:text-2xl text-gray-600 shadow-md hover:cursor-pointer hover:brightness-95 "
              onClick = {renderHome} >
              Home
            </button>
        { /* Opportunities Button */}
        <button
-             className="flex mx-5 rounded-full border-none bg-slate-100 text-lg md:text-2xl text-gray-600 shadow-md hover:cursor-pointer hover:brightness-95 "
+             className="flex mx-2 md:mx-5 rounded-full border-none bg-slate-100 text-lg md:text-2xl text-gray-600 shadow-md hover:cursor-pointer hover:brightness-95 "
              onClick = {renderOpp }>
              Opportunities
            </button>
  
            { /* Q&A Button */}
            <button
-             className="flex mx-5 rounded-full border-none bg-slate-100 text-lg md:text-2xl text-gray-600 shadow-md hover:cursor-pointer hover:brightness-95 "
+             className="flex mx-2 md:mx-5 rounded-full border-none bg-slate-100 text-lg md:text-2xl text-gray-600 shadow-md hover:cursor-pointer hover:brightness-95 "
              onClick = {renderQA }>
-           Q and A
+           Discussion
            </button>
  
        </div>
