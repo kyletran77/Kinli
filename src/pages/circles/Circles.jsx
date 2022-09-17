@@ -26,6 +26,10 @@ export default function Circles() {
   const [ShowHome, setHome] = useState(true);
   const [showQA, setQA] = useState(false);
 
+  const filteredPosts = allPosts?.filter(
+    (post) => post.circle == circleID
+  );
+
   useEffect(
     () => {
        if (currentUser?.length==0) getUser(currentUser, setUserData);
@@ -192,9 +196,12 @@ const getEngagement=() => {
  
        
          <ul className=" mb-16 md:mb-2">
-                 {showQA && circleData?.Questions?.map((ques) => (<Questions post={ques} key={ques?.circleID}/>))}
-                 {showOpp && circleData?.Opportunities?.map((ques) => (<Opportunities post={ques} key={ques?.circleID}/>))}
- 
+                 {/* {showQA && circleData?.Questions?.map((ques) => (<Questions post={ques} key={ques?.circleID}/>))} */}
+                 {/* {showOpp && circleData?.Opportunities?.map((ques) => (<Opportunities post={ques} key={ques?.circleID}/>))} */}
+                {showOpp && filteredPosts?.map((post) => ((post.type == "Opportunities") && <Opportunities post = {post} key={post.postID}/>))}
+                {showQA && filteredPosts?.map((post) => ((post.type == "QA") && <Questions post = {post} key={post.postID}/>))}
+                
+
          </ul>
          </div>
       )

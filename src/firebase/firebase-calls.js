@@ -267,6 +267,7 @@ export const dislikePost = async (postID, user) => {
 
 export const postComment = async ({ postID }, comment, user) => {
   try {
+    console.log(postID);
     await setDoc(
       doc(allPostsCollection, postID),
       {
@@ -287,6 +288,7 @@ export const postComment = async ({ postID }, comment, user) => {
 };
 export const postCommentOpportunities = async ({ postID }, comment, user) => {
   try {
+    console.log(postID);
     await setDoc(
       doc(allCircles, postID),
       {
@@ -566,33 +568,62 @@ export const completeChallenge = async (currentUser, circleID) => {
 
 
 export const createOpportunities = async (user, Circle, post) => {
+  // try {
+  //   const loader = toast.loading("Posting...");
+  //   await setDoc(
+  //     doc(collection(db, "allCircles"), Circle),
+  //     {
+  //       Opportunities: arrayUnion({
+  //         author: user.displayName,
+  //         uid: user.uid,
+  //         photoURL: user.photoURL,
+  //         caption: post.caption,
+  //         createdAt: new Date().toLocaleString(),
+  //         imageURL: post.imageURL,
+  //         company: post.company,
+  //         likes: [],
+  //         comments: [],
+  //         circleID: Circle
+  //       }),
+  //     },
+  //     { merge: true }
+  //   );
+
+  //   toast.success("Opportunities sent.", { id: loader });
+  //   completeChallenge(user, Circle);
+  // } catch (error) {
+  //   toast.error("Opportunities not sent. Try again!");
+  //   console.log(error)
+  // }
   try {
     const loader = toast.loading("Posting...");
+    const postDoc = await addDoc(allPostsCollection, {
+      author: user.displayName,
+      uid: user.uid,
+      photoURL: user.photoURL,
+      caption: post.caption,
+      createdAt: new Date().toLocaleString(),
+      imageURL: post.imageURL,
+      company: post.company,
+      likes: [],
+      comments: [],
+      circle: Circle,
+      type: "Opportunities",
+
+    });
+
     await setDoc(
-      doc(collection(db, "allCircles"), Circle),
+      doc(allPostsCollection, postDoc.id),
       {
-        Opportunities: arrayUnion({
-          author: user.displayName,
-          uid: user.uid,
-          photoURL: user.photoURL,
-          caption: post.caption,
-          createdAt: new Date().toLocaleString(),
-          imageURL: post.imageURL,
-          company: post.company,
-          likes: [],
-          comments: [],
-          circleID: Circle
-        }),
+        postID: postDoc.id,
       },
       { merge: true }
     );
-
-    toast.success("Opportunities sent.", { id: loader });
-    completeChallenge(user, Circle);
+    toast.success("Post sent.", { id: loader });
   } catch (error) {
-    toast.error("Opportunities not sent. Try again!");
-    console.log(error)
+    toast.error("Post not sent. Try again!");
   }
+
 };
 
 //Opportunities
@@ -603,31 +634,32 @@ export const createOpportunities = async (user, Circle, post) => {
 // use above as template
 export const createQuestion = async (user, Circle, post) => {
   try {
-    const loader = toast.loading("Posting question...");
+    const loader = toast.loading("Posting...");
+    const postDoc = await addDoc(allPostsCollection, {
+      author: user.displayName,
+      uid: user.uid,
+      photoURL: user.photoURL,
+      caption: post.caption,
+      createdAt: new Date().toLocaleString(),
+      imageURL: post.imageURL,
+      company: post.company,
+      likes: [],
+      comments: [],
+      circle: Circle,
+      type: "QA",
+
+    });
+
     await setDoc(
-      doc(collection(db, "allCircles"), Circle),
+      doc(allPostsCollection, postDoc.id),
       {
-        Questions: arrayUnion({
-          author: user.displayName,
-          uid: user.uid,
-          photoURL: user.photoURL,
-          caption: post.caption,
-          createdAt: new Date().toLocaleString(),
-          imageURL: post.imageURL,
-          company: post.company,
-          likes: [],
-          comments: [],
-          circleID: Circle
-        }),
+        postID: postDoc.id,
       },
       { merge: true }
     );
-    toast.success("Created question!.", { id: loader });
-    completeChallenge(user, Circle);
-
+    toast.success("Post sent.", { id: loader });
   } catch (error) {
-    toast.error("Could not create question. Try again!");
-    console.log(error)
+    toast.error("Post not sent. Try again!");
   }
 };
 export const updateDiamonds = async(circleID, diamond, engagementScore) => {
