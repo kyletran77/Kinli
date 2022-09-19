@@ -86,7 +86,7 @@ function App() {
       <Schedule 
         jobs={jobs}
         timeZone='UTC'
-        dashboard={{ hidden: false }}
+        dashboard={{ hidden: true }}
       />
     </div>
   );
