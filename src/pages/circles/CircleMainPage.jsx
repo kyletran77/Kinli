@@ -88,7 +88,7 @@ export default function CircleMainPage() {
                   <div className="rounded-lg w-full h-full overflow-hidden">
                     <img src={circles.img} 
                     alt="" 
-                    className = "h-64 w-full object-cover"/>
+                    className = "h-64 w-full object-cover hover:opacity-70"/>
                   </div>
 
                   <h5 className="mt-4 font-bold text-left">
