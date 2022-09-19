@@ -6,6 +6,7 @@ import { auth } from "../../firebase/firebase";
 import { joinCircle, getCircle, completeChallenge, getUser, updateEngagement} from "../../firebase/firebase-calls";
 //import EditProfileModal from "./EditProfileModal";
 import { Post, OppTextEditor, QuestionTextEditor, ProgressBar, Opportunities, Questions } from "components/components";
+import { Link } from "react-router-dom";
 
 
 export default function Circles() {
@@ -158,10 +159,11 @@ const getEngagement=() => {
 
           <ul className="mx-auto flex flex-col">
           {circleData?.memberCount?.map((member) => (
-            <div className="rounded-lg pt-1 font-bold text-center text-l flex flex-row">
-            {allUsers.find(user => user.userID === member).displayName}
-            &nbsp;
-            Status: {allUsers.find(user => user.userID === member)?.status}
+            <div className="rounded-lg pt-1 font-semibold text-center text-l flex flex-row">
+            <Link to={`/profile/${member}`}>
+              <h6 class="main rounded-lg">{allUsers.find(user => user.userID === member)?.displayName}</h6></Link>
+              <h6 class="">&nbsp;:&nbsp; </h6>
+            <h5 class="">{allUsers.find(user => user.userID === member)?.status} </h5>
             </div>
             ))}
           </ul>
