@@ -132,9 +132,9 @@ const logoutHandler = async () => {
      <div>
      </div>
      {/* Work Experience section */}
-     <ul className="mt-44 mb-16 md:mb-24">
+     <ul className="mt-44 mb-8">
 
-     <div className="relative mx-0 mt-0 mb-0 flex h-fit w-full min-w-[20rem] max-w-[90%] flex-col rounded-lg bg-gray-50 p-4 shadow-md sm:w-3/4 md:mx-auto md:w-3/4 lg:w-full">
+     <div className="relative mx-auto mt-0 mb-0 flex h-fit w-80 min-w-[20rem] max-w-[90%] flex-col rounded-lg bg-gray-50 p-4 shadow-md sm:w-3/4 md:mx-auto md:w-3/4 lg:w-full">
      <p className="text-lg font-semibold">Work Experience</p>
      <button
             className="absolute right-4 rounded-full border-none bg-slate-100 p-1.5 text-2xl text-gray-600 shadow-md hover:cursor-pointer hover:brightness-95 "
@@ -166,7 +166,7 @@ const logoutHandler = async () => {
 
 
 
-<div className="relative mx-0 mt-0 mb-0 flex h-fit w-full min-w-[20rem] max-w-[90%] flex-col rounded-lg bg-gray-50 p-4 shadow-md sm:w-3/4 md:mx-auto md:w-3/4 lg:w-full">
+<div className="relative mx-auto mt-0 mb-0 flex h-fit w-80 min-w-[20rem] max-w-[90%] flex-col rounded-lg bg-gray-50 p-4 shadow-md sm:w-3/4 md:mx-auto md:w-3/4 lg:w-full">
 <p className="text-lg font-semibold">Education</p>
 <button
        className="absolute right-4 rounded-full border-none bg-slate-100 p-1.5 text-2xl text-gray-600 shadow-md hover:cursor-pointer hover:brightness-95 "
