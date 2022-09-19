@@ -117,7 +117,7 @@ export default function OppTextEditor({CircleID}) {
             className="mx-auto aspect-auto max-h-96"
           />
         )}
-        <div className="flex items-center justify-between px-3 py-2">
+        <div className="flex flex-col items-center justify-between px-3 py-2">
           <div className="flex gap-4">
             <label htmlFor="post-image" className="text-2xl text-gray-500">
               <input
@@ -171,13 +171,16 @@ export default function OppTextEditor({CircleID}) {
     /> */}
 
           </div>
+
+          <div class="flex mt-2">
           {(
-          <Button type='submit' className="rounded-md border-none bg-blue-500 px-4 py-1 text-base text-gray-100 shadow-md">
+          <Button type='submit' className="flex rounded-md border-none mx-auto bg-blue-500 px-4 py-1 text-base text-gray-100 shadow-md">
             Post
           </Button>
           )}
-        </div>
+          </div>
 
+        </div>
       </form>
       </div>
     </div>

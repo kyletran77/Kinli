@@ -168,11 +168,13 @@ export default function TextEditor() {
     /> */}
 
           </div>
-          {( 
-          <Button type='submit' className="rounded-md border-none bg-blue-500 px-4 py-1 text-base text-gray-100 shadow-md">
+          <div class="flex mt-2">
+          {(
+          <Button type='submit' className="flex rounded-md border-none mx-auto bg-blue-500 px-4 py-1 text-base text-gray-100 shadow-md">
             Post
           </Button>
           )}
+          </div>
         </div>
 
       </form>
