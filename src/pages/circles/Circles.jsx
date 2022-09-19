@@ -135,9 +135,9 @@ const getEngagement=() => {
  
          { /* Following Button */}
          <div className="mx-auto flex h-fit w-80 flex-col items-center gap-2 rounded-lg bg-slate-50 py-3 px-2 shadow sm:w-96 md:w-96 lg:w-96">
-          <div class="justify-items-end w-full ml-64">
+          <div class="justify-items-end w-full mx-auto m-1">
             <button
-              className="justify-items-end rounded-full border-none bg-slate-100 p-1.5 text-2xl text-gray-600 shadow-md hover:cursor-pointer hover:brightness-95 "
+              className="main flex justify-items-end mx-auto rounded-full border-none p-1.5 text-2xl text-gray-600 shadow-md hover:cursor-pointer hover:brightness-95 "
               onClick = {() => joinCircle (currentUser, circleData)  } //Follow Button for Circles
                 
             >
