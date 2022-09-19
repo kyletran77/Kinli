@@ -47,8 +47,8 @@ body::-webkit-scrollbar {
 
 .circleCard{
   aspect-ratio: 1;
-  height: 15%;
-  width: 15%;
+  height: 14%;
+  width: 14%;
 }
 
 .circleCard:hover{

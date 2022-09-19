@@ -2,7 +2,7 @@ import error from "assets/Kinli.png";
 
 export default function Empty() {
   return (
-    <div className="flex h-[85vh] w-full flex-col items-center justify-center gap-10  md:h-[80vh] lg:h-[90vh] ">
+    <div className="flex mt-16 h-1/2 w-full flex-col items-center justify-center gap-10">
       <img
         src={error}
         alt="error-404"
