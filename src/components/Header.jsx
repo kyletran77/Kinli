@@ -34,8 +34,8 @@ export default function Header() {
           text-center text-gray-400 block cursor-pointer"  href="/login">Home</a><a
           className="hover:text-gray-600 font-semibold text-base 
           text-center text-gray-400 block cursor-pointer"  href="/leader">Lead a Circle</a></div>
-      {/* 
-      <div className="flex gap-4">
+      
+      {/* <div className="flex gap-4">
         <Link to="/profile">
           <img
             className="max-w-9 aspect-square h-9 max-h-9 w-fit rounded-full object-cover"
@@ -56,8 +56,8 @@ export default function Header() {
             <MdLogin className="text-2xl" />
           </Link>
         )}
-      </div>
-      */}
+      </div> */}
+     
     </div>
   );
 }

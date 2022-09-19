@@ -53,9 +53,10 @@ export default function CircleMainPage() {
                 <Link className=""
                   to={`/circle/${circles}`}>
                     <div className="item items-center mx-auto">
-                      <img src={circles?.img} 
+                      <img 
+                      src={circles?.img} 
                         alt="" 
-                        className = "object-contain"/>
+                        className = "aspect-square h-9 w-fit rounded-full object-cover"/>
                     </div>
                     <h5 className="pt-1 font-bold text-center text-sm md:text-base w-48 mb-2">{allCircles.find(circle => circle.circleID === circles).circleName}</h5>
                 </Link>
@@ -85,7 +86,7 @@ export default function CircleMainPage() {
                 {/* Each individual circle container */}
                 <div className="sm:text-sm max-h-96 bg-white rounded-lg">
                   <div className="rounded-lg w-full h-full overflow-hidden">
-                    <img src={circles?.img} 
+                    <img src={circles.img} 
                     alt="" 
                     className = "h-64 w-full object-cover"/>
                   </div>

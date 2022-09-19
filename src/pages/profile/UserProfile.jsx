@@ -8,8 +8,12 @@ import EditExperienceProfileModal from "./EditExperienceModal";
 import EditEducationProfileModal from "./EditEducationModal";
 import { Post, Entry, Exp } from "components/components";
 import { Body } from "pages/pages";
-
-
+import { MdOutlineLogout, MdLogin } from "react-icons/md";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { defaultAvatar } from "utils/Constants";
+import { useDispatch } from "react-redux";
+import { signOut } from "firebase/auth";
+import { logout } from "features/user/userSlice";
 
 
 
@@ -37,6 +41,17 @@ export default function UserProfile() {
   const filteredPostsExp = allPosts?.filter(
     (post) => post.uid === currentUser?.uid 
   );
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const location = useLocation();
+
+const logoutHandler = async () => {
+  dispatch(logout());
+  await signOut(auth);
+  navigate("/login");
+  localStorage.removeItem("authToken");
+};
+
 
 
 
@@ -67,6 +82,10 @@ export default function UserProfile() {
           >
             <FiEdit3 />
           </button>
+           <button onClick={logoutHandler}
+           className="absolute left-4 rounded-full border-none bg-slate-100 p-1.5 text-2xl text-gray-600 shadow-md hover:cursor-pointer hover:brightness-95 ">
+            <MdOutlineLogout className="text-2xl ablsolue left-4" />
+          </button>
 
           <img
             src={user?.photoURL}
@@ -90,6 +109,21 @@ export default function UserProfile() {
             <div className="rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 px-3 py-1 shadow-md">
               {filteredPosts?.length} Posts
             </div>
+            <div className="flex gap-4">
+        {/* <Link to="/profile">
+          <img
+            className="max-w-9 aspect-square h-9 max-h-9 w-fit rounded-full object-cover"
+            src={
+              currentUser?.photoURL
+                ? currentUser?.photoURL
+                : defaultAvatar.cover
+            }
+            alt="user-avatar"
+          />
+        </Link> */}
+       
+      </div>
+     
           </div>
         </div>
         

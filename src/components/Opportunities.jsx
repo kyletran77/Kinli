@@ -13,7 +13,7 @@ import {
   dislikePost,
   editPost,
   likePost,
-  postCommentOpportunities,
+  postComment,
   unarchivePost,
   undoBookmarkPost,
   uploadImage,
@@ -230,7 +230,7 @@ export default function Opportunities({ post }) {
             <button
               className="absolute right-4 bottom-1/2 translate-y-1/2 rounded-md border-none bg-blue-500 px-3 py-1 text-sm text-gray-100"
               onClick={() => {
-                postCommentOpportunities(post, comment, currentUser);
+                postComment(post, comment, currentUser);
                 setComment("");
               }}
             >
